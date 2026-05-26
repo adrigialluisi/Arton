@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP Arton × Clube FII — Wireframe Anotado</title>
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --arton-bg:          #0a0b0e;
+  --arton-bg2:         #111318;
+  --arton-bg3:         #0e0f13;
+  --arton-gold:        #c9a84c;
+  --arton-gold-light:  #e8c97a;
+  --arton-white:       #ffffff;
+  --arton-grey:        #8a8f9e;
+  --arton-grey-light:  #b8bcc8;
+  --arton-border:      rgba(201,168,76,0.22);
+  --arton-border-sub:  rgba(255,255,255,0.07);
+  --ann-bg:            rgba(255,224,60,0.97);
+  --ann-border:        #d4a800;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--arton-bg);
+  color: var(--arton-white);
+  line-height: 1.6;
+}
+
+/* ===== CONTROL BAR ===== */
+#control-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  background: rgba(10,11,14,0.97);
+  border-bottom: 1px solid var(--arton-gold);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+}
+.cb-left { display: flex; flex-direction: column; gap: 2px; }
+.cb-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--arton-gold);
+}
+.cb-sub {
+  font-family: 'Arial', sans-serif;
+  font-size: 10px; color: var(--arton-grey);
+  letter-spacing: 0.05em;
+}
+.toggle-btn {
+  font-family: 'Arial', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 8px 18px; border-radius: 3px;
+  cursor: pointer; transition: all 0.2s ease;
+  border: 1px solid var(--arton-gold);
+  background: transparent; color: var(--arton-gold);
+}
+.toggle-btn:hover, .toggle-btn.active {
+  background: var(--arton-gold); color: var(--arton-bg);
+}
+
+/* ===== ANNOTATION SYSTEM ===== */
+.annotation {
+  display: none;
+  position: absolute;
+  z-index: 500;
+  width: 300px;
+  background: var(--ann-bg);
+  border: 2px solid var(--ann-border);
+  border-radius: 6px;
+  padding: 13px 15px;
+  font-family: 'Arial', sans-serif;
+  font-size: 12px; line-height: 1.55;
+  color: #1a1100;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+}
+.annotation.show { display: block; }
+.ann-tag {
+  display: inline-block;
+  background: var(--ann-border); color: #1a1100;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 2px; margin-bottom: 6px;
+}
+.ann-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #1a1100; }
+.annotation p { color: #2d2200; margin-bottom: 4px; }
+.annotation strong { color: #1a1100; }
+
+.ann-badge {
+  display: none;
+  position: absolute;
+  width: 26px; height: 26px;
+  background: var(--ann-border);
+  border-radius: 50%;
+  border: 2px solid #8a6a00;
+  font-family: 'Arial', sans-serif;
+  font-size: 11px; font-weight: 800;
+  color: #1a1100;
+  align-items: center; justify-content: center;
+  cursor: pointer; z-index: 400;
+  transition: transform 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.ann-badge:hover { transform: scale(1.15); }
+.ann-badge.show { display: flex; }
+
+.section-highlight { position: relative; }
+.annotations-on .section-highlight {
+  outline: 2px dashed rgba(201,168,76,0.25);
+  outline-offset: -2px;
+}
+
+.section-label {
+  display: none;
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(10,11,14,0.92);
+  border: 1px solid var(--arton-gold);
+  font-family: 'Arial', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--arton-gold); padding: 4px 10px; z-index: 50;
+  pointer-events: none;
+}
+.annotations-on .section-label { display: block; }
+
+/* ===== TOPBAR ===== */
+.site-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 52px;
+  background: rgba(10,11,14,0.97);
+  border-bottom: 1px solid var(--arton-border-sub);
+  position: relative;
+}
+.logo-area { display: flex; align-items: center; gap: 12px; }
+.logo-word {
+  font-family: 'Georgia', serif; font-size: 22px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--arton-white); font-weight: 400;
+}
+.logo-rule { width: 1px; height: 28px; background: var(--arton-gold); opacity: 0.6; }
+.logo-sub {
+  font-family: 'Arial', sans-serif; font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--arton-gold);
+}
+.topbar-badge {
+  font-family: 'Arial', sans-serif; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  background: rgba(201,168,76,0.09);
+  border: 1px solid var(--arton-border);
+  border-radius: 2px; padding: 5px 14px;
+  color: var(--arton-gold-light);
+}
+.topbar-cta {
+  font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 10px 24px; background: var(--arton-gold);
+  color: var(--arton-bg); border: none; cursor: pointer;
+  transition: background 0.2s ease;
+}
+.topbar-cta:hover { background: var(--arton-gold-light); }
+
+/* ===== SHARED TYPOGRAPHY ===== */
+.eyebrow {
+  font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--arton-gold); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::before {
+  content: ''; display: block;
+  width: 24px; height: 1px; background: var(--arton-gold);
+}
+.section-headline {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 400;
+  line-height: 1.2; color: var(--arton-white);
+  margin-bottom: 14px; letter-spacing: -0.01em;
+}
+.section-headline em { font-style: normal; color: var(--arton-gold); }
+.section-sub {
+  font-family: 'Arial', sans-serif; font-size: 15px;
+  line-height: 1.75; color: var(--arton-grey-light);
+  max-width: 560px;
+}
+.container { max-width: 1080px; margin: 0 auto; padding: 0 52px; }
+.gold-line { width: 36px; height: 1px; background: var(--arton-gold); margin: 20px 0; }
+
+.btn-primary {
+  font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 14px 34px; background: var(--arton-gold);
+  color: var(--arton-bg); border: none; cursor: pointer;
+  transition: background 0.2s ease; display: inline-block;
+}
+.btn-primary:hover { background: var(--arton-gold-light); }
+.btn-ghost {
+  font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--arton-grey-light); cursor: pointer; background: none; border: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: color 0.2s ease;
+}
+.btn-ghost:hover { color: var(--arton-white); }
+
+
+/* ============================================================
+   SEÇÃO 1 — HERO
+   ============================================================ */
+#hero {
+  min-height: 88vh; display: flex; align-items: center;
+  background: var(--arton-bg); overflow: hidden;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(201,168,76,0.08); border: 1px solid var(--arton-border);
+  border-radius: 2px; padding: 7px 14px; margin-bottom: 30px;
+  font-family: 'Arial', sans-serif; font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--arton-gold-light);
+}
+.bdot { width: 5px; height: 5px; background: var(--arton-gold); border-radius: 50%; }
+.hero-h1 {
+  font-size: clamp(36px, 4vw, 56px); font-weight: 400;
+  line-height: 1.14; color: var(--arton-white);
+  margin-bottom: 22px; letter-spacing: -0.02em;
+}
+.hero-h1 em { font-style: normal; color: var(--arton-gold); }
+.hero-p {
+  font-family: 'Arial', sans-serif; font-size: 16px;
+  line-height: 1.75; color: var(--arton-grey-light);
+  margin-bottom: 38px; max-width: 460px;
+}
+.hero-ctas { display: flex; align-items: center; gap: 22px; }
+
+.hero-visual {
+  height: 460px; background: var(--arton-bg2);
+  border: 1px solid var(--arton-border-sub);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
+}
+.hero-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 55%);
+}
+.hero-visual-label {
+  font-family: 'Arial', sans-serif; font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--arton-grey); margin-bottom: 8px;
+}
+.hero-stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--arton-border-sub);
+}
+.h-stat {
+  background: var(--arton-bg); padding: 18px 20px;
+}
+.h-stat-n {
+  display: block; font-size: 28px; font-weight: 400;
+  color: var(--arton-gold); line-height: 1; margin-bottom: 5px;
+}
+.h-stat-l {
+  font-family: 'Arial', sans-serif; font-size: 9px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--arton-grey);
+}
+
+
+/* ============================================================
+   SEÇÃO 2 — SOCIAL PROOF STRIP
+   ============================================================ */
+#social-proof {
+  background: var(--arton-bg2);
+  border-top: 1px solid var(--arton-border-sub);
+  border-bottom: 1px solid var(--arton-border-sub);
+  padding: 0;
+}
+.sp-inner {
+  display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+  align-items: stretch;
+}
+.sp-divider { background: var(--arton-border-sub); }
+.sp-item {
+  padding: 36px 40px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 6px;
+  transition: background 0.2s ease;
+}
+.sp-item:hover { background: rgba(201,168,76,0.04); }
+.sp-num {
+  font-size: 32px; font-weight: 400; color: var(--arton-gold);
+  line-height: 1; letter-spacing: -0.02em;
+}
+.sp-label {
+  font-family: 'Arial', sans-serif; font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--arton-grey); line-height: 1.4;
+}
+.sp-btg {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.btg-logo-mock {
+  font-family: 'Arial', sans-serif; font-size: 13px; font-weight: 800;
+  letter-spacing: 0.08em; color: var(--arton-white);
+  background: rgba(255,255,255,0.06); border: 1px solid var(--arton-border-sub);
+  padding: 6px 14px; border-radius: 2px;
+}
+.sp-btg-desc {
+  font-family: 'Arial', sans-serif; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--arton-grey); text-align: center; line-height: 1.5;
+}
+
+
+/* ============================================================
+   SEÇÃO 3 — O PIVOT
+   ============================================================ */
+#pivot {
+  background: var(--arton-bg);
+  padding: 88px 0;
+}
+.pivot-header { margin-bottom: 52px; }
+.pivot-grid {
+  display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0;
+  align-items: start;
+}
+.pivot-arrow-col {
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 32px;
+}
+.pivot-arrow {
+  width: 48px; height: 48px; background: var(--arton-gold);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--arton-bg); font-family: sans-serif;
+  flex-shrink: 0;
+}
+.pivot-card {
+  border: 1px solid var(--arton-border-sub);
+  background: var(--arton-bg2);
+  padding: 0; overflow: hidden;
+}
+.pivot-card-arton { border-color: var(--arton-border); background: rgba(201,168,76,0.03); }
+.pivot-card-head {
+  padding: 18px 28px; border-bottom: 1px solid var(--arton-border-sub);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pivot-card-arton .pivot-card-head { border-color: var(--arton-border); }
+.pivot-card-brand {
+  font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 800;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--arton-grey);
+}
+.pivot-card-arton .pivot-card-brand { color: var(--arton-gold); }
+.pivot-card-status {
+  font-family: 'Arial', sans-serif; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--arton-grey); background: rgba(255,255,255,0.04);
+  border: 1px solid var(--arton-border-sub);
+  padding: 3px 9px; border-radius: 2px;
+}
+.pivot-card-arton .pivot-card-status {
+  color: var(--arton-gold); background: rgba(201,168,76,0.08);
+  border-color: var(--arton-border);
+}
+.pivot-card-body { padding: 24px 28px; }
+.pivot-card-title {
+  font-size: 18px; font-weight: 400; color: var(--arton-white);
+  margin-bottom: 6px; line-height: 1.3;
+}
+.pivot-card-desc {
+  font-family: 'Arial', sans-serif; font-size: 12px;
+  color: var(--arton-grey); margin-bottom: 22px; line-height: 1.6;
+}
+.pivot-list { list-style: none; }
+.pivot-list li {
+  font-family: 'Arial', sans-serif; font-size: 13px;
+  color: var(--arton-grey-light); padding: 10px 0;
+  border-bottom: 1px solid var(--arton-border-sub);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
+}
+.pivot-list li:last-child { border-bottom: none; }
+.pl-icon { flex-shrink: 0; margin-top: 1px; }
+.pl-check { color: var(--arton-gold); font-weight: 700; font-size: 14px; }
+.pl-plus { color: var(--arton-gold); font-weight: 800; font-size: 16px; }
+
+
+/* ============================================================
+   SEÇÃO 4 — PILARES DE VALOR (TABS)
+   ============================================================ */
+#pillars {
+  background: var(--arton-bg2);
+  border-top: 1px solid var(--arton-border-sub);
+  border-bottom: 1px solid var(--arton-border-sub);
+  padding: 88px 0;
+}
+.pillars-header { margin-bottom: 48px; }
+.pillars-tabs {
+  display: flex; gap: 0; margin-bottom: 0;
+  border-bottom: 1px solid var(--arton-border-sub);
+}
+.ptab {
+  font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 14px 26px; cursor: pointer;
+  color: var(--arton-grey); border: none;
+  background: transparent; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: all 0.2s ease;
+  display: flex; align-items: center; gap: 8px;
+}
+.ptab:hover { color: var(--arton-grey-light); }
+.ptab.active { color: var(--arton-gold); border-bottom-color: var(--arton-gold); }
+.ptab-icon { font-size: 16px; }
+
+.pillars-content { margin-top: 0; }
+.pillar-panel {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.pillar-panel.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.pillar-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-top: 2px;
+}
+.pillar-main {
+  background: var(--arton-bg); padding: 44px;
+  border: 1px solid var(--arton-border-sub);
+}
+.pillar-aside {
+  background: rgba(201,168,76,0.03);
+  border: 1px solid var(--arton-border);
+  padding: 44px;
+}
+.pillar-main-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+.pillar-main-title {
+  font-size: 24px; font-weight: 400; color: var(--arton-white);
+  margin-bottom: 14px; line-height: 1.25;
+}
+.pillar-main-title em { font-style: normal; color: var(--arton-gold); }
+.pillar-main-body {
+  font-family: 'Arial', sans-serif; font-size: 14px;
+  line-height: 1.75; color: var(--arton-grey-light);
+}
+.pillar-aside-label {
+  font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--arton-gold); margin-bottom: 20px;
+}
+.pillar-features { list-style: none; }
+.pillar-features li {
+  font-family: 'Arial', sans-serif; font-size: 13px;
+  color: var(--arton-grey-light); padding: 11px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
+}
+.pillar-features li:last-child { border-bottom: none; }
+.pf-bullet {
+  width: 5px; height: 5px; background: var(--arton-gold);
+  border-radius: 50%; flex-shrink: 0; margin-top: 7px;
+}
+
+
+/* ============================================================
+   SEÇÃO 5 — SKIN IN THE GAME
+   ============================================================ */
+#skin {
+  background: var(--arton-bg);
+  padding: 100px 0;
+}
+.skin-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.skin-left {}
+.skin-icon-wrap {
+  width: 68px; height: 68px;
+  border: 1px solid var(--arton-border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; background: rgba(201,168,76,0.06);
+  margin-bottom: 28px;
+}
+.skin-h {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 400;
+  line-height: 1.2; color: var(--arton-white);
+  margin-bottom: 18px;
+}
+.skin-h em { font-style: normal; color: var(--arton-gold); }
+.skin-body {
+  font-family: 'Arial', sans-serif; font-size: 15px;
+  line-height: 1.75; color: var(--arton-grey-light);
+}
+.skin-right {
+  background: var(--arton-bg2); border: 1px solid var(--arton-border);
+  padding: 40px;
+}
+.skin-quote-mark {
+  font-family: 'Georgia', serif; font-size: 64px;
+  color: var(--arton-gold); opacity: 0.4; line-height: 0.7;
+  margin-bottom: 16px; display: block;
+}
+.skin-quote-text {
+  font-size: 18px; font-style: italic;
+  color: var(--arton-white); line-height: 1.65;
+  margin-bottom: 24px;
+}
+.skin-quote-author {
+  display: flex; align-items: center; gap: 14px;
+}
+.skin-author-rule { width: 24px; height: 1px; background: var(--arton-gold); }
+.skin-author-text {
+  font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--arton-gold);
+}
+.skin-logos {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px;
+  padding-top: 24px; border-top: 1px solid var(--arton-border-sub);
+}
+.skin-logo-tag {
+  font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--arton-grey);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--arton-border-sub);
+  padding: 4px 10px; border-radius: 2px;
+}
+
+
+/* ============================================================
+   SEÇÃO 6 — CTA FINAL
+   ============================================================ */
+#final-cta {
+  background: var(--arton-bg2);
+  border-top: 1px solid var(--arton-border-sub);
+  padding: 100px 0; text-align: center;
+}
+.cta-inner { max-width: 600px; margin: 0 auto; padding: 0 48px; }
+.cta-h {
+  font-size: clamp(30px, 3.5vw, 48px); font-weight: 400;
+  color: var(--arton-white); margin-bottom: 18px;
+  line-height: 1.2;
+}
+.cta-h em { font-style: normal; color: var(--arton-gold); }
+.cta-p {
+  font-family: 'Arial', sans-serif; font-size: 15px;
+  line-height: 1.75; color: var(--arton-grey-light);
+  margin-bottom: 40px;
+}
+.cta-btn-wrap {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 12px;
+}
+.btn-large {
+  font-family: 'Arial', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 17px 52px; background: var(--arton-gold);
+  color: var(--arton-bg); border: none; cursor: pointer;
+  transition: background 0.2s ease; width: 100%; max-width: 380px;
+}
+.btn-large:hover { background: var(--arton-gold-light); }
+.cta-micro {
+  font-family: 'Arial', sans-serif; font-size: 11px;
+  letter-spacing: 0.06em; color: var(--arton-grey);
+}
+.cta-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; margin-top: 52px;
+  padding-top: 32px; border-top: 1px solid var(--arton-border-sub);
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Arial', sans-serif; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--arton-grey);
+}
+.trust-icon { color: var(--arton-gold); font-size: 14px; }
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--arton-bg);
+  border-top: 1px solid var(--arton-border-sub);
+  padding: 28px 52px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo {
+  font-family: 'Georgia', serif; font-size: 15px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--arton-white);
+}
+.footer-legal {
+  font-family: 'Arial', sans-serif; font-size: 10px;
+  letter-spacing: 0.05em; color: var(--arton-grey);
+  text-align: right; max-width: 500px; line-height: 1.65;
+}
+
+/* ============================================================
+   SCROLLBAR & RESPONSIVE
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--arton-bg); }
+::-webkit-scrollbar-thumb { background: var(--arton-border); border-radius: 3px; }
+
+@media (max-width: 820px) {
+  .hero-grid, .pivot-grid, .skin-inner, .pillar-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .pivot-arrow-col { display: none; }
+  .sp-inner { grid-template-columns: 1fr 1fr; }
+  .sp-divider { display: none; }
+  .container { padding: 0 22px; }
+  .pillars-tabs { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     CONTROL BAR
+     ================================================================ -->
+<div id="control-bar">
+  <div class="cb-left">
+    <div class="cb-title">LP Arton × Clube FII — Wireframe Anotado v2</div>
+    <div class="cb-sub">Proposta de estrutura com análise UX/UI por seção · clique nos badges amarelos</div>
+  </div>
+  <button class="toggle-btn" id="ann-toggle" onclick="toggleAnnotations()">👁 Ver Anotações UX</button>
+</div>
+
+
+<!-- ================================================================
+     TOPBAR
+     ================================================================ -->
+<div style="height:50px;"></div><!-- spacer control bar -->
+
+<div class="site-topbar section-highlight" id="topbar-wrap">
+  <div class="section-label">Topbar</div>
+  <div class="logo-area">
+    <div class="logo-word">Arton</div>
+    <div class="logo-rule"></div>
+    <div class="logo-sub">Advisors</div>
+  </div>
+  <div class="topbar-badge">✦ Parceiro Clube FII</div>
+  <button class="topbar-cta">Abrir Conta</button>
+
+  <div class="ann-badge" id="badge-0" style="top:8px; right:154px;">A</div>
+  <div class="annotation" id="ann-0" style="top:52px; right:60px;">
+    <span class="ann-tag">Topbar</span>
+    <div class="ann-title">Ancoragem imediata de contexto</div>
+    <p>O badge "Parceiro Clube FII" aparece no topo antes de qualquer conteúdo. O usuário veio de um destaque interno da plataforma — ele precisa confirmar imediatamente que chegou ao lugar certo. Sem esta âncora, a taxa de bounce sobe.</p>
+    <p>O CTA "Abrir Conta" fixo no topo elimina o scroll como barreira de conversão para quem já está convencido desde o badge interno.</p>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     SEÇÃO 1 — HERO
+     ================================================================ -->
+<section id="hero" class="section-highlight">
+  <div class="section-label">Seção 1 — Hero</div>
+
+  <div class="ann-badge" id="badge-1" style="top:48px; right:52px;">1</div>
+  <div class="annotation" id="ann-1" style="top:86px; right:20px;">
+    <span class="ann-tag">Hero</span>
+    <div class="ann-title">Partir de onde o usuário já está</div>
+    <p>A headline começa reconhecendo a expertise do investidor de FII — não em tom de elogio vazio, mas como premissa. <strong>"Você domina FIIs"</strong> valida quem ele é antes de apresentar qualquer proposta.</p>
+    <p>A segunda parte, <strong>"A Arton cuida do restante"</strong>, não compete com FIIs. Posiciona a Arton como camada complementar — o que reduz drasticamente a resistência inicial.</p>
+    <p>Dois CTAs: primário (abrir conta) para o usuário pronto, secundário (entender) para quem precisa de mais contexto. Nunca abandone quem ainda está na fase de pesquisa.</p>
+  </div>
+
+  <div class="container" style="padding-top:60px; padding-bottom:60px;">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <div class="bdot"></div>
+          Exclusivo para membros Clube FII
+          <div class="bdot"></div>
+        </div>
+        <h1 class="hero-h1">
+          Você domina FIIs.<br>
+          A Arton cuida do<br>
+          <em>restante do seu<br>patrimônio.</em>
+        </h1>
+        <p class="hero-p">
+          A assessoria que as maiores famílias investidoras do Brasil escolhem. Arquitetura aberta, sem conflito de interesse — e os mesmos FIIs que você já acompanha no Clube FII.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn-primary">Abrir Conta Gratuitamente</button>
+          <button class="btn-ghost">Como funciona <span style="font-size:18px;">→</span></button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-label">Snapshot da Arton</div>
+        <div class="hero-stat-grid">
+          <div class="h-stat">
+            <span class="h-stat-n">&gt;R$10bi</span>
+            <span class="h-stat-l">Sob aconselhamento</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-n">+300</span>
+            <span class="h-stat-l">Famílias atendidas</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-n">ANBIMA</span>
+            <span class="h-stat-l">Regulado e certificado</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-n">BTG</span>
+            <span class="h-stat-l">Plataforma parceira</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SEÇÃO 2 — SOCIAL PROOF STRIP
+     ================================================================ -->
+<section id="social-proof" class="section-highlight">
+  <div class="section-label">Seção 2 — Social Proof Strip</div>
+
+  <div class="ann-badge" id="badge-2" style="top:14px; right:52px;">2</div>
+  <div class="annotation" id="ann-2" style="top:50px; right:20px;">
+    <span class="ann-tag">Social Proof</span>
+    <div class="ann-title">Mitigar a objeção de segurança antes de tudo</div>
+    <p>A principal objeção do investidor sofisticado ao considerar uma nova assessoria não é "o que vocês fazem" — é <strong>"posso confiar nessa empresa com meu dinheiro?"</strong></p>
+    <p>Colocado logo abaixo da dobra, esse strip responde a objeção com números concretos antes que ela sequer se forme. R$10bi sob aconselhamento e 300 famílias são dados difíceis de questionar.</p>
+    <p>O BTG é o ativo de credibilidade mais valioso aqui: é o maior banco de investimentos da América Latina e uma referência para o público Clube FII. Associar a plataforma ao BTG transfere credibilidade institucional instantaneamente.</p>
+  </div>
+
+  <div class="container">
+    <div class="sp-inner">
+      <div class="sp-item">
+        <div class="sp-num">&gt;R$10bi</div>
+        <div class="sp-label">Sob<br>aconselhamento</div>
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-item">
+        <div class="sp-num">+300</div>
+        <div class="sp-label">Famílias<br>atendidas</div>
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-item">
+        <div class="sp-num">40</div>
+        <div class="sp-label">Especialistas<br>dedicados</div>
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-item">
+        <div class="sp-btg">
+          <div class="btg-logo-mock">BTG Pactual</div>
+          <div class="sp-btg-desc">Parceiro estratégico<br>Maior banco de investimentos<br>da América Latina</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SEÇÃO 3 — O PIVOT
+     ================================================================ -->
+<section id="pivot" class="section-highlight">
+  <div class="section-label">Seção 3 — O Pivot (A Ponte)</div>
+
+  <div class="ann-badge" id="badge-3" style="top:36px; right:52px;">3</div>
+  <div class="annotation" id="ann-3" style="top:74px; right:20px;">
+    <span class="ann-tag">The Pivot</span>
+    <div class="ann-title">Validar o ego + criar a incompletude</div>
+    <p>O título <strong>"Por que grandes investidores de FIIs consolidam seu patrimônio na Arton?"</strong> opera em dois níveis: (1) cria aspiração social — "grandes investidores" fazem isso; (2) gera a pergunta implícita — "por que eu ainda não faço?"</p>
+    <p>A estrutura lado a lado <strong>jamais diminui</strong> o investidor do Clube FII. O lado esquerdo celebra o que ele já domina. Só o lado direito apresenta o que ele está potencialmente perdendo.</p>
+    <p>A incompletude técnica (FOMO sobre otimização fiscal, estruturação sucessória, acesso a operações que o varejo não vê) é o principal gatilho de conversão para um perfil analítico. Não é apelo emocional — é argumento racional.</p>
+  </div>
+
+  <div class="container" style="padding-top:88px; padding-bottom:88px;">
+    <div class="pivot-header">
+      <div class="eyebrow">A ponte</div>
+      <h2 class="section-headline">Por que grandes investidores de FIIs<br>consolidam seu patrimônio <em>na Arton?</em></h2>
+      <p class="section-sub">Você já tem a expertise em fundos imobiliários. A Arton adiciona a camada que converte esse conhecimento em eficiência patrimonial real.</p>
+    </div>
+
+    <div class="pivot-grid">
+      <!-- Esquerdo: o que o usuário já faz -->
+      <div class="pivot-card">
+        <div class="pivot-card-head">
+          <div class="pivot-card-brand">Clube FII</div>
+          <div class="pivot-card-status">O que você já domina</div>
+        </div>
+        <div class="pivot-card-body">
+          <div class="pivot-card-title">Sua expertise em FIIs</div>
+          <div class="pivot-card-desc">Você já chegou longe. Analisa métricas, escolhe ativos de tijolo e papel com critério e busca dividendos previsíveis.</div>
+          <ul class="pivot-list">
+            <li><span class="pl-icon pl-check">✓</span>Analisa P/VP e identifica assimetrias de valor</li>
+            <li><span class="pl-icon pl-check">✓</span>Acompanha DY mensal e estabilidade de caixa</li>
+            <li><span class="pl-icon pl-check">✓</span>Distingue FIIs de papel, tijolo e FOF</li>
+            <li><span class="pl-icon pl-check">✓</span>Monitora vacância, inadimplência e gestoras</li>
+            <li><span class="pl-icon pl-check">✓</span>Diversifica entre setores imobiliários</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seta central -->
+      <div class="pivot-arrow-col">
+        <div class="pivot-arrow">+</div>
+      </div>
+
+      <!-- Direito: o que a Arton adiciona -->
+      <div class="pivot-card pivot-card-arton">
+        <div class="pivot-card-head">
+          <div class="pivot-card-brand">Arton Advisors</div>
+          <div class="pivot-card-status">O que a Arton adiciona</div>
+        </div>
+        <div class="pivot-card-body">
+          <div class="pivot-card-title">A camada que o home broker não entrega</div>
+          <div class="pivot-card-desc">Otimização fiscal, estruturação patrimonial, acesso a operações que o varejo não enxerga — e alguém que cuida do todo.</div>
+          <ul class="pivot-list">
+            <li><span class="pl-icon pl-plus">+</span>Otimização fiscal dos rendimentos de FIIs e recebíveis</li>
+            <li><span class="pl-icon pl-plus">+</span>Estruturação sucessória e holding patrimonial imobiliária</li>
+            <li><span class="pl-icon pl-plus">+</span>Club deals e crédito estruturado exclusivos (CRIs, debêntures)</li>
+            <li><span class="pl-icon pl-plus">+</span>Alocação global (offshore) para diversificar além do Brasil</li>
+            <li><span class="pl-icon pl-plus">+</span>Visão integrada de todo o patrimônio, não só dos FIIs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SEÇÃO 4 — PILARES DE VALOR (TABS INTERATIVAS)
+     ================================================================ -->
+<section id="pillars" class="section-highlight">
+  <div class="section-label">Seção 4 — Pilares de Valor (Tabs)</div>
+
+  <div class="ann-badge" id="badge-4" style="top:36px; right:52px;">4</div>
+  <div class="annotation" id="ann-4" style="top:74px; right:20px;">
+    <span class="ann-tag">Value Proposition</span>
+    <div class="ann-title">Escaneabilidade + profundidade sob demanda</div>
+    <p>O público do CFII é analítico mas tem comportamento de scan em LP. As tabs resolvem essa tensão: mostram os três pilares de forma rápida e permitem que o usuário <strong>aprofunde apenas no que é relevante para ele</strong>.</p>
+    <p>A ordem dos tabs não é aleatória: (1) Fiscal/Wealth é o mais relevante para quem tem renda de FII, (2) Club Deals fala com o apetite por imóvel do público CFII, (3) Global é aspiracional para quem já pensa em proteção patrimonial.</p>
+    <p>Cada pilar é apresentado pela dor do investidor imobiliário — não como serviço genérico de wealth management.</p>
+  </div>
+
+  <div class="container" style="padding-top:88px; padding-bottom:88px;">
+    <div class="pillars-header">
+      <div class="eyebrow">Soluções exclusivas</div>
+      <h2 class="section-headline">Três pilares para quem<br>leva <em>patrimônio a sério</em></h2>
+    </div>
+
+    <div class="pillars-tabs">
+      <button class="ptab active" onclick="switchTab(0)">
+        <span class="ptab-icon">⚖️</span>Wealth & Inteligência Fiscal
+      </button>
+      <button class="ptab" onclick="switchTab(1)">
+        <span class="ptab-icon">🏗️</span>Club Deals & Mercado de Capitais
+      </button>
+      <button class="ptab" onclick="switchTab(2)">
+        <span class="ptab-icon">🌐</span>Arquitetura Global
+      </button>
+    </div>
+
+    <div class="pillars-content">
+
+      <!-- TAB 1: Wealth & Fiscal -->
+      <div class="pillar-panel active" id="panel-0">
+        <div class="pillar-grid">
+          <div class="pillar-main">
+            <span class="pillar-main-icon">⚖️</span>
+            <div class="pillar-main-title">Wealth Management &<br><em>Inteligência Fiscal</em></div>
+            <p class="pillar-main-body">
+              Quem recebe dividendos mensais de FIIs muitas vezes deixa dinheiro na mesa em eficiência tributária. A Arton integra seus rendimentos imobiliários a uma estratégia patrimonial completa: holdings, planejamento sucessório, proteção de patrimônio para as próximas gerações — tudo com o rigor de quem já fez isso para mais de 300 famílias.
+            </p>
+          </div>
+          <div class="pillar-aside">
+            <div class="pillar-aside-label">O que isso inclui</div>
+            <ul class="pillar-features">
+              <li><div class="pf-bullet"></div>Constituição e gestão de holdings patrimoniais imobiliárias</li>
+              <li><div class="pf-bullet"></div>Planejamento sucessório a quatro mãos com escritórios de advocacia parceiros</li>
+              <li><div class="pf-bullet"></div>Otimização fiscal de rendimentos de FIIs, CRIs e recebíveis</li>
+              <li><div class="pf-bullet"></div>Avaliação de risco patrimonial e soluções de seguro</li>
+              <li><div class="pf-bullet"></div>Horizonte de planejamento de longo prazo personalizado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Club Deals -->
+      <div class="pillar-panel" id="panel-1">
+        <div class="pillar-grid">
+          <div class="pillar-main">
+            <span class="pillar-main-icon">🏗️</span>
+            <div class="pillar-main-title">Club Deals &<br><em>Mercado de Capitais</em></div>
+            <p class="pillar-main-body">
+              O investidor do Clube FII conhece bem o setor imobiliário listado. A Arton abre acesso às camadas que o home broker não oferece: operações de crédito privado estruturado em imóveis, CRIs com taxa e garantias que o varejo não enxerga, debêntures exclusivas e participações diretas em ativos imobiliários fora da B3.
+            </p>
+          </div>
+          <div class="pillar-aside">
+            <div class="pillar-aside-label">O que isso inclui</div>
+            <ul class="pillar-features">
+              <li><div class="pf-bullet"></div>CRIs e CRAs exclusivos com condições acima do mercado de varejo</li>
+              <li><div class="pf-bullet"></div>Club deals em ativos de logística, lajes e desenvolvimento imobiliário</li>
+              <li><div class="pf-bullet"></div>Debêntures de empresas do setor real com estruturas personalizadas</li>
+              <li><div class="pf-bullet"></div>Operações de crédito estruturado para pessoas físicas e jurídicas</li>
+              <li><div class="pf-bullet"></div>Acesso a emissões primárias antes da distribuição ao varejo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: Global -->
+      <div class="pillar-panel" id="panel-2">
+        <div class="pillar-grid">
+          <div class="pillar-main">
+            <span class="pillar-main-icon">🌐</span>
+            <div class="pillar-main-title">Arquitetura Aberta<br><em>Global</em></div>
+            <p class="pillar-main-body">
+              Patrimônio concentrado em reais e em ativos brasileiros é patrimônio exposto. A Arton auxilia na internacionalização com a constituição dos veículos adequados — offshores, trusts, contas internacionais — e na seleção das melhores estratégias de investimento global para proteger e diversificar o que foi construído no Brasil.
+            </p>
+          </div>
+          <div class="pillar-aside">
+            <div class="pillar-aside-label">O que isso inclui</div>
+            <ul class="pillar-features">
+              <li><div class="pf-bullet"></div>Constituição de veículos internacionais (offshores, trusts, LLC)</li>
+              <li><div class="pf-bullet"></div>Estratégias de investimento global com visão agnóstica de contraparte</li>
+              <li><div class="pf-bullet"></div>Intermediação de câmbio e soluções de hedge cambial</li>
+              <li><div class="pf-bullet"></div>Aconselhamento em real estate internacional</li>
+              <li><div class="pf-bullet"></div>Planejamento tributário em cooperação com escritórios no exterior</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pillars-content -->
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SEÇÃO 5 — SKIN IN THE GAME
+     ================================================================ -->
+<section id="skin" class="section-highlight">
+  <div class="section-label">Seção 5 — Skin in the Game</div>
+
+  <div class="ann-badge" id="badge-5" style="top:36px; right:52px;">5</div>
+  <div class="annotation" id="ann-5" style="top:74px; right:20px;">
+    <span class="ann-tag">Skin in the Game</span>
+    <div class="ann-title">O diferencial que o público CFII valoriza mais</div>
+    <p>O investidor de FII tem <strong>alergia estrutural a conflito de interesse</strong>. Conhece os debates sobre gestores que não investem nos próprios fundos, sobre taxa de gestão x taxa de performance, sobre relatórios enviesados.</p>
+    <p>O "Skin in the Game" da Arton — sócios investem obrigatoriamente nos mesmos produtos que recomendam — é um argumento que ressoa de forma muito específica com esse público. Não é marketing; é um compromisso estrutural.</p>
+    <p>Esta seção merece posição própria, não um bullet point diluído em lista. A citação do CEO humaniza a proposta e cria vínculo com quem é cético.</p>
+  </div>
+
+  <div class="container">
+    <div class="skin-inner">
+      <div class="skin-left">
+        <div class="skin-icon-wrap">🤝</div>
+        <div class="eyebrow">Nosso compromisso</div>
+        <h2 class="skin-h">
+          Nosso Comitê investe<br>
+          nos <em>mesmos produtos</em><br>
+          que você.
+        </h2>
+        <div class="gold-line"></div>
+        <p class="skin-body">
+          Na Arton, todos os produtos de mercado passam por um rigoroso comitê de investimentos. Os sócios investem necessariamente nesses mesmos produtos — salvo impedimento regulatório. Não há recomendação que não passe pelo nosso próprio dinheiro. É o que chamamos de curadoria com pele no jogo.
+        </p>
+      </div>
+
+      <div class="skin-right">
+        <div class="skin-quote-mark">"</div>
+        <div class="skin-quote-text">
+          "Promovemos uma intensa curadoria e todos os produtos passam por um rigoroso comitê de investimentos. Os sócios investem necessariamente nesses mesmos produtos, salvo algum impedimento regulatório."
+        </div>
+        <div class="skin-quote-author">
+          <div class="skin-author-rule"></div>
+          <div class="skin-author-text">Bernardo Assumpção · CEO, Arton Advisors</div>
+        </div>
+        <div class="skin-logos">
+          <div class="skin-logo-tag">Ex-Sócio XP</div>
+          <div class="skin-logo-tag">Ex-MD JP Morgan</div>
+          <div class="skin-logo-tag">Citibank</div>
+          <div class="skin-logo-tag">USP · INSEAD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SEÇÃO 6 — CTA FINAL
+     ================================================================ -->
+<section id="final-cta" class="section-highlight">
+  <div class="section-label">Seção 6 — CTA Final</div>
+
+  <div class="ann-badge" id="badge-6" style="top:36px; right:52px;">6</div>
+  <div class="annotation" id="ann-6" style="top:74px; right:20px;">
+    <span class="ann-tag">CTA Final</span>
+    <div class="ann-title">Fechar o arco narrativo</div>
+    <p>O headline retoma a linguagem do próprio público: <strong>"seu patrimônio merece a mesma atenção que você dá aos seus FIIs"</strong> — encerra o loop aberto no hero.</p>
+    <p>A microcopy "gratuito, sem compromisso, sem mínimo inicial" remove a última barreira cognitiva: o medo de que abrir conta implique em comprometimento financeiro ou de ser abordado de forma agressiva.</p>
+    <p>Os trust signals no rodapé (BTG, ANBIMA, Faria Lima) reforçam a credibilidade no exato momento da decisão — quando a ansiedade do usuário está no pico.</p>
+  </div>
+
+  <div class="cta-inner">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:22px;">Dê o próximo passo</div>
+    <h2 class="cta-h">
+      Seu patrimônio merece a mesma<br>
+      atenção que você dá<br>
+      aos seus <em>FIIs.</em>
+    </h2>
+    <p class="cta-p">
+      Abrir conta na Arton é gratuito e sem compromisso. Um especialista vai entender seu momento, seus FIIs e o que faz sentido para o restante do seu patrimônio.
+    </p>
+    <div class="cta-btn-wrap">
+      <button class="btn-large">Abrir Minha Conta</button>
+      <div class="cta-micro">✓ Gratuito &nbsp;·&nbsp; ✓ Sem compromisso &nbsp;·&nbsp; ✓ Sem mínimo inicial</div>
+    </div>
+    <div class="cta-trust">
+      <div class="trust-item"><span class="trust-icon">🏢</span> Faria Lima, São Paulo</div>
+      <div class="trust-item"><span class="trust-icon">🛡</span> ANBIMA Certificado</div>
+      <div class="trust-item"><span class="trust-icon">🏦</span> Plataforma BTG Pactual</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer>
+  <div class="footer-logo">Arton Advisors</div>
+  <div class="footer-legal">
+    © 2024 Arton AAI · Av. Brigadeiro Faria Lima, 3477 · Torre A - 7º andar · São Paulo - SP<br>
+    Arton Advisors Consultoria Financeira e Gestão Ltda. Regulado pela ANBIMA. Operações executadas via BTG Pactual Digital.
+  </div>
+</footer>
+
+
+<!-- ================================================================
+     SCRIPTS
+     ================================================================ -->
+<script>
+  // ---- ANNOTATION TOGGLE ----
+  let annotationsOn = false;
+
+  function toggleAnnotations() {
+    annotationsOn = !annotationsOn;
+    const btn = document.getElementById('ann-toggle');
+    document.body.classList.toggle('annotations-on', annotationsOn);
+    btn.classList.toggle('active', annotationsOn);
+    btn.textContent = annotationsOn ? '✕ Ocultar Anotações' : '👁 Ver Anotações UX';
+    document.querySelectorAll('.ann-badge').forEach(b => b.classList.toggle('show', annotationsOn));
+    if (!annotationsOn) document.querySelectorAll('.annotation').forEach(a => a.classList.remove('show'));
+  }
+
+  // Individual annotation click
+  document.querySelectorAll('.ann-badge').forEach(badge => {
+    badge.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const id = this.id.replace('badge-', '');
+      const ann = document.getElementById('ann-' + id);
+      const wasShowing = ann.classList.contains('show');
+      document.querySelectorAll('.annotation').forEach(a => a.classList.remove('show'));
+      if (!wasShowing) ann.classList.add('show');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.ann-badge') && !e.target.closest('.annotation'))
+      document.querySelectorAll('.annotation').forEach(a => a.classList.remove('show'));
+  });
+
+  // ---- TAB SYSTEM ----
+  function switchTab(index) {
+    const tabs = document.querySelectorAll('.ptab');
+    const panels = document.querySelectorAll('.pillar-panel');
+    tabs.forEach((t, i) => t.classList.toggle('active', i === index));
+    panels.forEach((p, i) => p.classList.toggle('active', i === index));
+  }
+</script>
+
+</body>
+</html>
