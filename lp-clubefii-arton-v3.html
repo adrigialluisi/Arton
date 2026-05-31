@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arton Advisors × Clube FII — Parceria Exclusiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ===== TOKENS ===== */
+:root {
+  --black:      #0D0D0D;
+  --dark:       #1A1A1A;
+  --gray-1:     #4A4A4A;
+  --gray-2:     #8A8A8A;
+  --gray-3:     #D0D0D0;
+  --gray-4:     #F2F2F2;
+  --white:      #FFFFFF;
+
+  --cfii:       #8B1D3F;
+  --cfii-light: rgba(139,29,63,0.07);
+  --cfii-border: rgba(139,29,63,0.20);
+
+  --orange:     #FF9045;
+  --orange-dk:  #E87830;
+  --orange-lt:  rgba(255,144,69,0.10);
+
+  --green:      #2C4D43;   /* destaques de texto */
+  --green-lt:   rgba(44,77,67,0.08);
+
+  --shadow-sm:  0 2px 10px rgba(0,0,0,0.07);
+  --shadow:     0 4px 24px rgba(0,0,0,0.10);
+  --tr:         all 0.20s ease;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* ===== UTILITY ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+
+.eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--cfii);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 300; line-height: 1.15;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.section-title em { font-style: normal; color: var(--green); }
+
+.section-sub {
+  font-size: 15px; font-weight: 400;
+  line-height: 1.75; color: var(--gray-1);
+  max-width: 560px;
+}
+
+/* ===== SPLIT BUTTON (estilo ClubeФII) ===== */
+.btn-primary {
+  display: inline-flex; align-items: stretch;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 0;
+  cursor: pointer; transition: var(--tr);
+  text-decoration: none;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  padding: 0;
+}
+.btn-primary span {
+  padding: 14px 24px;
+  display: flex; align-items: center;
+}
+.btn-primary::after {
+  content: '';
+  background: var(--orange-dk);
+  width: 46px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.btn-primary:hover { box-shadow: 0 4px 16px rgba(255,144,69,0.30); }
+.btn-primary:hover::after { background-color: #CF6A20; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  color: var(--dark); background: none; border: none;
+  border-radius: 0;
+  cursor: pointer; transition: var(--tr);
+  text-decoration: none;
+}
+.btn-ghost:hover { color: var(--orange); }
+
+.divider-line {
+  width: 36px; height: 2px;
+  background: var(--orange);
+  margin: 18px 0;
+}
+
+/* Icon circle — stays round per design */
+.icon-circle {
+  border-radius: 50%;
+  border: 1px solid var(--gray-3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.icon-circle svg { display: block; }
+
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-3);
+  padding: 0 48px;
+  display: flex; align-items: stretch;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  height: 60px;
+}
+.topbar-logos {
+  display: flex; align-items: center; gap: 20px;
+}
+.logo-clubefii {
+  font-size: 18px; font-weight: 700;
+  color: var(--cfii);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.logo-sep { width: 1px; height: 28px; background: var(--gray-3); }
+.logo-arton-name {
+  font-size: 14px; font-weight: 700;
+  color: var(--black);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  line-height: 1;
+}
+.logo-arton-sub {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gray-2); margin-top: 2px;
+}
+.topbar-pill {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  background: var(--cfii-light);
+  color: var(--cfii);
+  border: 1px solid var(--cfii-border);
+  border-radius: 0; padding: 4px 14px;
+  align-self: center;
+}
+.topbar-cta {
+  display: inline-flex; align-items: stretch;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 0;
+  cursor: pointer; transition: var(--tr);
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  padding: 0; align-self: stretch;
+}
+.topbar-cta span {
+  padding: 0 20px;
+  display: flex; align-items: center;
+}
+.topbar-cta::after {
+  content: '';
+  background: var(--orange-dk);
+  width: 40px; flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.topbar-cta:hover { box-shadow: 0 4px 12px rgba(255,144,69,0.30); }
+.topbar-cta:hover::after { background-color: #CF6A20; }
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  background: var(--white);
+  padding: 80px 0 70px;
+  border-bottom: 1px solid var(--gray-4);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cfii-light);
+  border: 1px solid var(--cfii-border);
+  border-radius: 0;
+  padding: 6px 14px; margin-bottom: 28px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cfii);
+}
+.bdot { width: 4px; height: 4px; background: var(--cfii); border-radius: 50%; }
+.hero-h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300; line-height: 1.10;
+  color: var(--black); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 22px;
+}
+.hero-h1 em { font-style: normal; color: var(--green); }
+.hero-p {
+  font-size: 16px; font-weight: 400;
+  line-height: 1.75; color: var(--gray-1);
+  margin-bottom: 36px; max-width: 440px;
+}
+.hero-ctas { display: flex; align-items: center; gap: 20px; }
+
+.hero-visual {
+  background: var(--gray-4);
+  border: 1px solid var(--gray-3);
+  border-radius: 0;
+  padding: 32px; position: relative; overflow: hidden;
+}
+.hero-visual::after {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--cfii);
+}
+.hero-visual-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--gray-2); margin-bottom: 20px;
+}
+.hero-stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.h-stat {
+  background: var(--white);
+  padding: 20px;
+  border: 1px solid var(--gray-3);
+}
+.h-stat-n {
+  display: block;
+  font-size: 24px; font-weight: 700;
+  color: var(--black); line-height: 1;
+  margin-bottom: 5px; text-transform: uppercase;
+}
+.h-stat-l {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gray-2);
+}
+.hero-visual-footer {
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid var(--gray-3);
+  display: flex; align-items: center; gap: 10px;
+}
+.hvf-label { font-size: 10px; color: var(--gray-2); letter-spacing: 0.08em; text-transform: uppercase; }
+.hvf-tag {
+  font-size: 11px; font-weight: 600;
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-radius: 0; padding: 3px 10px;
+  letter-spacing: 0.06em;
+}
+
+
+/* ============================================================
+   CULTURA
+   ============================================================ */
+#cultura {
+  background: var(--black);
+  padding: 56px 0;
+}
+.cultura-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.cultura-item {
+  padding: 32px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+}
+.cultura-item:last-child { border-right: none; }
+.cultura-item::before {
+  content: '';
+  position: absolute; top: 0; left: 32px;
+  width: 28px; height: 2px;
+  background: var(--orange);
+}
+.cultura-icon-circle {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.cultura-icon-circle svg { color: var(--orange); }
+.cultura-title {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--white); margin-bottom: 8px;
+}
+.cultura-desc {
+  font-size: 13px; line-height: 1.65;
+  color: rgba(255,255,255,0.45);
+}
+
+
+/* ============================================================
+   CLUB DEALS
+   ============================================================ */
+#club-deals {
+  background: var(--white);
+  padding: 80px 0;
+  overflow: hidden;
+  border-top: 1px solid var(--gray-4);
+}
+.deals-header {
+  margin-bottom: 40px;
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+}
+.deals-nav { display: flex; gap: 6px; }
+.deals-btn {
+  width: 38px; height: 38px;
+  border: 1px solid var(--gray-3);
+  border-radius: 50%;
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: var(--tr);
+}
+.deals-btn:hover {
+  background: var(--black); border-color: var(--black);
+}
+.deals-btn:hover svg { stroke: var(--white); }
+
+.deals-track-wrap {
+  overflow: hidden;
+  padding-bottom: 12px; /* espaço para shadow sem cortar */
+  margin-bottom: -12px;
+}
+.deals-track {
+  display: flex; gap: 20px;
+  transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1);
+  padding-bottom: 2px; /* evita corte do border-top hover */
+}
+.deal-card {
+  flex: 0 0 276px;
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-top: 2px solid var(--cfii);
+  border-radius: 0;
+  padding: 24px;
+  transition: var(--tr);
+}
+.deal-card:hover {
+  box-shadow: var(--shadow);
+  border-top-color: var(--orange);
+}
+.deal-tag {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 0;
+  margin-bottom: 12px;
+}
+.tag-cri  { background: var(--green-lt);   color: var(--green); }
+.tag-debn { background: var(--orange-lt);  color: var(--orange-dk); }
+.tag-fii  { background: var(--cfii-light); color: var(--cfii); }
+.tag-cra  { background: var(--gray-4);     color: var(--gray-1); }
+.tag-cd   { background: var(--gray-4);     color: var(--dark); }
+
+.deal-title {
+  font-size: 14px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--black); margin-bottom: 6px; line-height: 1.25;
+}
+.deal-sub {
+  font-size: 12px; color: var(--gray-2);
+  line-height: 1.55; margin-bottom: 16px;
+}
+.deal-meta { display: flex; flex-direction: column; }
+.deal-meta-row {
+  display: flex; justify-content: space-between;
+  align-items: center; padding: 6px 0;
+  border-top: 1px solid var(--gray-4);
+}
+.dm-key {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.10em;
+  color: var(--gray-2);
+}
+.dm-val {
+  font-size: 12px; font-weight: 700;
+  color: var(--black); text-transform: uppercase;
+}
+.dm-val.accent { color: var(--orange); }
+
+.deals-dots {
+  display: flex; gap: 6px;
+  justify-content: center; margin-top: 28px;
+}
+.d-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gray-3);
+  cursor: pointer; transition: var(--tr);
+}
+.d-dot.active { background: var(--cfii); width: 20px; border-radius: 3px; }
+
+
+/* ============================================================
+   PILARES
+   ============================================================ */
+#pilares {
+  background: var(--gray-4);
+  padding: 80px 0;
+  border-top: 1px solid var(--gray-3);
+}
+.pilares-header { margin-bottom: 44px; }
+.pilares-tabs {
+  display: flex; gap: 0;
+  border-bottom: 1px solid var(--gray-3);
+  overflow-x: auto;
+}
+.ptab {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 14px 26px; cursor: pointer;
+  color: var(--gray-2); border: none;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  margin-bottom: -1px;
+  transition: var(--tr);
+  white-space: nowrap;
+}
+.ptab:hover { color: var(--dark); }
+.ptab.active { color: var(--black); border-bottom-color: var(--orange); }
+
+.pillar-panel { display: none; animation: fadeIn 0.28s ease; }
+.pillar-panel.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+
+.pillar-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.pillar-main {
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-right: none; padding: 48px;
+}
+.pillar-aside {
+  background: var(--white);
+  border: 1px solid var(--gray-3); padding: 48px;
+}
+.pillar-icon-circle {
+  width: 52px; height: 52px;
+  border: 1px solid var(--gray-3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+}
+.pillar-icon-circle svg { color: var(--cfii); }
+.pillar-main-title {
+  font-size: 20px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--black); margin-bottom: 14px; line-height: 1.2;
+}
+.pillar-main-title em { font-style: normal; color: var(--green); }
+.pillar-main-body { font-size: 14px; line-height: 1.75; color: var(--gray-1); }
+.pillar-aside-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gray-2); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.pillar-aside-label::after { content:''; flex:1; height:1px; background:var(--gray-3); }
+.pillar-features { list-style: none; }
+.pillar-features li {
+  font-size: 14px; color: var(--gray-1);
+  padding: 11px 0;
+  border-bottom: 1px solid var(--gray-4);
+  display: flex; align-items: flex-start;
+  gap: 10px; line-height: 1.5;
+}
+.pillar-features li:last-child { border-bottom: none; }
+.pf-bullet { flex-shrink: 0; margin-top: 4px; }
+.pf-bullet svg { width: 14px; height: 14px; color: var(--orange); }
+
+
+/* ============================================================
+   A PONTE
+   ============================================================ */
+#a-ponte {
+  background: var(--dark);
+  padding: 88px 0;
+}
+.ponte-eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--orange);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+.ponte-title {
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 300; text-transform: uppercase;
+  letter-spacing: 0.04em; line-height: 1.12;
+  color: var(--white); margin-bottom: 14px;
+}
+.ponte-title em { font-style: normal; color: var(--green); }
+.ponte-sub {
+  font-size: 15px; color: rgba(255,255,255,0.50);
+  line-height: 1.75; max-width: 540px; margin-bottom: 52px;
+}
+.ponte-grid {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+}
+.ponte-arrow-col {
+  display: flex; align-items: flex-start;
+  justify-content: center; padding: 26px 24px 0;
+}
+.ponte-arrow {
+  width: 40px; height: 40px;
+  background: var(--orange); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.ponte-arrow svg { width: 20px; height: 20px; color: var(--white); }
+
+.ponte-card {
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 0; overflow: hidden;
+}
+.ponte-card-arton { border-color: rgba(255,144,69,0.25); }
+.ponte-card-head {
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ponte-card-arton .ponte-card-head { border-color: rgba(255,144,69,0.15); }
+.ponte-brand {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.ponte-card-arton .ponte-brand { color: var(--orange); }
+.ponte-status {
+  font-size: 9px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 0; padding: 3px 8px;
+}
+.ponte-card-arton .ponte-status { color: var(--orange); border-color: rgba(255,144,69,0.25); }
+.ponte-card-body { padding: 22px 24px; }
+.ponte-card-title {
+  font-size: 15px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--white); margin-bottom: 6px; line-height: 1.25;
+}
+.ponte-card-desc {
+  font-size: 13px; color: rgba(255,255,255,0.40);
+  margin-bottom: 18px; line-height: 1.6;
+}
+.ponte-list { list-style: none; }
+.ponte-list li {
+  font-size: 13px; color: rgba(255,255,255,0.65);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
+}
+.ponte-card-arton .ponte-list li { border-color: rgba(255,144,69,0.10); }
+.ponte-list li:last-child { border-bottom: none; }
+.pl-icon { flex-shrink: 0; margin-top: 2px; }
+.pl-icon svg { width: 14px; height: 14px; }
+.pl-check svg { color: rgba(255,255,255,0.50); }
+.pl-plus  svg { color: var(--orange); }
+
+
+/* ============================================================
+   MIGRAÇÃO
+   ============================================================ */
+#migracao {
+  background: var(--white);
+  padding: 88px 0;
+  border-top: 1px solid var(--gray-4);
+}
+.mig-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+}
+.mig-visual {
+  background: var(--gray-4);
+  border: 1px solid var(--gray-3);
+  border-radius: 0; overflow: hidden;
+}
+.mig-visual-header {
+  background: var(--black);
+  padding: 16px 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.mig-visual-header svg { color: var(--orange); width: 16px; height: 16px; }
+.mig-visual-header-text {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--white);
+}
+.mig-step {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--gray-3);
+  background: var(--white);
+  transition: var(--tr);
+}
+.mig-step:last-child { border-bottom: none; }
+.mig-step:hover { background: var(--gray-4); }
+.mig-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px; font-weight: 700;
+  color: var(--orange);
+}
+.mig-step-title {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--black); margin-bottom: 3px;
+}
+.mig-step-desc { font-size: 12px; color: var(--gray-2); line-height: 1.55; }
+
+
+/* ============================================================
+   COMPROMISSO
+   ============================================================ */
+#compromisso {
+  background: var(--gray-4);
+  padding: 88px 0;
+  border-top: 1px solid var(--gray-3);
+}
+.comp-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+}
+.comp-icon-circle {
+  width: 56px; height: 56px;
+  border: 1px solid var(--gray-3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white); margin-bottom: 22px;
+}
+.comp-icon-circle svg { color: var(--cfii); }
+.comp-quote-card {
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-top: 3px solid var(--cfii);
+  border-radius: 0; padding: 40px;
+  position: relative;
+}
+.comp-quote-mark {
+  position: absolute; top: 18px; left: 32px;
+  font-size: 64px; line-height: 1;
+  color: var(--cfii); opacity: 0.12;
+  font-family: Georgia, serif;
+}
+.comp-quote-text {
+  font-size: 16px; font-style: italic;
+  line-height: 1.75; color: var(--dark);
+  margin-bottom: 26px; margin-top: 20px;
+}
+.comp-quote-author { display: flex; align-items: center; gap: 12px; }
+.comp-author-rule { width: 22px; height: 2px; background: var(--orange); }
+.comp-author-text {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--black);
+}
+.comp-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-top: 22px; padding-top: 22px;
+  border-top: 1px solid var(--gray-4);
+}
+.comp-tag {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gray-2);
+  border: 1px solid var(--gray-3);
+  border-radius: 0; padding: 4px 10px;
+}
+
+
+/* ============================================================
+   FORMULÁRIO
+   ============================================================ */
+#cta-form {
+  background: var(--white);
+  padding: 88px 0;
+  border-top: 1px solid var(--gray-3);
+}
+.form-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: start;
+}
+.form-benefits { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+.form-benefit { display: flex; align-items: flex-start; gap: 16px; }
+.benefit-icon-wrap {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: 1px solid var(--gray-3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.benefit-icon-wrap svg { width: 16px; height: 16px; color: var(--cfii); }
+.benefit-title {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.10em;
+  color: var(--black); margin-bottom: 3px;
+}
+.benefit-desc { font-size: 13px; color: var(--gray-2); line-height: 1.55; }
+
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-radius: 0; padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-row.full { grid-template-columns: 1fr; }
+.form-group { margin-bottom: 14px; }
+.form-label {
+  display: block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--black); margin-bottom: 6px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px; color: var(--dark);
+  background: var(--gray-4);
+  border: 1px solid var(--gray-3);
+  border-radius: 0;
+  padding: 11px 14px;
+  transition: var(--tr);
+  appearance: none; -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(255,144,69,0.10);
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--gray-2); }
+.form-textarea { resize: vertical; min-height: 80px; }
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '';
+  position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--gray-2);
+  pointer-events: none;
+}
+
+/* Optin checkbox */
+.optin-wrap {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-top: 4px; margin-bottom: 18px;
+}
+.optin-check {
+  width: 18px; height: 18px; flex-shrink: 0;
+  border: 1px solid var(--gray-3);
+  border-radius: 0; background: var(--gray-4);
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+  margin-top: 2px; transition: var(--tr);
+  position: relative;
+}
+.optin-check:checked {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+.optin-check:checked::after {
+  content: '';
+  position: absolute; top: 3px; left: 5px;
+  width: 6px; height: 9px;
+  border: 2px solid var(--white);
+  border-top: none; border-left: none;
+  transform: rotate(40deg);
+}
+.optin-label {
+  font-size: 12px; color: var(--gray-2);
+  line-height: 1.55; cursor: pointer;
+}
+.optin-label a { color: var(--cfii); text-decoration: underline; }
+
+.form-notice {
+  background: var(--cfii-light);
+  border: 1px solid var(--cfii-border);
+  border-radius: 0;
+  padding: 12px 16px; margin-bottom: 20px;
+  font-size: 13px; color: var(--cfii);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.form-notice svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--cfii); }
+
+.form-submit {
+  width: 100%;
+  display: flex; align-items: stretch;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 0;
+  cursor: pointer; transition: var(--tr);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  padding: 0;
+}
+.form-submit span {
+  flex: 1;
+  padding: 15px 24px;
+  display: flex; align-items: center; justify-content: center;
+}
+.form-submit::after {
+  content: '';
+  background: var(--orange-dk);
+  width: 50px; flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.form-submit:hover { box-shadow: 0 4px 16px rgba(255,144,69,0.30); }
+.form-submit:hover::after { background-color: #CF6A20; }
+.form-micro {
+  text-align: center; margin-top: 12px;
+  font-size: 11px; color: var(--gray-2);
+}
+.form-trust {
+  display: flex; align-items: center;
+  justify-content: center; gap: 22px;
+  margin-top: 20px; padding-top: 18px;
+  border-top: 1px solid var(--gray-4);
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.10em;
+  color: var(--gray-2);
+}
+.trust-item svg { width: 14px; height: 14px; color: var(--gray-2); }
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--black);
+  padding: 26px 48px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-logo {
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--white);
+}
+.footer-legal {
+  font-size: 11px; letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.35);
+  text-align: right; max-width: 540px; line-height: 1.65;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 880px) {
+  .container { padding: 0 20px; }
+  .topbar { padding: 0 20px; }
+  .topbar-pill { display: none; }
+  .hero-grid, .mig-grid, .comp-grid,
+  .form-wrap, .ponte-grid, .pillar-grid { grid-template-columns: 1fr; }
+  .ponte-arrow-col { display: none; }
+  .hero-visual { display: none; }
+  .cultura-inner { grid-template-columns: 1fr 1fr; }
+  .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .pilares-tabs { flex-wrap: wrap; }
+  .deals-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-legal { text-align: center; max-width: 100%; }
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--gray-4); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     INLINE SVG ICON SYSTEM
+     ============================================================ -->
+<script>
+const ICONS = {
+  anchor:       `<circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 15H2a10 10 0 0 0 20 0h-3"/>`,
+  users:        `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+  target:       `<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
+  zap:          `<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>`,
+  'bar-chart-2':`<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>`,
+  home:         `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>`,
+  briefcase:    `<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>`,
+  globe:        `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
+  shield:       `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+  check:        `<polyline points="20 6 9 17 4 12"/>`,
+  plus:         `<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>`,
+  'arrow-right':`<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>`,
+  'chevron-left':`<polyline points="15 18 9 12 15 6"/>`,
+  'chevron-right':`<polyline points="9 18 15 12 9 6"/>`,
+  list:         `<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>`,
+  lock:         `<rect x="3" y="11" width="18" height="11"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>`,
+  clock:        `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
+  'check-circle':`<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>`,
+  'alert-circle':`<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>`,
+  'map-pin':    `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
+  'credit-card':`<rect x="1" y="4" width="22" height="16"/><line x1="1" y1="10" x2="23" y2="10"/>`,
+};
+
+function icon(name, size) {
+  size = size || 20;
+  const paths = ICONS[name] || '';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
+}
+</script>
+
+<!-- ============================================================
+     TOPBAR
+     ============================================================ -->
+<nav class="topbar">
+  <div class="topbar-logos">
+    <div class="logo-clubefii">Clube FII</div>
+    <div class="logo-sep"></div>
+    <div>
+      <div class="logo-arton-name">Arton</div>
+      <div class="logo-arton-sub">Advisors</div>
+    </div>
+  </div>
+  <div></div>
+  <button class="topbar-cta" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
+    <span>Solicitar Contato</span>
+  </button>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-h1">
+          Você domina FIIs.<br>
+          A Arton cuida do<br>
+          <em>restante do<br>patrimônio.</em>
+        </h1>
+        <p class="hero-p">
+          A assessoria que as maiores famílias investidoras do Brasil escolhem. Arquitetura aberta, sem conflito de interesse — e os mesmos FIIs que você já acompanha no Clube FII.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
+            <span>Solicitar Contato</span>
+          </button>
+          <button class="btn-ghost" onclick="document.getElementById('a-ponte').scrollIntoView({behavior:'smooth'})">
+            Como funciona <span id="ico-arrow-r"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-label">Arton em Números</div>
+        <div class="hero-stat-grid">
+          <div class="h-stat">
+            <span class="h-stat-n">&gt;R$10bi</span>
+            <span class="h-stat-l">Sob Aconselhamento</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-n">+300</span>
+            <span class="h-stat-l">Famílias Atendidas</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-n">40+</span>
+            <span class="h-stat-l">Especialistas</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-n">ANBIMA</span>
+            <span class="h-stat-l">Regulado e Certificado</span>
+          </div>
+        </div>
+        <div class="hero-visual-footer">
+          <span class="hvf-label">Plataforma via</span>
+          <span class="hvf-tag">BTG Pactual</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CULTURA
+     ============================================================ -->
+<section id="cultura">
+  <div class="container">
+    <div class="cultura-inner">
+
+      <div class="cultura-item">
+        <div class="cultura-icon-circle" id="ico-anchor"></div>
+        <div class="cultura-title">Lastro Verdadeiro</div>
+        <div class="cultura-desc">BTG como financial sponsor e um time múltiplo com profunda experiência em Mercado de Capitais e Private Banking.</div>
+      </div>
+
+      <div class="cultura-item">
+        <div class="cultura-icon-circle" id="ico-users"></div>
+        <div class="cultura-title">Relacionamentos Reais</div>
+        <div class="cultura-desc">O relacionamento é parte fundamental do nosso DNA. Conectamos pessoas, recursos e empresas para potencializar resultados.</div>
+      </div>
+
+      <div class="cultura-item">
+        <div class="cultura-icon-circle" id="ico-target"></div>
+        <div class="cultura-title">Técnica ao Resultado</div>
+        <div class="cultura-desc">Cada tema é analisado com rigor e clareza total, respeitando sempre o perfil e os objetivos de cada cliente.</div>
+      </div>
+
+      <div class="cultura-item">
+        <div class="cultura-icon-circle" id="ico-zap"></div>
+        <div class="cultura-title">Coragem para ser Bold</div>
+        <div class="cultura-desc">Nascemos da ousadia de 18 talentos que decidiram seguir seu próprio caminho, explorando oportunidades singulares.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CLUB DEALS
+     ============================================================ -->
+<section id="club-deals">
+  <div class="container">
+    <div class="deals-header">
+      <div>
+        <div class="eyebrow">Acesso Exclusivo</div>
+        <h2 class="section-title">Club Deals para <em>membros</em><br>Clube FII</h2>
+        <p class="section-sub" style="margin-top:10px;">Operações estruturadas que o home broker não oferece. Curadoria rigorosa para patrimônios acima de R$5 milhões.</p>
+      </div>
+      <div class="deals-nav">
+        <button class="deals-btn" onclick="slideDeals(-1)" id="btn-prev"></button>
+        <button class="deals-btn" onclick="slideDeals(1)" id="btn-next"></button>
+      </div>
+    </div>
+
+    <div class="deals-track-wrap">
+      <div class="deals-track" id="deals-track">
+
+        <div class="deal-card">
+          <span class="deal-tag tag-cri">CRI</span>
+          <div class="deal-title">CRI Premium — Logística AAA</div>
+          <div class="deal-sub">Galpão logístico classe A, locatário investment grade, contrato atípico 10 anos.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA + 8,5% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">10 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-debn">Debênture</span>
+          <div class="deal-title">Debênture Incentivada — Energia</div>
+          <div class="deal-sub">Emissora rating AA, infraestrutura renovável, isenta de IR para pessoa física.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA + 7,2% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">8 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 250 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-cd">Club Deal</span>
+          <div class="deal-title">Laje Corporativa — Faria Lima</div>
+          <div class="deal-sub">Participação direta em laje premium em São Paulo, alta liquidez de saída.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">18% a.a. (TIR)</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">5 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 1 milhão</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-cra">CRA</span>
+          <div class="deal-title">CRA Agronegócio — Grãos</div>
+          <div class="deal-sub">Produtor Mato Grosso, garantia real sobre imóvel rural e produção comprometida.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">CDI + 4,5% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">5 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 300 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-fii">FII</span>
+          <div class="deal-title">FII de Desenvolvimento — Residencial</div>
+          <div class="deal-sub">Fundo de cotas com foco em lançamentos residenciais de alta renda em SP e RJ.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">22% a.a. (TIR)</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">4 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-cri">CRI</span>
+          <div class="deal-title">CRI Corporate — Galpão Sul</div>
+          <div class="deal-sub">Lastreado em galpão de distribuição no Sul do Brasil, empresa listada na B3.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA + 9,0% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">12 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-cd">Club Deal</span>
+          <div class="deal-title">Hotel Boutique — Nordeste</div>
+          <div class="deal-sub">Empreendimento hoteleiro de luxo em destino prime com marca internacional.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">16% a.a. (TIR)</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">7 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 1 milhão</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-debn">Debênture</span>
+          <div class="deal-title">Debênture Estruturada — Saúde</div>
+          <div class="deal-sub">Rede de clínicas em expansão, garantia real e pessoal dos sócios, prazo bullet.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">CDI + 6,0% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">3 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 250 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-fii">FII</span>
+          <div class="deal-title">Fundo de Crédito Imobiliário</div>
+          <div class="deal-sub">Carteira diversificada de CRIs high yield com gestão ativa Arton.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">CDI + 5,5% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Liquidez</span><span class="dm-val">D+30</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
+          </div>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-tag tag-cd">Offshore</span>
+          <div class="deal-title">Real Estate EUA — Offshore</div>
+          <div class="deal-sub">Portfólio de imóveis residenciais nos EUA, dolarizado com gestão profissional.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">12% a.a. USD</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">5 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">USD 100 mil</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="deals-dots" id="deals-dots"></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PILARES
+     ============================================================ -->
+<section id="pilares">
+  <div class="container">
+    <div class="pilares-header">
+      <div class="eyebrow">Nossas Soluções</div>
+      <h2 class="section-title">Quatro pilares para quem<br>leva <em>patrimônio a sério</em></h2>
+    </div>
+
+    <div class="pilares-tabs">
+      <button class="ptab active" onclick="switchTab(0)">Wealth Management</button>
+      <button class="ptab" onclick="switchTab(1)">Multi Family Office</button>
+      <button class="ptab" onclick="switchTab(2)">Corporate Solutions</button>
+      <button class="ptab" onclick="switchTab(3)">Gestão de Recursos</button>
+    </div>
+
+    <div class="pillar-panel active" id="panel-0">
+      <div class="pillar-grid">
+        <div class="pillar-main">
+          <div class="pillar-icon-circle" id="ico-p0"></div>
+          <div class="pillar-main-title">Wealth Management &amp;<br><em>Inteligência Patrimonial</em></div>
+          <p class="pillar-main-body">Quem acumula patrimônio em FIIs e imóveis muitas vezes deixa dinheiro na mesa em eficiência tributária e sucessória. A Arton integra seus ativos a uma estratégia patrimonial completa: holdings, planejamento sucessório, proteção para as próximas gerações.</p>
+        </div>
+        <div class="pillar-aside">
+          <div class="pillar-aside-label">O que inclui</div>
+          <ul class="pillar-features">
+            <li><span class="pf-bullet" data-pf></span>Diagnóstico patrimonial completo com visão integrada</li>
+            <li><span class="pf-bullet" data-pf></span>Planejamento financeiro de longo prazo personalizado</li>
+            <li><span class="pf-bullet" data-pf></span>Otimização fiscal de rendimentos de FIIs e recebíveis</li>
+            <li><span class="pf-bullet" data-pf></span>Avaliação de risco patrimonial e soluções de proteção</li>
+            <li><span class="pf-bullet" data-pf></span>Gestão de liquidez e alocação estratégica de recursos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-panel" id="panel-1">
+      <div class="pillar-grid">
+        <div class="pillar-main">
+          <div class="pillar-icon-circle" id="ico-p1"></div>
+          <div class="pillar-main-title">Multi Family Office &amp;<br><em>Estruturação Familiar</em></div>
+          <p class="pillar-main-body">Para famílias com patrimônio complexo, a Arton atua como escritório de família centralizando todas as decisões patrimoniais. Holding, planejamento sucessório, governança familiar e acesso privilegiado a produtos exclusivos.</p>
+        </div>
+        <div class="pillar-aside">
+          <div class="pillar-aside-label">O que inclui</div>
+          <ul class="pillar-features">
+            <li><span class="pf-bullet" data-pf></span>Constituição e gestão de holdings patrimoniais imobiliárias</li>
+            <li><span class="pf-bullet" data-pf></span>Planejamento sucessório com escritórios parceiros</li>
+            <li><span class="pf-bullet" data-pf></span>Governança familiar e acordos de quotistas</li>
+            <li><span class="pf-bullet" data-pf></span>Consolidação de patrimônio em múltiplas custódias</li>
+            <li><span class="pf-bullet" data-pf></span>Relatórios de performance unificados por família</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-panel" id="panel-2">
+      <div class="pillar-grid">
+        <div class="pillar-main">
+          <div class="pillar-icon-circle" id="ico-p2"></div>
+          <div class="pillar-main-title">Corporate Solutions &amp;<br><em>Mercado de Capitais</em></div>
+          <p class="pillar-main-body">Para empresas e empresários, a Arton abre acesso às camadas que o home broker não oferece: crédito privado estruturado, CRIs e CRAs exclusivos, assessoria em M&A imobiliário e estruturação no mercado de capitais.</p>
+        </div>
+        <div class="pillar-aside">
+          <div class="pillar-aside-label">O que inclui</div>
+          <ul class="pillar-features">
+            <li><span class="pf-bullet" data-pf></span>Estruturação de CRIs e CRAs para empresas</li>
+            <li><span class="pf-bullet" data-pf></span>Assessoria em fusões e aquisições imobiliárias</li>
+            <li><span class="pf-bullet" data-pf></span>Crédito estruturado para projetos imobiliários</li>
+            <li><span class="pf-bullet" data-pf></span>Emissões primárias e distribuição de ativos</li>
+            <li><span class="pf-bullet" data-pf></span>Gestão de tesouraria e capital de giro</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-panel" id="panel-3">
+      <div class="pillar-grid">
+        <div class="pillar-main">
+          <div class="pillar-icon-circle" id="ico-p3"></div>
+          <div class="pillar-main-title">Gestão de Recursos &amp;<br><em>Arquitetura Global</em></div>
+          <p class="pillar-main-body">Patrimônio concentrado em reais é patrimônio exposto. A Arton auxilia na internacionalização — offshores, trusts, contas internacionais — e na seleção das melhores estratégias globais para proteger o que foi construído no Brasil.</p>
+        </div>
+        <div class="pillar-aside">
+          <div class="pillar-aside-label">O que inclui</div>
+          <ul class="pillar-features">
+            <li><span class="pf-bullet" data-pf></span>Constituição de veículos internacionais (offshores, trusts, LLC)</li>
+            <li><span class="pf-bullet" data-pf></span>Estratégias de investimento global agnósticas de contraparte</li>
+            <li><span class="pf-bullet" data-pf></span>Intermediação de câmbio e hedge cambial</li>
+            <li><span class="pf-bullet" data-pf></span>Aconselhamento em real estate internacional</li>
+            <li><span class="pf-bullet" data-pf></span>Planejamento tributário com escritórios no exterior</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     A PONTE
+     ============================================================ -->
+<section id="a-ponte">
+  <div class="container">
+    <div class="ponte-eyebrow">A Ponte</div>
+    <h2 class="ponte-title">
+      Por que grandes investidores de FIIs<br>
+      consolidam o patrimônio <em>na Arton?</em>
+    </h2>
+    <p class="ponte-sub">
+      Você já tem a expertise em fundos imobiliários. A Arton adiciona a camada que converte esse conhecimento em eficiência patrimonial real.
+    </p>
+
+    <div class="ponte-grid">
+      <div class="ponte-card">
+        <div class="ponte-card-head">
+          <div class="ponte-brand">Clube FII</div>
+          <div class="ponte-status">O que você já domina</div>
+        </div>
+        <div class="ponte-card-body">
+          <div class="ponte-card-title">Sua Expertise em FIIs</div>
+          <div class="ponte-card-desc">Você já chegou longe. Analisa métricas, escolhe ativos com critério e busca dividendos previsíveis.</div>
+          <ul class="ponte-list" id="ponte-list-l">
+            <li><span class="pl-icon pl-check"></span>Analisa P/VP e identifica assimetrias de valor</li>
+            <li><span class="pl-icon pl-check"></span>Acompanha DY mensal e estabilidade de caixa</li>
+            <li><span class="pl-icon pl-check"></span>Distingue FIIs de papel, tijolo e FOF</li>
+            <li><span class="pl-icon pl-check"></span>Monitora vacância, inadimplência e gestoras</li>
+            <li><span class="pl-icon pl-check"></span>Diversifica entre setores imobiliários</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ponte-arrow-col">
+        <div class="ponte-arrow" id="ico-ponte-plus"></div>
+      </div>
+
+      <div class="ponte-card ponte-card-arton">
+        <div class="ponte-card-head">
+          <div class="ponte-brand">Arton Advisors</div>
+          <div class="ponte-status">O que a Arton adiciona</div>
+        </div>
+        <div class="ponte-card-body">
+          <div class="ponte-card-title">A camada que o home broker não entrega</div>
+          <div class="ponte-card-desc">Otimização fiscal, estruturação patrimonial, acesso a operações exclusivas e visão integrada.</div>
+          <ul class="ponte-list" id="ponte-list-r">
+            <li><span class="pl-icon pl-plus"></span>Otimização fiscal dos rendimentos de FIIs e recebíveis</li>
+            <li><span class="pl-icon pl-plus"></span>Estruturação sucessória e holding patrimonial imobiliária</li>
+            <li><span class="pl-icon pl-plus"></span>Club deals e crédito estruturado exclusivos (CRIs, debêntures)</li>
+            <li><span class="pl-icon pl-plus"></span>Alocação global (offshore) para diversificar além do Brasil</li>
+            <li><span class="pl-icon pl-plus"></span>Visão integrada de todo o patrimônio, não só dos FIIs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MIGRAÇÃO
+     ============================================================ -->
+<section id="migracao">
+  <div class="container">
+    <div class="mig-grid">
+      <div>
+        <div class="eyebrow">Estratégia Imobiliária</div>
+        <h2 class="section-title">Migração dos seus imóveis<br>para <em>Fundos Imobiliários</em><br>com estratégia</h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">
+          Tem imóveis físicos e não sabe se compensa manter? A Arton faz essa análise com profundidade — e, se fizer sentido, estrutura a migração de forma gradual, fiscal e patrimonialmente eficiente.
+        </p>
+        <button class="btn-primary" style="margin-top:28px;" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
+          <span>Falar com Especialista</span>
+        </button>
+      </div>
+
+      <div class="mig-visual">
+        <div class="mig-visual-header">
+          <span id="ico-mig-list"></span>
+          <div class="mig-visual-header-text">Como a Arton conduz o processo</div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">01</div>
+          <div>
+            <div class="mig-step-title">Avaliação da rentabilidade real</div>
+            <div class="mig-step-desc">Análise da rentabilidade efetiva dos seus imóveis físicos versus alternativas via FIIs.</div>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">02</div>
+          <div>
+            <div class="mig-step-title">Comparativo imóvel direto × FII</div>
+            <div class="mig-step-desc">Estudo técnico: liquidez, diversificação, isenção de IR e custo de manutenção comparados.</div>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">03</div>
+          <div>
+            <div class="mig-step-title">Planejamento fiscal e sucessório</div>
+            <div class="mig-step-desc">Estruturação da migração com eficiência tributária e proteção do patrimônio familiar.</div>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">04</div>
+          <div>
+            <div class="mig-step-title">Montagem de carteira diversificada</div>
+            <div class="mig-step-desc">Seleção de FIIs de tijolo, papel e desenvolvimento alinhados ao seu perfil.</div>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">05</div>
+          <div>
+            <div class="mig-step-title">Migração gradual e personalizada</div>
+            <div class="mig-step-desc">Transição respeitando seu horizonte de investimento e objetivos financeiros.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COMPROMISSO
+     ============================================================ -->
+<section id="compromisso">
+  <div class="container">
+    <div class="comp-grid">
+      <div>
+        <div class="comp-icon-circle" id="ico-shield"></div>
+        <div class="eyebrow">Nosso Compromisso</div>
+        <h2 class="section-title">
+          Nosso Comitê investe<br>
+          nos <em>mesmos produtos</em><br>
+          que você.
+        </h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">
+          Na Arton, todos os produtos de mercado passam por um rigoroso Comitê de Investimentos. Os sócios investem necessariamente nesses mesmos produtos — salvo impedimento regulatório. Não há recomendação que não passe pelo nosso próprio capital.
+        </p>
+      </div>
+      <div class="comp-quote-card">
+        <div class="comp-quote-mark">"</div>
+        <div class="comp-quote-text">
+          "Promovemos uma intensa curadoria e todos os produtos passam por um rigoroso comitê de investimentos. Os sócios investem necessariamente nesses mesmos produtos, salvo algum impedimento regulatório."
+        </div>
+        <div class="comp-quote-author">
+          <div class="comp-author-rule"></div>
+          <div class="comp-author-text">Bernardo Assumpção · CEO, Arton Advisors</div>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag">Ex-Sócio XP</span>
+          <span class="comp-tag">Ex-MD JP Morgan</span>
+          <span class="comp-tag">Citibank</span>
+          <span class="comp-tag">USP · INSEAD</span>
+          <span class="comp-tag">BTG Pactual</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FORMULÁRIO
+     ============================================================ -->
+<section id="cta-form">
+  <div class="container">
+    <div class="form-wrap">
+      <div>
+        <div class="eyebrow">Dê o Próximo Passo</div>
+        <h2 class="section-title">
+          Iniciar meu<br>
+          <em>relacionamento<br>com a Arton</em>
+        </h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">
+          Um especialista vai entender seu momento, seus FIIs e o que faz sentido para o restante do seu patrimônio. Sem compromisso.
+        </p>
+
+        <div class="form-benefits">
+          <div class="form-benefit">
+            <div class="benefit-icon-wrap" id="ico-lock"></div>
+            <div>
+              <div class="benefit-title">Sigilo Garantido</div>
+              <div class="benefit-desc">Seus dados são tratados com absoluta confidencialidade.</div>
+            </div>
+          </div>
+          <div class="form-benefit">
+            <div class="benefit-icon-wrap" id="ico-clock"></div>
+            <div>
+              <div class="benefit-title">Resposta em até 24h</div>
+              <div class="benefit-desc">Nosso time entra em contato no horário que você preferir.</div>
+            </div>
+          </div>
+          <div class="form-benefit">
+            <div class="benefit-icon-wrap" id="ico-check-circle"></div>
+            <div>
+              <div class="benefit-title">Sem Compromisso</div>
+              <div class="benefit-desc">Primeiro contato totalmente sem compromisso de contratação.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-card">
+          <!-- Nome + E-mail -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-input" placeholder="Seu nome completo">
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-mail</label>
+              <input type="email" class="form-input" placeholder="seu@email.com">
+            </div>
+          </div>
+
+          <!-- Telefone -->
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label">Telefone</label>
+              <input type="tel" class="form-input" placeholder="(11) 99999-9999">
+            </div>
+          </div>
+
+          <!-- CPF/CNPJ -->
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label">CPF / CNPJ</label>
+              <input type="text" class="form-input" placeholder="000.000.000-00">
+            </div>
+          </div>
+
+          <!-- Nível de investimento -->
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label">Qual seu nível de investimento global?</label>
+              <div class="select-wrap">
+                <select class="form-select">
+                  <option value="" disabled selected>Qual seu nível de investimento global?</option>
+                  <option value="5-20">De R$ 5 milhões a R$ 20 milhões</option>
+                  <option value="20-50">De R$ 20 milhões a R$ 50 milhões</option>
+                  <option value="50-100">De R$ 50 milhões a R$ 100 milhões</option>
+                  <option value="100+">Acima de R$ 100 milhões</option>
+                  <option value="nao-informar">Prefiro não informar</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Melhor período -->
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label">Melhor período para contato</label>
+              <div class="select-wrap">
+                <select class="form-select">
+                  <option value="" disabled selected>Qual seu melhor horário?</option>
+                  <option value="manha">Manhã (08h – 12h)</option>
+                  <option value="tarde">Tarde (12h – 18h)</option>
+                  <option value="comercial">Qualquer horário comercial</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mensagem -->
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label">Mensagem (opcional)</label>
+              <textarea class="form-textarea" placeholder="Conte-nos sobre seu momento patrimonial ou alguma dúvida específica..."></textarea>
+            </div>
+          </div>
+
+          <!-- Optin -->
+          <div class="optin-wrap">
+            <input type="checkbox" class="optin-check" id="optin">
+            <label class="optin-label" for="optin">
+              Concordo com a <a href="#">Política de Privacidade</a> e autorizo a Arton Advisors a entrar em contato comigo para fins de relacionamento comercial.
+            </label>
+          </div>
+
+          <button class="form-submit"><span>Solicitar Contato</span></button>
+          <div class="form-micro">✓ Confidencial &nbsp;·&nbsp; ✓ Sem spam &nbsp;·&nbsp; ✓ Sem compromisso</div>
+
+          <div class="form-trust">
+            <div class="trust-item"><span id="ico-mappin"></span>&nbsp;Faria Lima</div>
+            <div class="trust-item"><span id="ico-shield2"></span>&nbsp;ANBIMA</div>
+            <div class="trust-item"><span id="ico-card"></span>&nbsp;BTG Pactual</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-logo">Arton Advisors × Clube FII</div>
+  <div class="footer-legal">
+    © 2025 Arton AAI · Av. Brigadeiro Faria Lima, 3477 · Torre A - 7º andar · São Paulo - SP<br>
+    Arton Advisors Consultoria Financeira e Gestão Ltda. Regulado pela ANBIMA. Operações via BTG Pactual Digital.
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+  /* ---- RENDER ICONS ---- */
+  function setIcon(id, name, size) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = icon(name, size || 20);
+  }
+
+  // Cultura
+  setIcon('ico-anchor', 'anchor', 20);
+  setIcon('ico-users',  'users',  20);
+  setIcon('ico-target', 'target', 20);
+  setIcon('ico-zap',    'zap',    20);
+
+  // Pilares
+  setIcon('ico-p0', 'bar-chart-2', 22);
+  setIcon('ico-p1', 'home',        22);
+  setIcon('ico-p2', 'briefcase',   22);
+  setIcon('ico-p3', 'globe',       22);
+
+  // Ponte
+  setIcon('ico-ponte-plus', 'plus', 20);
+
+  // Migração
+  setIcon('ico-mig-list', 'list', 16);
+
+  // Compromisso
+  setIcon('ico-shield', 'shield', 22);
+
+  // Hero arrow
+  setIcon('ico-arrow-r', 'arrow-right', 16);
+
+  // Form benefits
+  setIcon('ico-lock',         'lock',         16);
+  setIcon('ico-clock',        'clock',        16);
+  setIcon('ico-check-circle', 'check-circle', 16);
+  setIcon('ico-alert',        'alert-circle', 15);
+
+  // Trust
+  setIcon('ico-mappin',  'map-pin',    13);
+  setIcon('ico-shield2', 'shield',     13);
+  setIcon('ico-card',    'credit-card',13);
+
+  // Pillar features bullets
+  document.querySelectorAll('[data-pf]').forEach(el => {
+    el.innerHTML = icon('chevron-right', 14);
+  });
+
+  // Ponte list icons
+  document.querySelectorAll('.pl-check').forEach(el => {
+    el.innerHTML = icon('check', 14);
+  });
+  document.querySelectorAll('.pl-plus').forEach(el => {
+    el.innerHTML = icon('plus', 14);
+  });
+
+  // Carousel nav buttons
+  document.getElementById('btn-prev').innerHTML = icon('chevron-left', 16);
+  document.getElementById('btn-next').innerHTML = icon('chevron-right', 16);
+
+  /* ---- TABS ---- */
+  function switchTab(index) {
+    document.querySelectorAll('.ptab').forEach((t, i) => t.classList.toggle('active', i === index));
+    document.querySelectorAll('.pillar-panel').forEach((p, i) => p.classList.toggle('active', i === index));
+  }
+
+  /* ---- CARROSSEL ---- */
+  const TOTAL = 10;
+  let cur = 0;
+  const CARD_W = 276 + 20;
+
+  function buildDots() {
+    const el = document.getElementById('deals-dots');
+    for (let i = 0; i < TOTAL; i++) {
+      const d = document.createElement('div');
+      d.className = 'd-dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goTo(i);
+      el.appendChild(d);
+    }
+  }
+
+  function goTo(n) {
+    const wrap = document.querySelector('.deals-track-wrap');
+    const visCount = Math.max(1, Math.floor(wrap.offsetWidth / CARD_W));
+    const maxSlide = Math.max(0, TOTAL - visCount);
+    cur = Math.max(0, Math.min(n, maxSlide));
+    document.getElementById('deals-track').style.transform = `translateX(-${cur * CARD_W}px)`;
+    document.querySelectorAll('.d-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  function slideDeals(dir) { goTo(cur + dir); }
+
+  buildDots();
+
+  /* ---- SCROLL topbar shadow ---- */
+  window.addEventListener('scroll', () => {
+    document.querySelector('.topbar').style.boxShadow = window.scrollY > 20
+      ? '0 4px 20px rgba(0,0,0,0.12)' : '0 2px 8px rgba(0,0,0,0.06)';
+  });
+</script>
+</body>
+</html>
