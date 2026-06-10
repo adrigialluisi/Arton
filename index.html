@@ -52,6 +52,7 @@ body {
   color: var(--dark);
   line-height: 1.6;
   font-size: 16px;
+  padding-top: 60px;
 }
 
 /* ===== UTILITY ===== */
@@ -142,7 +143,7 @@ body {
    TOPBAR
    ============================================================ */
 .topbar {
-  position: sticky; top: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: var(--white);
   border-bottom: 1px solid var(--gray-3);
   padding: 0 48px;
@@ -718,52 +719,61 @@ body {
 }
 .comp-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: center;
+  gap: 0; align-items: stretch;
 }
-.comp-icon-circle {
-  width: 56px; height: 56px;
-  border: 1px solid var(--gray-3);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--white); margin-bottom: 22px;
+
+/* Carrossel de fotos */
+.comp-photos {
+  position: relative; overflow: hidden;
+  min-height: 480px;
 }
-.comp-icon-circle svg { color: var(--cfii); }
-.comp-quote-card {
-  background: var(--white);
-  border: 1px solid var(--gray-3);
-  border-top: 3px solid var(--cfii);
-  border-radius: 0; padding: 40px;
-  position: relative;
+.comp-photos-track {
+  display: flex; height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25,0.8,0.25,1);
 }
-.comp-quote-mark {
-  position: absolute; top: 18px; left: 32px;
-  font-size: 64px; line-height: 1;
-  color: var(--cfii); opacity: 0.12;
-  font-family: Georgia, serif;
+.comp-photo-slide {
+  flex: 0 0 100%; height: 100%; min-height: 480px;
+  background-size: cover; background-position: center;
 }
-.comp-quote-text {
-  font-size: 16px; font-style: italic;
-  line-height: 1.75; color: var(--dark);
-  margin-bottom: 26px; margin-top: 20px;
+.comp-photos-dots {
+  position: absolute; bottom: 16px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 6px;
 }
-.comp-quote-author { display: flex; align-items: center; gap: 12px; }
-.comp-author-rule { width: 22px; height: 2px; background: var(--orange); }
-.comp-author-text {
+.cp-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer; transition: var(--tr);
+  border: none;
+}
+.cp-dot.active { background: var(--white); width: 18px; border-radius: 3px; }
+
+/* Lado direito */
+.comp-content {
+  background: var(--green);
+  padding: 56px 52px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.comp-content .eyebrow { color: var(--orange); margin-bottom: 12px; }
+.comp-content .section-title { color: var(--white); margin-bottom: 8px; }
+.comp-content .section-title em { color: var(--orange); }
+.comp-divider { width: 36px; height: 2px; background: var(--orange); margin: 20px 0 28px; }
+
+/* Cards de perfil */
+.comp-profiles { display: flex; flex-direction: column; gap: 0; }
+.comp-profile-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.comp-profile-item:last-child { border-bottom: none; }
+.comp-profile-num {
   font-size: 11px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--black);
+  color: var(--orange); letter-spacing: 0.12em;
+  flex-shrink: 0; width: 24px;
 }
-.comp-tags {
-  display: flex; gap: 6px; flex-wrap: wrap;
-  margin-top: 22px; padding-top: 22px;
-  border-top: 1px solid var(--gray-4);
-}
-.comp-tag {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--gray-2);
-  border: 1px solid var(--gray-3);
-  border-radius: 0; padding: 4px 10px;
+.comp-profile-text {
+  font-size: 14px; color: rgba(255,255,255,0.85);
+  line-height: 1.5;
 }
 
 
@@ -959,19 +969,23 @@ footer {
   .container { padding: 0 16px; }
 
   /* Topbar */
+  body { padding-top: 52px; }
   .topbar { padding: 0 0 0 14px; gap: 8px; height: 52px; }
-  .topbar-logos { gap: 8px; flex-shrink: 1; min-width: 0; overflow: hidden; }
-  .topbar-logos img[alt="Arton Advisors"] { height: 18px !important; flex-shrink: 1; }
-  .topbar-logos img[alt="Clube FII"] { height: 13px !important; flex-shrink: 1; }
+  .topbar-logos { gap: 8px; flex-shrink: 1; min-width: 0; overflow: hidden; align-items: center; }
+  .topbar-logos img[alt="Arton Advisors"] { height: 22px !important; flex-shrink: 0; }
+  .topbar-logos img[alt="Clube FII"] { height: 12px !important; flex-shrink: 1; }
   .topbar-logos span { font-size: 9px !important; }
   .logo-sep { height: 18px; flex-shrink: 0; }
   .topbar-cta {
     flex-shrink: 0;
     align-self: stretch;
+    margin: 0;
+    border-radius: 0;
     font-size: 11px;
     white-space: nowrap;
   }
-  .topbar-cta span { padding: 0 14px; }
+  .topbar-cta span { padding: 0 12px; }
+  .topbar-cta::after { width: 32px; }
   .topbar-pill { display: none; }
 
   /* Hero */
@@ -999,7 +1013,11 @@ footer {
   .ponte-arrow-col { display: none; }
 
   /* Migração / Comp */
-  .mig-grid, .comp-grid { grid-template-columns: 1fr; }
+  .mig-grid { grid-template-columns: 1fr; }
+  .comp-grid { grid-template-columns: 1fr; }
+  .comp-photos { min-height: 260px; }
+  .comp-photo-slide { min-height: 260px; }
+  .comp-content { padding: 40px 20px; }
 
   /* Formulário */
   .form-wrap { grid-template-columns: 1fr; }
@@ -1179,119 +1197,7 @@ function icon(name, size) {
     <div class="deals-track-wrap">
       <div class="deals-track" id="deals-track">
 
-        <!-- 1. HJCT11 -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/HJCT11.png" alt="HJCT11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">HJCT11</span>
-            </div>
-            <div class="deal-title">Continental Tower</div>
-            <div class="deal-sub">Aquisição das lajes corporativas do Edifício Continental Tower, em conjunto com Hedge Investimentos e JHSF Capital.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição (11/25)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 10.947,44</span></div>
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Líquida Est.</span><span class="dm-val accent">20,2% a.a.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. CVFL11 -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/CVFL11.png" alt="CVFL11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">CVFL11</span>
-            </div>
-            <div class="deal-title">Vista Faria Lima</div>
-            <div class="deal-sub">Aquisição das lajes corporativas do edifício Vista Faria Lima, em região estratégica na Faria Lima.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 1.000,00</span></div>
-              <div class="deal-section-label">Patrimonial (12/25)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 1.426,00</span></div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">acima de 20% a.a.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. BGRB11 -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/BGRB11.png" alt="BGRB11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">BGRB11</span>
-            </div>
-            <div class="deal-title">Birmann 32</div>
-            <div class="deal-sub">Aquisição do edifício Birmann 32.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 100,00</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val">R$ 44.209,00</span></div>
-              <div class="deal-section-label">Patrimonial (01/26)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val accent">R$ 119,87</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 53.059,03</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. BTS Logístico -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Cajamar-Galpoes-Mercado-Livre.png" alt="BTG LOG Cajamar"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cri">Logístico</span>
-              <span class="deal-ticker">BTS</span>
-            </div>
-            <div class="deal-title">BTG LOG Cajamar</div>
-            <div class="deal-sub">Emissão de cotas sêniores via FII voltado ao desenvolvimento de galpão logístico AAA em Cajamar (SP), com contrato built-to-suit firmado com o Mercado Livre.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições da Transação</div>
-              <div class="deal-meta-row"><span class="dm-key">Cota Sênior</span><span class="dm-val accent">IPCA + 9,00% a.a.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. KNGR11 -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/KNGR11.png" alt="KNGR11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">KNGR11</span>
-            </div>
-            <div class="deal-title">FII Kinea Guarará</div>
-            <div class="deal-sub">Coincorporação junto à Kinea de um edifício residencial de alto padrão na região do Jardins.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA +11,40% a +13,40%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Desinvestimento</span><span class="dm-val">Até 2030</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Four Seasons RJ -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Four Seasons Rio de Janeiro.png" alt="Four Seasons RJ"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">FIP</span>
-            </div>
-            <div class="deal-title">Four Seasons RJ</div>
-            <div class="deal-sub">Participação via FIP na chegada do Four Seasons ao Rio de Janeiro, no local do Marina Palace Hotel.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">3,75x a 6,36x</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7. BLCA11 -->
+        <!-- 1. BLCA11 — Pátio Malzoni -->
         <div class="deal-card">
           <div class="deal-img-ph"><img src="Deals_Fotos/BLCA11.png" alt="BLCA11"></div>
           <div class="deal-card-content">
@@ -1316,7 +1222,121 @@ function icon(name, size) {
           </div>
         </div>
 
-        <!-- 8. FLFL11 -->
+        <!-- 2. KNGR11 — Kinea Desenvolvimento -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/KNGR11.png" alt="KNGR11"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-fii">Desenvolvimento</span>
+              <span class="deal-ticker">KNGR11</span>
+            </div>
+            <div class="deal-title">FII Kinea Guarará</div>
+            <div class="deal-sub">Coincorporação junto à Kinea de um edifício residencial de alto padrão na região do Jardins.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Target de Retorno</div>
+              <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA +11,40% a +13,40%</span></div>
+              <div class="deal-meta-row"><span class="dm-key">Desinvestimento</span><span class="dm-val">Até 2030</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. JCCJ11 — Shopping Cidade Jardim -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/JCCJ11.png" alt="JCCJ11"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-debn">Shopping Center</span>
+              <span class="deal-ticker">JCCJ11</span>
+            </div>
+            <div class="deal-title">Shp. Cidade Jardim</div>
+            <div class="deal-sub">Aquisição via FOF de cotas do FII Shopping Cidade Jardim em 06/2023 e posterior venda em 07/2024.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Condições de Aquisição</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 102,52</span></div>
+              <div class="deal-section-label">Condições de Venda</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço aprox. (R$/cota)</span><span class="dm-val">R$ 145,00</span></div>
+              <div class="deal-section-label">Retorno</div>
+              <div class="deal-meta-row"><span class="dm-key">Retorno</span><span class="dm-val accent">+45,69%</span></div>
+              <div class="deal-meta-row"><span class="dm-key">IFIX</span><span class="dm-val">+8,63%</span></div>
+              <div class="deal-meta-row"><span class="dm-key">vs. CDI</span><span class="dm-val accent">356% do CDI</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. BTS — BTG LOG Cajamar -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/Cajamar-Galpoes-Mercado-Livre.png" alt="BTG LOG Cajamar"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-cri">Logístico</span>
+              <span class="deal-ticker">BTS</span>
+            </div>
+            <div class="deal-title">BTG LOG Cajamar</div>
+            <div class="deal-sub">Emissão de cotas sêniores via FII voltado ao desenvolvimento de galpão logístico AAA em Cajamar (SP), com contrato built-to-suit firmado com o Mercado Livre.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Condições da Transação</div>
+              <div class="deal-meta-row"><span class="dm-key">Cota Sênior</span><span class="dm-val accent">IPCA + 9,00% a.a.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. BGRB11 — Birmann 32 -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/BGRB11.png" alt="BGRB11"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-cd">Laje Corporativa</span>
+              <span class="deal-ticker">BGRB11</span>
+            </div>
+            <div class="deal-title">Birmann 32</div>
+            <div class="deal-sub">Aquisição do edifício Birmann 32.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Condições de Aquisição</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 100,00</span></div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val">R$ 44.209,00</span></div>
+              <div class="deal-section-label">Patrimonial (01/26)</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val accent">R$ 119,87</span></div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 53.059,03</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. FIP — Marina Palace -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/Four Seasons Rio de Janeiro.png" alt="Marina Palace"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-fii">Desenvolvimento</span>
+              <span class="deal-ticker">FIP</span>
+            </div>
+            <div class="deal-title">Marina Palace</div>
+            <div class="deal-sub">Participação via FIP na chegada do Four Seasons ao Rio de Janeiro, no local do Marina Palace Hotel.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Target de Retorno</div>
+              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">3,75x a 6,36x</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. FIP — Brickell -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/Arton Leste Brickell.png" alt="FIP Arton Brickell"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-fii">Desenvolvimento</span>
+              <span class="deal-ticker">FIP</span>
+            </div>
+            <div class="deal-title">FIP Arton Brickell</div>
+            <div class="deal-sub">Captação de USD 15 MM para desenvolvimento de edifício multifamily em Brickell, principal polo financeiro de Miami.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Target de Retorno</div>
+              <div class="deal-meta-row"><span class="dm-key">TIR Est. Líquida</span><span class="dm-val accent">20% a.a. (USD)</span></div>
+              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">2,1x (USD)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. FLFL11 — Ed. Faria Lima -->
         <div class="deal-card">
           <div class="deal-img-ph"><img src="Deals_Fotos/FLFL11.png" alt="FLFL11"></div>
           <div class="deal-card-content">
@@ -1341,43 +1361,59 @@ function icon(name, size) {
           </div>
         </div>
 
-        <!-- 9. JCCJ11 -->
+        <!-- 9. HJCT11 — Continental Tower -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/JCCJ11.png" alt="JCCJ11"></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/HJCT11.png" alt="HJCT11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
-              <span class="deal-tag tag-debn">Shopping Center</span>
-              <span class="deal-ticker">JCCJ11</span>
+              <span class="deal-tag tag-cd">Laje Corporativa</span>
+              <span class="deal-ticker">HJCT11</span>
             </div>
-            <div class="deal-title">Shp. Cidade Jardim</div>
-            <div class="deal-sub">Aquisição via FOF de cotas do FII Shopping Cidade Jardim em 06/2023 e posterior venda em 07/2024.</div>
+            <div class="deal-title">Continental Tower</div>
+            <div class="deal-sub">Aquisição das lajes corporativas do Edifício Continental Tower, em conjunto com Hedge Investimentos e JHSF Capital.</div>
             <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 102,52</span></div>
-              <div class="deal-section-label">Condições de Venda</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço aprox. (R$/cota)</span><span class="dm-val">R$ 145,00</span></div>
-              <div class="deal-section-label">Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">Retorno</span><span class="dm-val accent">+45,69%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">IFIX</span><span class="dm-val">+8,63%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">vs. CDI</span><span class="dm-val accent">356% do CDI</span></div>
+              <div class="deal-section-label">Condições de Aquisição (11/25)</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 10.947,44</span></div>
+              <div class="deal-section-label">Target de Retorno</div>
+              <div class="deal-meta-row"><span class="dm-key">TIR Líquida Est.</span><span class="dm-val accent">20,2% a.a.</span></div>
             </div>
           </div>
         </div>
 
-        <!-- 10. FIP Arton Brickell -->
+        <!-- 10. CVFL11 — Vista Faria Lima -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Arton Leste Brickell.png" alt="FIP Arton Brickell"></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/CVFL11.png" alt="CVFL11"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-cd">Laje Corporativa</span>
+              <span class="deal-ticker">CVFL11</span>
+            </div>
+            <div class="deal-title">Vista Faria Lima</div>
+            <div class="deal-sub">Aquisição das lajes corporativas do edifício Vista Faria Lima, em região estratégica na Faria Lima.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Condições de Aquisição</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 1.000,00</span></div>
+              <div class="deal-section-label">Patrimonial (12/25)</div>
+              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 1.426,00</span></div>
+              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">acima de 20% a.a.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. FIP — Kempinski Design District Miami -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/Kempinski Design District - Miami.png" alt="Kempinski Design District Miami"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-fii">Desenvolvimento</span>
               <span class="deal-ticker">FIP</span>
             </div>
-            <div class="deal-title">FIP Arton Brickell</div>
-            <div class="deal-sub">Captação de USD 15 MM para desenvolvimento de edifício multifamily em Brickell, principal polo financeiro de Miami.</div>
+            <div class="deal-title">Kempinski Design District – Miami</div>
+            <div class="deal-sub">Participação da inauguração da unidade do Kempinski Residences em Miami, por meio de um FIP de gestão Arton e Hedge Investments.</div>
             <div class="deal-meta">
               <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Est. Líquida</span><span class="dm-val accent">20% a.a. (USD)</span></div>
-              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">2,1x (USD)</span></div>
+              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">USD + 19,00%</span></div>
+              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">1,98x (USD)</span></div>
             </div>
           </div>
         </div>
@@ -1531,7 +1567,7 @@ function icon(name, size) {
           <div class="ponte-card-title">Onde o conhecimento vira patrimônio</div>
           <div class="ponte-card-desc">Acesso, estrutura e expertise que transformam uma boa carteira de FIIs em um patrimônio eficiente e protegido.</div>
           <ul class="ponte-list" id="ponte-list-r">
-            <li><span class="pl-icon pl-plus"></span>Acesso antecipado a operações imobiliárias exclusivas e club deals antes de chegarem ao mercado de varejo</li>
+            <li><span class="pl-icon pl-plus"></span>Acesso a operações imobiliárias exclusivas e Club Deals</li>
             <li><span class="pl-icon pl-plus"></span>Estruturação patrimonial e sucessória com foco em real estate e holding imobiliária</li>
             <li><span class="pl-icon pl-plus"></span>Eficiência fiscal sobre rendimentos, recebíveis e estruturas imobiliárias</li>
             <li><span class="pl-icon pl-plus"></span>Visão consolidada do patrimônio local e offshore, além da carteira de FIIs</li>
@@ -1554,7 +1590,7 @@ function icon(name, size) {
         <h2 class="section-title">Migração dos seus imóveis<br>para <em>Fundos Imobiliários</em><br>com estratégia</h2>
         <div class="divider-line"></div>
         <p class="section-sub">
-          Tem imóveis físicos e não sabe se compensa manter? A Arton faz essa análise com profundidade — e, se fizer sentido, estrutura a migração de forma gradual, fiscal e patrimonialmente eficiente.
+          Tem imóveis físicos e se pergunta se eles ainda são a melhor alternativa? A Arton pode recomendar estratégias para uma transição gradual, buscando maior eficiência fiscal, patrimonial e sucessória.
         </p>
         <button class="btn-primary" style="margin-top:28px;" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
           <span>Falar com Especialista</span>
@@ -1603,31 +1639,52 @@ function icon(name, size) {
 
 
 <!-- ============================================================
-     COMPROMISSO
+     PARA QUEM
      ============================================================ -->
-<section id="compromisso">
-  <div class="container">
-    <div class="comp-grid">
-      <div>
-        <div class="comp-icon-circle" id="ico-shield"></div>
-        <div class="eyebrow">Nosso Compromisso</div>
-        <h2 class="section-title">
-          Nosso Comitê investe<br>
-          nos <em>mesmos produtos</em><br>
-          que você.
-        </h2>
-        <div class="divider-line"></div>
-        <p class="section-sub">
-          Na Arton, todos os produtos de mercado passam por um rigoroso Comitê de Investimentos. Os sócios investem necessariamente nesses mesmos produtos — salvo impedimento regulatório. Não há recomendação que não passe pelo nosso próprio capital.
-        </p>
+<section id="compromisso" style="padding:0; border-top:1px solid var(--gray-3);">
+  <div class="comp-grid">
+
+    <!-- Esquerda: carrossel de fotos -->
+    <div class="comp-photos" id="comp-photos">
+      <div class="comp-photos-track" id="comp-photos-track">
+        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (9).jpg')"></div>
+        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (14).jpg')"></div>
+        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (16).jpg')"></div>
+        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (21).jpg')"></div>
+        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (40).jpg')"></div>
       </div>
-      <div class="comp-quote-card">
-        <div class="comp-quote-mark">"</div>
-        <div class="comp-quote-text">
-          "Acreditamos que patrimônio relevante deve ser administrado de forma integrada. Investimentos, sucessão, governança e estrutura patrimonial devem caminhar juntos."
+      <div class="comp-photos-dots" id="comp-photos-dots"></div>
+    </div>
+
+    <!-- Direita: conteúdo -->
+    <div class="comp-content">
+      <div class="eyebrow">Para Quem</div>
+      <h2 class="section-title">A Arton faz<br><em>diferença para quem</em></h2>
+      <div class="comp-divider"></div>
+      <div class="comp-profiles">
+        <div class="comp-profile-item">
+          <span class="comp-profile-num">01</span>
+          <span class="comp-profile-text">Investidores com patrimônio relevante em FIIs</span>
+        </div>
+        <div class="comp-profile-item">
+          <span class="comp-profile-num">02</span>
+          <span class="comp-profile-text">Famílias com patrimônio imobiliário concentrado</span>
+        </div>
+        <div class="comp-profile-item">
+          <span class="comp-profile-num">03</span>
+          <span class="comp-profile-text">Empresários que desejam separar patrimônio pessoal e empresarial</span>
+        </div>
+        <div class="comp-profile-item">
+          <span class="comp-profile-num">04</span>
+          <span class="comp-profile-text">Investidores buscando estrutura sucessória</span>
+        </div>
+        <div class="comp-profile-item">
+          <span class="comp-profile-num">05</span>
+          <span class="comp-profile-text">Famílias com patrimônio local e internacional</span>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1692,7 +1749,7 @@ function icon(name, size) {
           <div class="form-row full">
             <div class="form-group">
               <label class="form-label">Telefone</label>
-              <input type="tel" class="form-input" placeholder="(11) 99999-9999">
+              <input type="tel" class="form-input" placeholder="(11) 99999-9999" id="field-tel" inputmode="numeric" maxlength="15">
             </div>
           </div>
 
@@ -1700,7 +1757,7 @@ function icon(name, size) {
           <div class="form-row full">
             <div class="form-group">
               <label class="form-label">CPF / CNPJ</label>
-              <input type="text" class="form-input" placeholder="000.000.000-00">
+              <input type="text" class="form-input" placeholder="000.000.000-00 ou 00.000.000/0000-00" id="field-cpfcnpj" inputmode="numeric" maxlength="18">
             </div>
           </div>
 
@@ -1775,8 +1832,8 @@ function icon(name, size) {
     <img src="AF_Arton_RGB_HorizNegativo (1).png" alt="Arton Advisors" style="height:28px; display:block;">
     <div style="width:1px; height:28px; background:rgba(255,255,255,0.20);"></div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <img src="logo-clubefii-white.png" alt="Clube FII" style="height:16px; display:block;">
       <span style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.06em; text-transform:uppercase;">Parceiro</span>
+      <img src="logo-clubefii-white.png" alt="Clube FII" style="height:14px; display:block;">
     </div>
   </div>
   <div class="footer-legal">
@@ -1891,6 +1948,59 @@ function icon(name, size) {
   function slideDeals(dir) { goTo(cur + dir); }
 
   buildDots();
+
+  /* ---- CARROSSEL FOTOS ESCRITÓRIO ---- */
+  (function() {
+    const PHOTOS = 5;
+    let cp = 0;
+    const track = document.getElementById('comp-photos-track');
+    const dotsEl = document.getElementById('comp-photos-dots');
+
+    // build dots
+    for (let i = 0; i < PHOTOS; i++) {
+      const d = document.createElement('button');
+      d.className = 'cp-dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goPhoto(i);
+      dotsEl.appendChild(d);
+    }
+
+    function goPhoto(n) {
+      cp = (n + PHOTOS) % PHOTOS;
+      track.style.transform = `translateX(-${cp * 100}%)`;
+      document.querySelectorAll('.cp-dot').forEach((d, i) => d.classList.toggle('active', i === cp));
+    }
+
+    // auto-play a cada 4s
+    setInterval(() => goPhoto(cp + 1), 4000);
+  })();
+
+  /* ---- MÁSCARAS FORMULÁRIO ---- */
+  function maskTel(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length <= 10) {
+      v = v.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    } else {
+      v = v.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+    }
+    e.target.value = v;
+  }
+
+  function maskCpfCnpj(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 14);
+    if (v.length <= 11) {
+      v = v.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2})/, (_, a, b, c, d) =>
+        d ? `${a}.${b}.${c}-${d}` : c ? `${a}.${b}.${c}` : b ? `${a}.${b}` : a);
+    } else {
+      v = v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/, (_, a, b, c, d, e) =>
+        e ? `${a}.${b}.${c}/${d}-${e}` : d ? `${a}.${b}.${c}/${d}` : c ? `${a}.${b}.${c}` : b ? `${a}.${b}` : a);
+    }
+    e.target.value = v;
+  }
+
+  const telField = document.getElementById('field-tel');
+  const cpfField = document.getElementById('field-cpfcnpj');
+  if (telField) telField.addEventListener('input', maskTel);
+  if (cpfField) cpfField.addEventListener('input', maskCpfCnpj);
 
   /* ---- SCROLL topbar shadow ---- */
   window.addEventListener('scroll', () => {
