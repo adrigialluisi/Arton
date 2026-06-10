@@ -956,7 +956,13 @@ footer {
    ============================================================ */
 @media (max-width: 880px) {
   .container { padding: 0 20px; }
-  .topbar { padding: 0 20px; }
+  .topbar { padding: 0 16px; gap: 12px; }
+  .topbar-logos { gap: 10px; flex-shrink: 1; min-width: 0; }
+  .topbar-logos img { flex-shrink: 1; }
+  .topbar-logos img[alt="Clube FII"] { height: 18px !important; }
+  .topbar-logos img[alt="Arton Advisors"] { height: 22px !important; }
+  .logo-sep { height: 20px; flex-shrink: 0; }
+  .topbar-cta { flex-shrink: 0; padding: 0 14px; font-size: 12px; white-space: nowrap; }
   .topbar-pill { display: none; }
   .hero-grid, .mig-grid, .comp-grid,
   .form-wrap, .ponte-grid, .pillar-grid { grid-template-columns: 1fr; }
@@ -1019,12 +1025,9 @@ function icon(name, size) {
      ============================================================ -->
 <nav class="topbar">
   <div class="topbar-logos">
-    <img src="AF_Arton_RGB_HorizPositivo (1).png" alt="Arton Advisors" style="height:30px; display:block;">
+    <img src="logo-clubefii-color.png" alt="Clube FII" style="height:22px; display:block;">
     <div class="logo-sep"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <span style="font-size:9px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray-2);">Parceiro</span>
-      <img src="logo-clubefii-color.png" alt="Clube FII" style="height:16px; display:block;">
-    </div>
+    <img src="AF_Arton_RGB_HorizPositivo (1).png" alt="Arton Advisors" style="height:30px; display:block;">
   </div>
   <div></div>
   <button class="topbar-cta" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
@@ -1046,7 +1049,7 @@ function icon(name, size) {
           <em>DNA imobiliário.</em>
         </h1>
         <p class="hero-p">
-          Da análise de FIIs ao acesso a deals imobiliários diretos até toda a gestão do seu patrimônio. Arton: a assessoria que as maiores famílias investidoras do Brasil escolhem, parceira do Clube FII.
+          Da análise de FIIs ao acesso a deals imobiliários diretos até toda a gestão do seu patrimônio. A assessoria que as maiores famílias investidoras do Brasil escolhem, parceira do Clube FII.
         </p>
         <div class="hero-ctas">
           <button class="btn-primary" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
@@ -1143,7 +1146,7 @@ function icon(name, size) {
 
         <!-- 1. HJCT11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/HJCT11.png" alt="HJCT11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-cd">Laje Corporativa</span>
@@ -1162,7 +1165,7 @@ function icon(name, size) {
 
         <!-- 2. CVFL11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/CVFL11.png" alt="CVFL11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-cd">Laje Corporativa</span>
@@ -1182,7 +1185,7 @@ function icon(name, size) {
 
         <!-- 3. BGRB11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/BGRB11.png" alt="BGRB11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-cd">Laje Corporativa</span>
@@ -1203,7 +1206,7 @@ function icon(name, size) {
 
         <!-- 4. BTS Logístico -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/Cajamar  Galpões Mercado Livre.png" alt="BTG LOG Cajamar"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-cri">Logístico</span>
@@ -1220,7 +1223,7 @@ function icon(name, size) {
 
         <!-- 5. KNGR11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/KNGR11.png" alt="KNGR11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-fii">Desenvolvimento</span>
@@ -1238,7 +1241,7 @@ function icon(name, size) {
 
         <!-- 6. Four Seasons RJ -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/Four Seasons Rio de Janeiro.png" alt="Four Seasons RJ"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-fii">Desenvolvimento</span>
@@ -1255,7 +1258,7 @@ function icon(name, size) {
 
         <!-- 7. BLCA11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/BLCA11.png" alt="BLCA11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-cd">Laje Corporativa</span>
@@ -1280,7 +1283,7 @@ function icon(name, size) {
 
         <!-- 8. FLFL11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/FLFL11.png" alt="FLFL11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-cd">Laje Corporativa</span>
@@ -1305,7 +1308,7 @@ function icon(name, size) {
 
         <!-- 9. JCCJ11 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/JCCJ11.png" alt="JCCJ11"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-debn">Shopping Center</span>
@@ -1326,9 +1329,27 @@ function icon(name, size) {
           </div>
         </div>
 
-        <!-- 10. FIP Arton Brickell -->
+        <!-- 10. FIP Kempinski Miami -->
         <div class="deal-card">
-          <div class="deal-img-ph"><span>Imagem do ativo</span></div>
+          <div class="deal-img-ph"><img src="Deals_Fotos/Kempinski Design District - Miami.png" alt="Kempinski Design District Miami"></div>
+          <div class="deal-card-content">
+            <div class="deal-tag-row">
+              <span class="deal-tag tag-fii">Desenvolvimento</span>
+              <span class="deal-ticker">FIP</span>
+            </div>
+            <div class="deal-title">Kempinski Design District – Miami</div>
+            <div class="deal-sub">Participação da inauguração da unidade do Kempinski Residences em Miami, por meio de um FIP de gestão Arton e Hedge Investments.</div>
+            <div class="deal-meta">
+              <div class="deal-section-label">Target de Retorno</div>
+              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">USD + 19,00%</span></div>
+              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">1,98x (USD)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. FIP Arton Brickell -->
+        <div class="deal-card">
+          <div class="deal-img-ph"><img src="Deals_Fotos/Arton Leste Brickell.png" alt="FIP Arton Brickell"></div>
           <div class="deal-card-content">
             <div class="deal-tag-row">
               <span class="deal-tag tag-fii">Desenvolvimento</span>
@@ -1706,8 +1727,8 @@ function icon(name, size) {
               <div class="select-wrap">
                 <select class="form-select">
                   <option value="" disabled selected>Qual seu melhor horário?</option>
-                  <option value="manha">Manhã (09h – 12h)</option>
-                  <option value="tarde">Tarde (13h – 18h)</option>
+                  <option value="manha">Manhã (08h – 12h)</option>
+                  <option value="tarde">Tarde (12h – 18h)</option>
                   <option value="comercial">Qualquer horário comercial</option>
                 </select>
               </div>
@@ -1750,12 +1771,9 @@ function icon(name, size) {
      ============================================================ -->
 <footer>
   <div style="display:flex; align-items:center; gap:20px;">
-    <img src="AF_Arton_RGB_HorizNegativo (1).png" alt="Arton Advisors" style="height:28px; display:block;">
+    <img src="logo-clubefii-white.png" alt="Clube FII" style="height:16px; display:block;">
     <div style="width:1px; height:28px; background:rgba(255,255,255,0.20);"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <span style="font-size:9px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.40);">Parceiro</span>
-      <img src="logo-clubefii-white.png" alt="Clube FII" style="height:14px; display:block;">
-    </div>
+    <img src="AF_Arton_RGB_HorizNegativo (1).png" alt="Arton Advisors" style="height:28px; display:block;">
   </div>
   <div class="footer-legal">
     © 2025 Arton AAI · Av. Brigadeiro Faria Lima, 3477 · Torre A - 7º andar · São Paulo - SP<br>
