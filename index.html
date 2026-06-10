@@ -955,25 +955,59 @@ footer {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 880px) {
-  .container { padding: 0 20px; }
-  .topbar { padding: 0 16px; gap: 12px; }
-  .topbar-logos { gap: 10px; flex-shrink: 1; min-width: 0; }
-  .topbar-logos img { flex-shrink: 1; }
-  .topbar-logos img[alt="Clube FII"] { height: 18px !important; }
-  .topbar-logos img[alt="Arton Advisors"] { height: 22px !important; }
-  .logo-sep { height: 20px; flex-shrink: 0; }
-  .topbar-cta { flex-shrink: 0; padding: 0 14px; font-size: 12px; white-space: nowrap; }
+  /* Layout base */
+  .container { padding: 0 16px; }
+
+  /* Topbar */
+  .topbar { padding: 0 16px; gap: 8px; height: auto; min-height: 56px; }
+  .topbar-logos { gap: 8px; flex-shrink: 1; min-width: 0; overflow: hidden; }
+  .topbar-logos img[alt="Arton Advisors"] { height: 20px !important; flex-shrink: 1; }
+  .topbar-logos img[alt="Clube FII"] { height: 14px !important; flex-shrink: 1; }
+  .topbar-logos span { font-size: 9px !important; }
+  .logo-sep { height: 18px; flex-shrink: 0; }
+  .topbar-cta {
+    flex-shrink: 0;
+    padding: 0 10px;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    height: 32px;
+    white-space: nowrap;
+  }
   .topbar-pill { display: none; }
-  .hero-grid, .mig-grid, .comp-grid,
-  .form-wrap, .ponte-grid, .pillar-grid { grid-template-columns: 1fr; }
-  .ponte-arrow-col { display: none; }
+
+  /* Hero */
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
   .hero-visual { display: none; }
+  #hero { padding: 56px 0 48px; }
+  .hero-h1 { font-size: clamp(26px, 7vw, 38px); }
+  .hero-p { font-size: 15px; max-width: 100%; }
+
+  /* Cultura */
   .cultura-inner { grid-template-columns: 1fr 1fr; }
-  .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .pilares-tabs { flex-wrap: wrap; }
+  .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 24px 16px; }
+
+  /* Deals */
   .deals-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* Pilares */
+  .pillar-grid { grid-template-columns: 1fr; }
+  .pillar-main { border-right: 1px solid var(--gray-3); border-bottom: none; padding: 32px 20px; }
+  .pillar-aside { padding: 32px 20px; }
+  .pilares-tabs { flex-wrap: wrap; }
+
+  /* A Ponte */
+  .ponte-grid { grid-template-columns: 1fr; }
+  .ponte-arrow-col { display: none; }
+
+  /* Migração / Comp */
+  .mig-grid, .comp-grid { grid-template-columns: 1fr; }
+
+  /* Formulário */
+  .form-wrap { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  footer { flex-direction: column; text-align: center; }
+
+  /* Footer */
+  footer { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
   .footer-legal { text-align: center; max-width: 100%; }
 }
 
@@ -1025,9 +1059,12 @@ function icon(name, size) {
      ============================================================ -->
 <nav class="topbar">
   <div class="topbar-logos">
-    <img src="logo-clubefii-color.png" alt="Clube FII" style="height:22px; display:block;">
-    <div class="logo-sep"></div>
     <img src="AF_Arton_RGB_HorizPositivo (1).png" alt="Arton Advisors" style="height:30px; display:block;">
+    <div class="logo-sep"></div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <img src="logo-clubefii-color.png" alt="Clube FII" style="height:20px; display:block;">
+      <span style="font-size:10px; font-weight:600; color:var(--gray-2); letter-spacing:0.06em; text-transform:uppercase;">Parceiro</span>
+    </div>
   </div>
   <div></div>
   <button class="topbar-cta" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
@@ -1328,25 +1365,7 @@ function icon(name, size) {
           </div>
         </div>
 
-        <!-- 10. FIP Kempinski Miami -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Kempinski Design District - Miami.png" alt="Kempinski Design District Miami"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">FIP</span>
-            </div>
-            <div class="deal-title">Kempinski Design District – Miami</div>
-            <div class="deal-sub">Participação da inauguração da unidade do Kempinski Residences em Miami, por meio de um FIP de gestão Arton e Hedge Investments.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">USD + 19,00%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">1,98x (USD)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 11. FIP Arton Brickell -->
+        <!-- 10. FIP Arton Brickell -->
         <div class="deal-card">
           <div class="deal-img-ph"><img src="Deals_Fotos/Arton Leste Brickell.png" alt="FIP Arton Brickell"></div>
           <div class="deal-card-content">
@@ -1417,10 +1436,10 @@ function icon(name, size) {
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Curadoria de investimentos, independente da instituição</li>
-            <li><span class="pf-bullet" data-pf></span>Monitoramento estratégico consolidado no mercado local e offshore</li>
-            <li><span class="pf-bullet" data-pf></span>Análise apurada do portfólio em linha com os objetivos da família</li>
-            <li><span class="pf-bullet" data-pf></span>Reuniões periódicas para apresentação de resultado</li>
+            <li><span class="pf-bullet" data-pf></span>Curadoria de investimentos</li>
+            <li><span class="pf-bullet" data-pf></span>Monitoramento estratégico consolidado</li>
+            <li><span class="pf-bullet" data-pf></span>Análise do portfólio</li>
+            <li><span class="pf-bullet" data-pf></span>Reuniões periódicas de resultado</li>
           </ul>
         </div>
       </div>
@@ -1436,10 +1455,10 @@ function icon(name, size) {
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Financiamento de terrenos, obras e loteamentos, com antecipação de recebíveis e acesso a fundos imobiliários</li>
-            <li><span class="pf-bullet" data-pf></span>Financiamento de custeio, plantio, estoque e aquisição de terras, com estruturação de CPR para os principais commodities</li>
-            <li><span class="pf-bullet" data-pf></span>Estruturação e distribuição de CRIs, CRAs e Debêntures, com soluções de câmbio, Trade Finance e derivativos</li>
-            <li><span class="pf-bullet" data-pf></span>Preparamos sua empresa para enfrentar o mercado com segurança, valor e credibilidade</li>
+            <li><span class="pf-bullet" data-pf></span>Financiamento Imobiliário</li>
+            <li><span class="pf-bullet" data-pf></span>Financiamento Agro</li>
+            <li><span class="pf-bullet" data-pf></span>CRIs, CRAs e Debêntures</li>
+            <li><span class="pf-bullet" data-pf></span>Acesso ao Mercado de Capitais</li>
           </ul>
         </div>
       </div>
@@ -1455,10 +1474,10 @@ function icon(name, size) {
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Carteira estruturada conforme suas necessidades, objetivos e tolerância ao risco</li>
-            <li><span class="pf-bullet" data-pf></span>Monitoramento ativo com ajustes dinâmicos alinhados às condições de mercado</li>
-            <li><span class="pf-bullet" data-pf></span>Diversificação criteriosa entre ativos, setores e geografias para reduzir concentração e aumentar resiliência</li>
-            <li><span class="pf-bullet" data-pf></span>Gestão de carteiras administradas, fundos exclusivos e fundos de investimento</li>
+            <li><span class="pf-bullet" data-pf></span>Carteira estruturada</li>
+            <li><span class="pf-bullet" data-pf></span>Monitoramento ativo</li>
+            <li><span class="pf-bullet" data-pf></span>Diversificação entre ativos, setores e geografias</li>
+            <li><span class="pf-bullet" data-pf></span>Carteiras administradas e fundos exclusivos</li>
           </ul>
         </div>
       </div>
@@ -1479,7 +1498,7 @@ function icon(name, size) {
       consolidam o patrimônio na Arton?
     </h2>
     <p class="ponte-sub">
-      O Clube FII entrega o melhor research e as melhores ferramentas para quem investe em fundos imobiliários. A Arton adiciona a camada que converte esse conhecimento em eficiência patrimonial real.
+      O Clube FII entrega o melhor research e as melhores ferramentas para quem investe em fundos imobiliários. A Arton converte esse conhecimento em eficiência patrimonial real.
     </p>
 
     <div class="ponte-grid">
@@ -1611,18 +1630,7 @@ function icon(name, size) {
       <div class="comp-quote-card">
         <div class="comp-quote-mark">"</div>
         <div class="comp-quote-text">
-          "Promovemos uma intensa curadoria e todos os produtos passam por um rigoroso comitê de investimentos. Os sócios investem necessariamente nesses mesmos produtos, salvo algum impedimento regulatório."
-        </div>
-        <div class="comp-quote-author">
-          <div class="comp-author-rule"></div>
-          <div class="comp-author-text">Bernardo Assumpção · CEO, Arton Advisors</div>
-        </div>
-        <div class="comp-tags">
-          <span class="comp-tag">Ex-Sócio XP</span>
-          <span class="comp-tag">Ex-MD JP Morgan</span>
-          <span class="comp-tag">Citibank</span>
-          <span class="comp-tag">USP · INSEAD</span>
-          <span class="comp-tag">BTG Pactual</span>
+          "Acreditamos que patrimônio relevante deve ser administrado de forma integrada. Investimentos, sucessão, governança e estrutura patrimonial devem caminhar juntos."
         </div>
       </div>
     </div>
@@ -1770,9 +1778,12 @@ function icon(name, size) {
      ============================================================ -->
 <footer>
   <div style="display:flex; align-items:center; gap:20px;">
-    <img src="logo-clubefii-white.png" alt="Clube FII" style="height:16px; display:block;">
-    <div style="width:1px; height:28px; background:rgba(255,255,255,0.20);"></div>
     <img src="AF_Arton_RGB_HorizNegativo (1).png" alt="Arton Advisors" style="height:28px; display:block;">
+    <div style="width:1px; height:28px; background:rgba(255,255,255,0.20);"></div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <img src="logo-clubefii-white.png" alt="Clube FII" style="height:16px; display:block;">
+      <span style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.06em; text-transform:uppercase;">Parceiro</span>
+    </div>
   </div>
   <div class="footer-legal">
     © 2025 Arton AAI · Av. Brigadeiro Faria Lima, 3477 · Torre A - 7º andar · São Paulo - SP<br>
@@ -1850,13 +1861,18 @@ function icon(name, size) {
   }
 
   /* ---- CARROSSEL ---- */
-  const TOTAL = 10;
   let cur = 0;
   const CARD_W = 276 + 20;
 
+  function getTotal() {
+    return document.querySelectorAll('#deals-track .deal-card').length;
+  }
+
   function buildDots() {
+    const total = getTotal();
     const el = document.getElementById('deals-dots');
-    for (let i = 0; i < TOTAL; i++) {
+    el.innerHTML = '';
+    for (let i = 0; i < total; i++) {
       const d = document.createElement('div');
       d.className = 'd-dot' + (i === 0 ? ' active' : '');
       d.onclick = () => goTo(i);
@@ -1865,11 +1881,16 @@ function icon(name, size) {
   }
 
   function goTo(n) {
+    const total = getTotal();
+    const track = document.getElementById('deals-track');
     const wrap = document.querySelector('.deals-track-wrap');
-    const visCount = Math.max(1, Math.floor(wrap.offsetWidth / CARD_W));
-    const maxSlide = Math.max(0, TOTAL - visCount);
-    cur = Math.max(0, Math.min(n, maxSlide));
-    document.getElementById('deals-track').style.transform = `translateX(-${cur * CARD_W}px)`;
+    const wrapW = wrap.offsetWidth;
+    const totalW = total * CARD_W - 20; // largura total do track (sem gap no final)
+    const maxOffset = Math.max(0, totalW - wrapW);
+    const targetOffset = n * CARD_W;
+    cur = Math.max(0, Math.min(n, total - 1));
+    const offset = Math.min(targetOffset, maxOffset);
+    track.style.transform = `translateX(-${offset}px)`;
     document.querySelectorAll('.d-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
   }
 
