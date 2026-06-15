@@ -4,18 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arton Advisors × Clube FII — Parceria Exclusiva</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 
-/* ===== KLAVIKA ===== */
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-light.otf') format('opentype'); font-weight: 300; font-style: normal; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-light-italic.otf') format('opentype'); font-weight: 300; font-style: italic; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-medium.otf') format('opentype'); font-weight: 400; font-style: normal; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-medium.otf') format('opentype'); font-weight: 500; font-style: normal; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-regular-italic.otf') format('opentype'); font-weight: 400; font-style: italic; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-bold.otf') format('opentype'); font-weight: 600; font-style: normal; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-bold.otf') format('opentype'); font-weight: 700; font-style: normal; }
-@font-face { font-family: 'Klavika'; src: url('FontClubeFii/klavika-bold-italic.otf') format('opentype'); font-weight: 600; font-style: italic; }
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -47,12 +40,11 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-  font-family: 'Klavika', sans-serif;
+  font-family: 'Barlow', sans-serif;
   background: var(--white);
   color: var(--dark);
   line-height: 1.6;
   font-size: 16px;
-  padding-top: 60px;
 }
 
 /* ===== UTILITY ===== */
@@ -89,7 +81,7 @@ body {
   border: none; border-radius: 0;
   cursor: pointer; transition: var(--tr);
   text-decoration: none;
-  font-family: 'Klavika', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-size: 15px; font-weight: 500;
   letter-spacing: 0; text-transform: none;
   padding: 0;
@@ -120,8 +112,6 @@ body {
   text-decoration: none;
 }
 .btn-ghost:hover { color: var(--orange); }
-#hero .btn-ghost { color: rgba(255,255,255,0.85); }
-#hero .btn-ghost:hover { color: var(--orange); }
 
 .divider-line {
   width: 36px; height: 2px;
@@ -143,7 +133,7 @@ body {
    TOPBAR
    ============================================================ */
 .topbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   background: var(--white);
   border-bottom: 1px solid var(--gray-3);
   padding: 0 48px;
@@ -186,7 +176,7 @@ body {
   background: var(--orange); color: var(--white);
   border: none; border-radius: 0;
   cursor: pointer; transition: var(--tr);
-  font-family: 'Klavika', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px; font-weight: 500;
   letter-spacing: 0; text-transform: none;
   padding: 0; align-self: stretch;
@@ -211,26 +201,10 @@ body {
    HERO
    ============================================================ */
 #hero {
-  position: relative;
-  padding: 90px 0 80px;
+  background: var(--white);
+  padding: 80px 0 70px;
   border-bottom: 1px solid var(--gray-4);
-  background-image: url('Fotos Arton/RSF (7).jpg');
-  background-size: cover;
-  background-position: center 30%;
 }
-/* overlay: filtro verde Arton sobre a foto */
-#hero::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(
-    115deg,
-    rgba(44,77,67,0.93) 0%,
-    rgba(44,77,67,0.88) 52%,
-    rgba(44,77,67,0.80) 75%,
-    rgba(44,77,67,0.75) 100%
-  );
-}
-#hero .container { position: relative; z-index: 1; }
 .hero-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 72px; align-items: center;
@@ -249,22 +223,20 @@ body {
 .hero-h1 {
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 300; line-height: 1.10;
-  color: var(--white); text-transform: uppercase;
+  color: var(--black); text-transform: uppercase;
   letter-spacing: 0.04em; margin-bottom: 22px;
 }
-.hero-h1 em { font-style: normal; color: var(--orange); }
+.hero-h1 em { font-style: normal; color: var(--green); }
 .hero-p {
   font-size: 16px; font-weight: 400;
-  line-height: 1.75; color: rgba(255,255,255,0.80);
+  line-height: 1.75; color: var(--gray-1);
   margin-bottom: 36px; max-width: 440px;
 }
 .hero-ctas { display: flex; align-items: center; gap: 20px; }
 
 .hero-visual {
-  background: rgba(255,255,255,0.09);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: var(--gray-4);
+  border: 1px solid var(--gray-3);
   border-radius: 0;
   padding: 32px; position: relative; overflow: hidden;
 }
@@ -272,43 +244,43 @@ body {
   content: '';
   position: absolute; top: 0; left: 0;
   width: 4px; height: 100%;
-  background: var(--orange);
+  background: var(--cfii);
 }
 .hero-visual-label {
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.20em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); margin-bottom: 20px;
+  color: var(--gray-2); margin-bottom: 20px;
 }
 .hero-stat-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
 }
 .h-stat {
-  background: rgba(255,255,255,0.10);
+  background: var(--white);
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid var(--gray-3);
 }
 .h-stat-n {
   display: block;
   font-size: 24px; font-weight: 700;
-  color: var(--white); line-height: 1;
+  color: var(--black); line-height: 1;
   margin-bottom: 5px; text-transform: uppercase;
 }
 .h-stat-l {
   font-size: 10px; font-weight: 500;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: var(--gray-2);
 }
 .hero-visual-footer {
   margin-top: 16px; padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid var(--gray-3);
   display: flex; align-items: center; gap: 10px;
 }
-.hvf-label { font-size: 10px; color: rgba(255,255,255,0.50); letter-spacing: 0.08em; text-transform: uppercase; }
+.hvf-label { font-size: 10px; color: var(--gray-2); letter-spacing: 0.08em; text-transform: uppercase; }
 .hvf-tag {
   font-size: 11px; font-weight: 600;
-  color: var(--white);
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.20);
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--gray-3);
   border-radius: 0; padding: 3px 10px;
   letter-spacing: 0.06em;
 }
@@ -390,9 +362,8 @@ body {
 }
 .deals-track {
   display: flex; gap: 20px;
-  align-items: stretch;
   transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1);
-  padding-bottom: 2px;
+  padding-bottom: 2px; /* evita corte do border-top hover */
 }
 .deal-card {
   flex: 0 0 276px;
@@ -400,49 +371,19 @@ body {
   border: 1px solid var(--gray-3);
   border-top: 2px solid var(--cfii);
   border-radius: 0;
-  padding: 0;
+  padding: 24px;
   transition: var(--tr);
-  display: flex; flex-direction: column;
 }
 .deal-card:hover {
   box-shadow: var(--shadow);
   border-top-color: var(--orange);
-}
-.deal-card-content { flex: 1; padding: 20px; }
-.deal-tag-row {
-  display: flex; align-items: center;
-  justify-content: space-between; margin-bottom: 10px;
-}
-.deal-ticker {
-  font-size: 9px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--gray-2);
-}
-.deal-section-label {
-  font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--black);
-  padding-top: 8px; margin-top: 6px; margin-bottom: 2px;
-  border-top: 1px solid var(--gray-4);
-}
-.deal-img-ph {
-  height: 130px; flex-shrink: 0;
-  background: var(--gray-4);
-  border-bottom: 1px solid var(--gray-3);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-}
-.deal-img-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.deal-img-ph span {
-  font-size: 9px; color: var(--gray-3);
-  letter-spacing: 0.16em; text-transform: uppercase;
 }
 .deal-tag {
   display: inline-block;
   font-size: 9px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 3px 8px; border-radius: 0;
-  margin-bottom: 0;
+  margin-bottom: 12px;
 }
 .tag-cri  { background: var(--green-lt);   color: var(--green); }
 .tag-debn { background: var(--orange-lt);  color: var(--orange-dk); }
@@ -719,61 +660,52 @@ body {
 }
 .comp-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; align-items: stretch;
+  gap: 64px; align-items: center;
 }
-
-/* Carrossel de fotos */
-.comp-photos {
-  position: relative; overflow: hidden;
-  min-height: 480px;
+.comp-icon-circle {
+  width: 56px; height: 56px;
+  border: 1px solid var(--gray-3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white); margin-bottom: 22px;
 }
-.comp-photos-track {
-  display: flex; height: 100%;
-  transition: transform 0.5s cubic-bezier(0.25,0.8,0.25,1);
+.comp-icon-circle svg { color: var(--cfii); }
+.comp-quote-card {
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-top: 3px solid var(--cfii);
+  border-radius: 0; padding: 40px;
+  position: relative;
 }
-.comp-photo-slide {
-  flex: 0 0 100%; height: 100%; min-height: 480px;
-  background-size: cover; background-position: center;
+.comp-quote-mark {
+  position: absolute; top: 18px; left: 32px;
+  font-size: 64px; line-height: 1;
+  color: var(--cfii); opacity: 0.12;
+  font-family: Georgia, serif;
 }
-.comp-photos-dots {
-  position: absolute; bottom: 16px; left: 0; right: 0;
-  display: flex; justify-content: center; gap: 6px;
+.comp-quote-text {
+  font-size: 16px; font-style: italic;
+  line-height: 1.75; color: var(--dark);
+  margin-bottom: 26px; margin-top: 20px;
 }
-.cp-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(255,255,255,0.45);
-  cursor: pointer; transition: var(--tr);
-  border: none;
-}
-.cp-dot.active { background: var(--white); width: 18px; border-radius: 3px; }
-
-/* Lado direito */
-.comp-content {
-  background: var(--green);
-  padding: 56px 52px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.comp-content .eyebrow { color: var(--orange); margin-bottom: 12px; }
-.comp-content .section-title { color: var(--white); margin-bottom: 8px; }
-.comp-content .section-title em { color: var(--orange); }
-.comp-divider { width: 36px; height: 2px; background: var(--orange); margin: 20px 0 28px; }
-
-/* Cards de perfil */
-.comp-profiles { display: flex; flex-direction: column; gap: 0; }
-.comp-profile-item {
-  display: flex; align-items: center; gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.comp-profile-item:last-child { border-bottom: none; }
-.comp-profile-num {
+.comp-quote-author { display: flex; align-items: center; gap: 12px; }
+.comp-author-rule { width: 22px; height: 2px; background: var(--orange); }
+.comp-author-text {
   font-size: 11px; font-weight: 700;
-  color: var(--orange); letter-spacing: 0.12em;
-  flex-shrink: 0; width: 24px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--black);
 }
-.comp-profile-text {
-  font-size: 14px; color: rgba(255,255,255,0.85);
-  line-height: 1.5;
+.comp-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-top: 22px; padding-top: 22px;
+  border-top: 1px solid var(--gray-4);
+}
+.comp-tag {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gray-2);
+  border: 1px solid var(--gray-3);
+  border-radius: 0; padding: 4px 10px;
 }
 
 
@@ -822,7 +754,7 @@ body {
 }
 .form-input, .form-select, .form-textarea {
   width: 100%;
-  font-family: 'Klavika', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-size: 14px; color: var(--dark);
   background: var(--gray-4);
   border: 1px solid var(--gray-3);
@@ -899,7 +831,7 @@ body {
   background: var(--orange); color: var(--white);
   border: none; border-radius: 0;
   cursor: pointer; transition: var(--tr);
-  font-family: 'Klavika', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-size: 15px; font-weight: 500;
   letter-spacing: 0; text-transform: none;
   padding: 0;
@@ -965,66 +897,19 @@ footer {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 880px) {
-  /* Layout base */
-  .container { padding: 0 16px; }
-
-  /* Topbar */
-  body { padding-top: 52px; }
-  .topbar { padding: 0 0 0 14px; gap: 8px; height: 52px; }
-  .topbar-logos { gap: 8px; flex-shrink: 1; min-width: 0; overflow: hidden; align-items: center; }
-  .topbar-logos img[alt="Arton Advisors"] { height: 32px !important; flex-shrink: 0; }
-  .topbar-logos img[alt="Clube FII"] { height: 12px !important; flex-shrink: 1; }
-  .topbar-logos span { font-size: 9px !important; }
-  .logo-sep { height: 18px; flex-shrink: 0; }
-  .topbar-cta {
-    flex-shrink: 0;
-    align-self: stretch;
-    margin: 0;
-    border-radius: 0;
-    font-size: 11px;
-    white-space: nowrap;
-  }
-  .topbar-cta span { padding: 0 12px; }
-  .topbar-cta::after { width: 32px; }
+  .container { padding: 0 20px; }
+  .topbar { padding: 0 20px; }
   .topbar-pill { display: none; }
-
-  /* Hero */
-  .hero-grid { grid-template-columns: 1fr; gap: 0; }
-  .hero-visual { display: none; }
-  #hero { padding: 56px 0 48px; }
-  .hero-h1 { font-size: clamp(26px, 7vw, 38px); }
-  .hero-p { font-size: 15px; max-width: 100%; }
-
-  /* Cultura */
-  .cultura-inner { grid-template-columns: 1fr 1fr; }
-  .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 24px 16px; }
-
-  /* Deals */
-  .deals-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-
-  /* Pilares */
-  .pillar-grid { grid-template-columns: 1fr; }
-  .pillar-main { border-right: 1px solid var(--gray-3); border-bottom: none; padding: 32px 20px; }
-  .pillar-aside { padding: 32px 20px; }
-  .pilares-tabs { flex-wrap: wrap; }
-
-  /* A Ponte */
-  .ponte-grid { grid-template-columns: 1fr; }
+  .hero-grid, .mig-grid, .comp-grid,
+  .form-wrap, .ponte-grid, .pillar-grid { grid-template-columns: 1fr; }
   .ponte-arrow-col { display: none; }
-
-  /* Migração / Comp */
-  .mig-grid { grid-template-columns: 1fr; }
-  .comp-grid { grid-template-columns: 1fr; }
-  .comp-photos { min-height: 260px; }
-  .comp-photo-slide { min-height: 260px; }
-  .comp-content { padding: 40px 20px; }
-
-  /* Formulário */
-  .form-wrap { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .cultura-inner { grid-template-columns: 1fr 1fr; }
+  .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .pilares-tabs { flex-wrap: wrap; }
+  .deals-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   .form-row { grid-template-columns: 1fr; }
-
-  /* Footer */
-  footer { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+  footer { flex-direction: column; text-align: center; }
   .footer-legal { text-align: center; max-width: 100%; }
 }
 
@@ -1076,11 +961,11 @@ function icon(name, size) {
      ============================================================ -->
 <nav class="topbar">
   <div class="topbar-logos">
-    <img src="AF_Arton_RGB_HorizPositivo (1).png" alt="Arton Advisors" style="height:40px; display:block;">
+    <div class="logo-clubefii">Clube FII</div>
     <div class="logo-sep"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <span style="font-size:10px; font-weight:600; color:var(--gray-2); letter-spacing:0.06em; text-transform:uppercase;">Parceiro</span>
-      <img src="logo-clubefii-color.png" alt="Clube FII" style="height:16px; display:block;">
+    <div>
+      <div class="logo-arton-name">Arton</div>
+      <div class="logo-arton-sub">Advisors</div>
     </div>
   </div>
   <div></div>
@@ -1098,15 +983,19 @@ function icon(name, size) {
     <div class="hero-grid">
       <div>
         <h1 class="hero-h1">
-          Wealth Management<br>
-          com <em>DNA Imobiliário.</em>
+          Você domina FIIs.<br>
+          A Arton cuida do<br>
+          <em>restante do<br>patrimônio.</em>
         </h1>
         <p class="hero-p">
-          Da análise de FIIs à estruturação patrimonial completa. A Arton ajuda investidores imobiliários a transformar patrimônio em uma estratégia integrada de crescimento, proteção e sucessão.
+          A assessoria que as maiores famílias investidoras do Brasil escolhem. Arquitetura aberta, sem conflito de interesse — e os mesmos FIIs que você já acompanha no Clube FII.
         </p>
         <div class="hero-ctas">
           <button class="btn-primary" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
             <span>Solicitar Contato</span>
+          </button>
+          <button class="btn-ghost" onclick="document.getElementById('a-ponte').scrollIntoView({behavior:'smooth'})">
+            Como funciona <span id="ico-arrow-r"></span>
           </button>
         </div>
       </div>
@@ -1150,26 +1039,26 @@ function icon(name, size) {
 
       <div class="cultura-item">
         <div class="cultura-icon-circle" id="ico-anchor"></div>
-        <div class="cultura-title">Skin in the game</div>
-        <div class="cultura-desc">Os sócios investem junto com você nas mesmas operações e fundos. Uma estrutura de incentivos que assegura comprometimento genuíno em cada decisão.</div>
+        <div class="cultura-title">Lastro Verdadeiro</div>
+        <div class="cultura-desc">BTG como financial sponsor e um time múltiplo com profunda experiência em Mercado de Capitais e Private Banking.</div>
       </div>
 
       <div class="cultura-item">
         <div class="cultura-icon-circle" id="ico-users"></div>
-        <div class="cultura-title">DNA imobiliário</div>
-        <div class="cultura-desc">Equipe com experiência na análise de FIIs, ativos imobiliários e operações estruturadas, com visão prática sobre como integrar imóveis físicos e investimentos financeiros.</div>
+        <div class="cultura-title">Relacionamentos Reais</div>
+        <div class="cultura-desc">O relacionamento é parte fundamental do nosso DNA. Conectamos pessoas, recursos e empresas para potencializar resultados.</div>
       </div>
 
       <div class="cultura-item">
         <div class="cultura-icon-circle" id="ico-target"></div>
-        <div class="cultura-title">Visão 360° do patrimônio</div>
-        <div class="cultura-desc">Além dos FIIs, integramos planejamento patrimonial, sucessório, fiscal e internacional numa única estratégia.</div>
+        <div class="cultura-title">Técnica ao Resultado</div>
+        <div class="cultura-desc">Cada tema é analisado com rigor e clareza total, respeitando sempre o perfil e os objetivos de cada cliente.</div>
       </div>
 
       <div class="cultura-item">
         <div class="cultura-icon-circle" id="ico-zap"></div>
-        <div class="cultura-title">Estrutura Institucional</div>
-        <div class="cultura-desc">BTG Pactual como financial sponsor, unindo a robustez do maior banco de investimentos da América Latina ao atendimento boutique da Arton.</div>
+        <div class="cultura-title">Coragem para ser Bold</div>
+        <div class="cultura-desc">Nascemos da ousadia de 18 talentos que decidiram seguir seu próprio caminho, explorando oportunidades singulares.</div>
       </div>
 
     </div>
@@ -1185,8 +1074,8 @@ function icon(name, size) {
     <div class="deals-header">
       <div>
         <div class="eyebrow">Acesso Exclusivo</div>
-        <h2 class="section-title">Club Deals com curadoria e<br><em>co-investidos pela Arton</em></h2>
-        <p class="section-sub" style="margin-top:10px;">Operações estruturadas exclusivas que o home broker não oferece. Cada deal passa pela curadoria rigorosa da Arton e pelo capital dos próprios sócios.</p>
+        <h2 class="section-title">Club Deals que <em>a Arton</em> investiu</h2>
+        <p class="section-sub" style="margin-top:10px;">Operações estruturadas que o home broker não oferece. Curadoria rigorosa para patrimônios acima de R$5 milhões.</p>
       </div>
       <div class="deals-nav">
         <button class="deals-btn" onclick="slideDeals(-1)" id="btn-prev"></button>
@@ -1197,224 +1086,113 @@ function icon(name, size) {
     <div class="deals-track-wrap">
       <div class="deals-track" id="deals-track">
 
-        <!-- 1. BLCA11 — Pátio Malzoni -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/BLCA11.jpg" alt="BLCA11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">BLCA11</span>
-            </div>
-            <div class="deal-title">Pátio Malzoni</div>
-            <div class="deal-sub">Aquisição de Lajes no Pátio Malzoni via BLCA11.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 86,00</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val">R$ 39.000,00</span></div>
-              <div class="deal-section-label">Patrimonial (01/26)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val accent">R$ 128,69</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 58.941,66</span></div>
-              <div class="deal-section-label">Retorno vs. Benchmark</div>
-              <div class="deal-meta-row"><span class="dm-key">BLCA11</span><span class="dm-val accent">+63,8%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">CDI</span><span class="dm-val">+61,6%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">IFIX</span><span class="dm-val">+41,1%</span></div>
-            </div>
+          <span class="deal-tag tag-cri">CRI</span>
+          <div class="deal-title">CRI Premium — Logística AAA</div>
+          <div class="deal-sub">Galpão logístico classe A, locatário investment grade, contrato atípico 10 anos.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA + 8,5% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">10 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
           </div>
         </div>
 
-        <!-- 2. KNGR11 — Kinea Desenvolvimento -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/KNGR11.jpg" alt="KNGR11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">KNGR11</span>
-            </div>
-            <div class="deal-title">FII Kinea Guarará</div>
-            <div class="deal-sub">Coincorporação junto à Kinea de um edifício residencial de alto padrão na região do Jardins.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA +11,40% a +13,40%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Desinvestimento</span><span class="dm-val">Até 2030</span></div>
-            </div>
+          <span class="deal-tag tag-debn">Debênture</span>
+          <div class="deal-title">Debênture Incentivada — Energia</div>
+          <div class="deal-sub">Emissora rating AA, infraestrutura renovável, isenta de IR para pessoa física.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA + 7,2% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">8 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 250 mil</span></div>
           </div>
         </div>
 
-        <!-- 3. JCCJ11 — Shopping Cidade Jardim -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/JCCJ11.jpg" alt="JCCJ11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-debn">Shopping Center</span>
-              <span class="deal-ticker">JCCJ11</span>
-            </div>
-            <div class="deal-title">Shp. Cidade Jardim</div>
-            <div class="deal-sub">Aquisição via FOF de cotas do FII Shopping Cidade Jardim em 06/2023 e posterior venda em 07/2024.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 102,52</span></div>
-              <div class="deal-section-label">Condições de Venda</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço aprox. (R$/cota)</span><span class="dm-val">R$ 145,00</span></div>
-              <div class="deal-section-label">Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">Retorno</span><span class="dm-val accent">+45,69%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">IFIX</span><span class="dm-val">+8,63%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">vs. CDI</span><span class="dm-val accent">356% do CDI</span></div>
-            </div>
+          <span class="deal-tag tag-cd">Club Deal</span>
+          <div class="deal-title">Laje Corporativa — Faria Lima</div>
+          <div class="deal-sub">Participação direta em laje premium em São Paulo, alta liquidez de saída.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">18% a.a. (TIR)</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">5 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 1 milhão</span></div>
           </div>
         </div>
 
-        <!-- 4. FIP — Kempinski Design District Miami -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Kempinski Design District - Miami.jpg" alt="Kempinski Design District Miami"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">FIP</span>
-            </div>
-            <div class="deal-title">Kempinski Design District – Miami</div>
-            <div class="deal-sub">Participação da inauguração da unidade do Kempinski Residences em Miami, por meio de um FIP de gestão Arton e Hedge Investments.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">USD + 19,00%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">1,98x (USD)</span></div>
-            </div>
+          <span class="deal-tag tag-cra">CRA</span>
+          <div class="deal-title">CRA Agronegócio — Grãos</div>
+          <div class="deal-sub">Produtor Mato Grosso, garantia real sobre imóvel rural e produção comprometida.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">CDI + 4,5% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">5 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 300 mil</span></div>
           </div>
         </div>
 
-        <!-- 5. BTS — BTG LOG Cajamar -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Cajamar-Galpoes-Mercado-Livre.jpg" alt="BTG LOG Cajamar"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cri">Logístico</span>
-              <span class="deal-ticker">BTS</span>
-            </div>
-            <div class="deal-title">BTG LOG Cajamar</div>
-            <div class="deal-sub">Emissão de cotas sêniores via FII voltado ao desenvolvimento de galpão logístico AAA em Cajamar (SP), com contrato built-to-suit firmado com o Mercado Livre.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições da Transação</div>
-              <div class="deal-meta-row"><span class="dm-key">Cota Sênior</span><span class="dm-val accent">IPCA + 9,00% a.a.</span></div>
-            </div>
+          <span class="deal-tag tag-fii">FII</span>
+          <div class="deal-title">FII de Desenvolvimento — Residencial</div>
+          <div class="deal-sub">Fundo de cotas com foco em lançamentos residenciais de alta renda em SP e RJ.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">22% a.a. (TIR)</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">4 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
           </div>
         </div>
 
-        <!-- 6. BGRB11 — Birmann 32 -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/BGRB11.jpg" alt="BGRB11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">BGRB11</span>
-            </div>
-            <div class="deal-title">Birmann 32</div>
-            <div class="deal-sub">Aquisição do edifício Birmann 32.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 100,00</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val">R$ 44.209,00</span></div>
-              <div class="deal-section-label">Patrimonial (01/26)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val accent">R$ 119,87</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 53.059,03</span></div>
-            </div>
+          <span class="deal-tag tag-cri">CRI</span>
+          <div class="deal-title">CRI Corporate — Galpão Sul</div>
+          <div class="deal-sub">Lastreado em galpão de distribuição no Sul do Brasil, empresa listada na B3.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">IPCA + 9,0% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">12 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
           </div>
         </div>
 
-        <!-- 7. FIP — Marina Palace -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Four Seasons Rio de Janeiro.jpg" alt="Marina Palace"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">FIP</span>
-            </div>
-            <div class="deal-title">Marina Palace</div>
-            <div class="deal-sub">Participação via FIP na chegada do Four Seasons ao Rio de Janeiro, no local do Marina Palace Hotel.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">3,75x a 6,36x</span></div>
-            </div>
+          <span class="deal-tag tag-cd">Club Deal</span>
+          <div class="deal-title">Hotel Boutique — Nordeste</div>
+          <div class="deal-sub">Empreendimento hoteleiro de luxo em destino prime com marca internacional.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">16% a.a. (TIR)</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">7 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 1 milhão</span></div>
           </div>
         </div>
 
-        <!-- 8. FIP — Brickell -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/Arton Leste Brickell.jpg" alt="FIP Arton Brickell"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-fii">Desenvolvimento</span>
-              <span class="deal-ticker">FIP</span>
-            </div>
-            <div class="deal-title">FIP Arton Brickell</div>
-            <div class="deal-sub">Captação de USD 15 MM para desenvolvimento de edifício multifamily em Brickell, principal polo financeiro de Miami.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Est. Líquida</span><span class="dm-val accent">20% a.a. (USD)</span></div>
-              <div class="deal-meta-row"><span class="dm-key">MOIC Estimado</span><span class="dm-val accent">2,1x (USD)</span></div>
-            </div>
+          <span class="deal-tag tag-debn">Debênture</span>
+          <div class="deal-title">Debênture Estruturada — Saúde</div>
+          <div class="deal-sub">Rede de clínicas em expansão, garantia real e pessoal dos sócios, prazo bullet.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">CDI + 6,0% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Prazo</span><span class="dm-val">3 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 250 mil</span></div>
           </div>
         </div>
 
-        <!-- 9. FLFL11 — Ed. Faria Lima -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/FLFL11.jpg" alt="FLFL11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">FLFL11</span>
-            </div>
-            <div class="deal-title">Ed. Faria Lima (Faria Lima, 4.440)</div>
-            <div class="deal-sub">Aquisição do Edifício Faria Lima via FLFL11 e posterior venda da posição para o fundo PVBI11.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 100,00</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val">R$ 33.913,00</span></div>
-              <div class="deal-section-label">Condições de Venda</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 138,85</span></div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val">R$ 40.800,00</span></div>
-              <div class="deal-section-label">Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">Retorno</span><span class="dm-val accent">+29,1%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">IFIX</span><span class="dm-val">+11,12%</span></div>
-              <div class="deal-meta-row"><span class="dm-key">vs. CDI</span><span class="dm-val accent">282% do CDI</span></div>
-            </div>
+          <span class="deal-tag tag-fii">FII</span>
+          <div class="deal-title">Fundo de Crédito Imobiliário</div>
+          <div class="deal-sub">Carteira diversificada de CRIs high yield com gestão ativa Arton.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Rentabilidade</span><span class="dm-val accent">CDI + 5,5% a.a.</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Liquidez</span><span class="dm-val">D+30</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">R$ 500 mil</span></div>
           </div>
         </div>
 
-        <!-- 10. HJCT11 — Continental Tower -->
         <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/HJCT11.jpg" alt="HJCT11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">HJCT11</span>
-            </div>
-            <div class="deal-title">Continental Tower</div>
-            <div class="deal-sub">Aquisição das lajes corporativas do Edifício Continental Tower, em conjunto com Hedge Investimentos e JHSF Capital.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição (11/25)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/m²)</span><span class="dm-val accent">R$ 10.947,44</span></div>
-              <div class="deal-section-label">Target de Retorno</div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Líquida Est.</span><span class="dm-val accent">20,2% a.a.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 11. CVFL11 — Vista Faria Lima -->
-        <div class="deal-card">
-          <div class="deal-img-ph"><img src="Deals_Fotos/CVFL11.jpg" alt="CVFL11"></div>
-          <div class="deal-card-content">
-            <div class="deal-tag-row">
-              <span class="deal-tag tag-cd">Laje Corporativa</span>
-              <span class="deal-ticker">CVFL11</span>
-            </div>
-            <div class="deal-title">Vista Faria Lima</div>
-            <div class="deal-sub">Aquisição das lajes corporativas do edifício Vista Faria Lima, em região estratégica na Faria Lima.</div>
-            <div class="deal-meta">
-              <div class="deal-section-label">Condições de Aquisição</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 1.000,00</span></div>
-              <div class="deal-section-label">Patrimonial (12/25)</div>
-              <div class="deal-meta-row"><span class="dm-key">Preço (R$/cota)</span><span class="dm-val">R$ 1.426,00</span></div>
-              <div class="deal-meta-row"><span class="dm-key">TIR Estimada</span><span class="dm-val accent">acima de 20% a.a.</span></div>
-            </div>
+          <span class="deal-tag tag-cd">Offshore</span>
+          <div class="deal-title">Real Estate EUA — Offshore</div>
+          <div class="deal-sub">Portfólio de imóveis residenciais nos EUA, dolarizado com gestão profissional.</div>
+          <div class="deal-meta">
+            <div class="deal-meta-row"><span class="dm-key">Retorno Alvo</span><span class="dm-val accent">12% a.a. USD</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Horizonte</span><span class="dm-val">5 Anos</span></div>
+            <div class="deal-meta-row"><span class="dm-key">Mínimo</span><span class="dm-val">USD 100 mil</span></div>
           </div>
         </div>
 
@@ -1447,15 +1225,16 @@ function icon(name, size) {
         <div class="pillar-main">
           <div class="pillar-icon-circle" id="ico-p0"></div>
           <div class="pillar-main-title">Wealth Management &amp;<br><em>Inteligência Patrimonial</em></div>
-          <p class="pillar-main-body">Quem acumula patrimônio em FIIs e imóveis muitas vezes deixa dinheiro na mesa em eficiência tributária e sucessória. A Arton integra seus ativos a uma estratégia patrimonial completa.</p>
+          <p class="pillar-main-body">Quem acumula patrimônio em FIIs e imóveis muitas vezes deixa dinheiro na mesa em eficiência tributária e sucessória. A Arton integra seus ativos a uma estratégia patrimonial completa: holdings, planejamento sucessório, proteção para as próximas gerações.</p>
         </div>
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Arquitetura Aberta</li>
-            <li><span class="pf-bullet" data-pf></span>Planejamento financeiro, riscos e seguros</li>
-            <li><span class="pf-bullet" data-pf></span>Atuação Internacional</li>
-            <li><span class="pf-bullet" data-pf></span>Planejamento sucessório</li>
+            <li><span class="pf-bullet" data-pf></span>Diagnóstico patrimonial completo com visão integrada</li>
+            <li><span class="pf-bullet" data-pf></span>Planejamento financeiro de longo prazo personalizado</li>
+            <li><span class="pf-bullet" data-pf></span>Otimização fiscal de rendimentos de FIIs e recebíveis</li>
+            <li><span class="pf-bullet" data-pf></span>Avaliação de risco patrimonial e soluções de proteção</li>
+            <li><span class="pf-bullet" data-pf></span>Gestão de liquidez e alocação estratégica de recursos</li>
           </ul>
         </div>
       </div>
@@ -1466,15 +1245,16 @@ function icon(name, size) {
         <div class="pillar-main">
           <div class="pillar-icon-circle" id="ico-p1"></div>
           <div class="pillar-main-title">Multi Family Office &amp;<br><em>Estruturação Familiar</em></div>
-          <p class="pillar-main-body">Visão holística do patrimônio, evitando sobreposição de riscos em diferentes casas.</p>
+          <p class="pillar-main-body">Para famílias com patrimônio complexo, a Arton atua como escritório de família centralizando todas as decisões patrimoniais. Holding, planejamento sucessório, governança familiar e acesso privilegiado a produtos exclusivos.</p>
         </div>
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Curadoria de investimentos</li>
-            <li><span class="pf-bullet" data-pf></span>Monitoramento estratégico consolidado</li>
-            <li><span class="pf-bullet" data-pf></span>Análise do portfólio</li>
-            <li><span class="pf-bullet" data-pf></span>Reuniões periódicas de resultado</li>
+            <li><span class="pf-bullet" data-pf></span>Constituição e gestão de holdings patrimoniais imobiliárias</li>
+            <li><span class="pf-bullet" data-pf></span>Planejamento sucessório com escritórios parceiros</li>
+            <li><span class="pf-bullet" data-pf></span>Governança familiar e acordos de quotistas</li>
+            <li><span class="pf-bullet" data-pf></span>Consolidação de patrimônio em múltiplas custódias</li>
+            <li><span class="pf-bullet" data-pf></span>Relatórios de performance unificados por família</li>
           </ul>
         </div>
       </div>
@@ -1485,15 +1265,16 @@ function icon(name, size) {
         <div class="pillar-main">
           <div class="pillar-icon-circle" id="ico-p2"></div>
           <div class="pillar-main-title">Corporate Solutions &amp;<br><em>Mercado de Capitais</em></div>
-          <p class="pillar-main-body">Para empresas e empresários, a Arton abre acesso às camadas que o home broker não oferece: crédito estruturado, mercado de capitais e soluções sob medida para cada setor.</p>
+          <p class="pillar-main-body">Para empresas e empresários, a Arton abre acesso às camadas que o home broker não oferece: crédito privado estruturado, CRIs e CRAs exclusivos, assessoria em M&A imobiliário e estruturação no mercado de capitais.</p>
         </div>
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Financiamento Imobiliário</li>
-            <li><span class="pf-bullet" data-pf></span>Financiamento Agro</li>
-            <li><span class="pf-bullet" data-pf></span>CRIs, CRAs e Debêntures</li>
-            <li><span class="pf-bullet" data-pf></span>Acesso ao Mercado de Capitais</li>
+            <li><span class="pf-bullet" data-pf></span>Estruturação de CRIs e CRAs para empresas</li>
+            <li><span class="pf-bullet" data-pf></span>Assessoria em fusões e aquisições imobiliárias</li>
+            <li><span class="pf-bullet" data-pf></span>Crédito estruturado para projetos imobiliários</li>
+            <li><span class="pf-bullet" data-pf></span>Emissões primárias e distribuição de ativos</li>
+            <li><span class="pf-bullet" data-pf></span>Gestão de tesouraria e capital de giro</li>
           </ul>
         </div>
       </div>
@@ -1504,15 +1285,16 @@ function icon(name, size) {
         <div class="pillar-main">
           <div class="pillar-icon-circle" id="ico-p3"></div>
           <div class="pillar-main-title">Gestão de Recursos &amp;<br><em>Arquitetura Global</em></div>
-          <p class="pillar-main-body">A Arton auxilia na internacionalização de patrimônio via offshores, trusts, contas internacionais e na seleção das melhores estratégias globais para proteger o que foi construído no Brasil e no exterior.</p>
+          <p class="pillar-main-body">Patrimônio concentrado em reais é patrimônio exposto. A Arton auxilia na internacionalização — offshores, trusts, contas internacionais — e na seleção das melhores estratégias globais para proteger o que foi construído no Brasil.</p>
         </div>
         <div class="pillar-aside">
           <div class="pillar-aside-label">O que inclui</div>
           <ul class="pillar-features">
-            <li><span class="pf-bullet" data-pf></span>Carteira estruturada</li>
-            <li><span class="pf-bullet" data-pf></span>Monitoramento ativo</li>
-            <li><span class="pf-bullet" data-pf></span>Diversificação entre ativos, setores e geografias</li>
-            <li><span class="pf-bullet" data-pf></span>Carteiras administradas e fundos exclusivos</li>
+            <li><span class="pf-bullet" data-pf></span>Constituição de veículos internacionais (offshores, trusts, LLC)</li>
+            <li><span class="pf-bullet" data-pf></span>Estratégias de investimento global agnósticas de contraparte</li>
+            <li><span class="pf-bullet" data-pf></span>Intermediação de câmbio e hedge cambial</li>
+            <li><span class="pf-bullet" data-pf></span>Aconselhamento em real estate internacional</li>
+            <li><span class="pf-bullet" data-pf></span>Planejamento tributário com escritórios no exterior</li>
           </ul>
         </div>
       </div>
@@ -1530,26 +1312,27 @@ function icon(name, size) {
     <div class="ponte-eyebrow">A Ponte</div>
     <h2 class="ponte-title">
       Por que grandes investidores de FIIs<br>
-      consolidam o patrimônio na Arton?
+      consolidam o patrimônio <em>na Arton?</em>
     </h2>
     <p class="ponte-sub">
-      O Clube FII entrega o melhor research e as melhores ferramentas para quem investe em fundos imobiliários. A Arton converte esse conhecimento em eficiência patrimonial real.
+      Você já tem a expertise em fundos imobiliários. A Arton adiciona a camada que converte esse conhecimento em eficiência patrimonial real.
     </p>
 
     <div class="ponte-grid">
       <div class="ponte-card">
         <div class="ponte-card-head">
           <div class="ponte-brand">Clube FII</div>
-          <div class="ponte-status">O que você já tem</div>
+          <div class="ponte-status">O que você já domina</div>
         </div>
         <div class="ponte-card-body">
-          <div class="ponte-card-title">Sua base em FIIs</div>
-          <div class="ponte-card-desc">Research, dados e ferramentas para investir com critério no mercado imobiliário.</div>
+          <div class="ponte-card-title">Sua Expertise em FIIs</div>
+          <div class="ponte-card-desc">Você já chegou longe. Analisa métricas, escolhe ativos com critério e busca dividendos previsíveis.</div>
           <ul class="ponte-list" id="ponte-list-l">
-            <li><span class="pl-icon pl-check"></span>Research aprofundado de fundos imobiliários</li>
-            <li><span class="pl-icon pl-check"></span>Ferramentas, dados e métricas atualizados em tempo real</li>
-            <li><span class="pl-icon pl-check"></span>Curadoria editorial e educação continuada</li>
-            <li><span class="pl-icon pl-check"></span>Comunidade ativa de investidores especializados</li>
+            <li><span class="pl-icon pl-check"></span>Analisa P/VP e identifica assimetrias de valor</li>
+            <li><span class="pl-icon pl-check"></span>Acompanha DY mensal e estabilidade de caixa</li>
+            <li><span class="pl-icon pl-check"></span>Distingue FIIs de papel, tijolo e FOF</li>
+            <li><span class="pl-icon pl-check"></span>Monitora vacância, inadimplência e gestoras</li>
+            <li><span class="pl-icon pl-check"></span>Diversifica entre setores imobiliários</li>
           </ul>
         </div>
       </div>
@@ -1564,13 +1347,14 @@ function icon(name, size) {
           <div class="ponte-status">O que a Arton adiciona</div>
         </div>
         <div class="ponte-card-body">
-          <div class="ponte-card-title">Onde o conhecimento vira patrimônio</div>
-          <div class="ponte-card-desc">Acesso, estrutura e expertise que transformam uma boa carteira de FIIs em um patrimônio eficiente e protegido.</div>
+          <div class="ponte-card-title">A camada que o home broker não entrega</div>
+          <div class="ponte-card-desc">Otimização fiscal, estruturação patrimonial, acesso a operações exclusivas e visão integrada.</div>
           <ul class="ponte-list" id="ponte-list-r">
-            <li><span class="pl-icon pl-plus"></span>Acesso a operações imobiliárias exclusivas e Club Deals</li>
-            <li><span class="pl-icon pl-plus"></span>Estruturação patrimonial e sucessória com foco em real estate e holding imobiliária</li>
-            <li><span class="pl-icon pl-plus"></span>Eficiência fiscal sobre rendimentos, recebíveis e estruturas imobiliárias</li>
-            <li><span class="pl-icon pl-plus"></span>Visão consolidada do patrimônio local e offshore, além da carteira de FIIs</li>
+            <li><span class="pl-icon pl-plus"></span>Otimização fiscal dos rendimentos de FIIs e recebíveis</li>
+            <li><span class="pl-icon pl-plus"></span>Estruturação sucessória e holding patrimonial imobiliária</li>
+            <li><span class="pl-icon pl-plus"></span>Club deals e crédito estruturado exclusivos (CRIs, debêntures)</li>
+            <li><span class="pl-icon pl-plus"></span>Alocação global (offshore) para diversificar além do Brasil</li>
+            <li><span class="pl-icon pl-plus"></span>Visão integrada de todo o patrimônio, não só dos FIIs</li>
           </ul>
         </div>
       </div>
@@ -1590,7 +1374,7 @@ function icon(name, size) {
         <h2 class="section-title">Migração dos seus imóveis<br>para <em>Fundos Imobiliários</em><br>com estratégia</h2>
         <div class="divider-line"></div>
         <p class="section-sub">
-          Tem imóveis físicos e se pergunta se eles ainda são a melhor alternativa? A Arton pode recomendar estratégias para uma transição gradual, buscando maior eficiência fiscal, patrimonial e sucessória.
+          Tem imóveis físicos e não sabe se compensa manter? A Arton faz essa análise com profundidade — e, se fizer sentido, estrutura a migração de forma gradual, fiscal e patrimonialmente eficiente.
         </p>
         <button class="btn-primary" style="margin-top:28px;" onclick="document.getElementById('cta-form').scrollIntoView({behavior:'smooth'})">
           <span>Falar com Especialista</span>
@@ -1606,30 +1390,35 @@ function icon(name, size) {
           <div class="mig-num">01</div>
           <div>
             <div class="mig-step-title">Avaliação da rentabilidade real</div>
+            <div class="mig-step-desc">Análise da rentabilidade efetiva dos seus imóveis físicos versus alternativas via FIIs.</div>
           </div>
         </div>
         <div class="mig-step">
           <div class="mig-num">02</div>
           <div>
             <div class="mig-step-title">Comparativo imóvel direto × FII</div>
+            <div class="mig-step-desc">Estudo técnico: liquidez, diversificação, isenção de IR e custo de manutenção comparados.</div>
           </div>
         </div>
         <div class="mig-step">
           <div class="mig-num">03</div>
           <div>
             <div class="mig-step-title">Planejamento fiscal e sucessório</div>
+            <div class="mig-step-desc">Estruturação da migração com eficiência tributária e proteção do patrimônio familiar.</div>
           </div>
         </div>
         <div class="mig-step">
           <div class="mig-num">04</div>
           <div>
             <div class="mig-step-title">Montagem de carteira diversificada</div>
+            <div class="mig-step-desc">Seleção de FIIs de tijolo, papel e desenvolvimento alinhados ao seu perfil.</div>
           </div>
         </div>
         <div class="mig-step">
           <div class="mig-num">05</div>
           <div>
             <div class="mig-step-title">Migração gradual e personalizada</div>
+            <div class="mig-step-desc">Transição respeitando seu horizonte de investimento e objetivos financeiros.</div>
           </div>
         </div>
       </div>
@@ -1639,52 +1428,42 @@ function icon(name, size) {
 
 
 <!-- ============================================================
-     PARA QUEM
+     COMPROMISSO
      ============================================================ -->
-<section id="compromisso" style="padding:0; border-top:1px solid var(--gray-3);">
-  <div class="comp-grid">
-
-    <!-- Esquerda: carrossel de fotos -->
-    <div class="comp-photos" id="comp-photos">
-      <div class="comp-photos-track" id="comp-photos-track">
-        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (9).jpg')"></div>
-        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (14).jpg')"></div>
-        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (16).jpg')"></div>
-        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (21).jpg')"></div>
-        <div class="comp-photo-slide" style="background-image:url('Fotos Arton/RSF (40).jpg')"></div>
+<section id="compromisso">
+  <div class="container">
+    <div class="comp-grid">
+      <div>
+        <div class="comp-icon-circle" id="ico-shield"></div>
+        <div class="eyebrow">Nosso Compromisso</div>
+        <h2 class="section-title">
+          Nosso Comitê investe<br>
+          nos <em>mesmos produtos</em><br>
+          que você.
+        </h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">
+          Na Arton, todos os produtos de mercado passam por um rigoroso Comitê de Investimentos. Os sócios investem necessariamente nesses mesmos produtos — salvo impedimento regulatório. Não há recomendação que não passe pelo nosso próprio capital.
+        </p>
       </div>
-      <div class="comp-photos-dots" id="comp-photos-dots"></div>
-    </div>
-
-    <!-- Direita: conteúdo -->
-    <div class="comp-content">
-      <div class="eyebrow">Para Quem</div>
-      <h2 class="section-title">A Arton faz<br><em>diferença para quem</em></h2>
-      <div class="comp-divider"></div>
-      <div class="comp-profiles">
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">01</span>
-          <span class="comp-profile-text">Investidores com patrimônio relevante em FIIs</span>
+      <div class="comp-quote-card">
+        <div class="comp-quote-mark">"</div>
+        <div class="comp-quote-text">
+          "Promovemos uma intensa curadoria e todos os produtos passam por um rigoroso comitê de investimentos. Os sócios investem necessariamente nesses mesmos produtos, salvo algum impedimento regulatório."
         </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">02</span>
-          <span class="comp-profile-text">Famílias com patrimônio imobiliário concentrado</span>
+        <div class="comp-quote-author">
+          <div class="comp-author-rule"></div>
+          <div class="comp-author-text">Bernardo Assumpção · CEO, Arton Advisors</div>
         </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">03</span>
-          <span class="comp-profile-text">Empresários que desejam separar patrimônio pessoal e empresarial</span>
-        </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">04</span>
-          <span class="comp-profile-text">Investidores buscando estrutura sucessória</span>
-        </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">05</span>
-          <span class="comp-profile-text">Famílias com patrimônio local e internacional</span>
+        <div class="comp-tags">
+          <span class="comp-tag">Ex-Sócio XP</span>
+          <span class="comp-tag">Ex-MD JP Morgan</span>
+          <span class="comp-tag">Citibank</span>
+          <span class="comp-tag">USP · INSEAD</span>
+          <span class="comp-tag">BTG Pactual</span>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1749,7 +1528,7 @@ function icon(name, size) {
           <div class="form-row full">
             <div class="form-group">
               <label class="form-label">Telefone</label>
-              <input type="tel" class="form-input" placeholder="(11) 99999-9999" id="field-tel" inputmode="numeric" maxlength="15">
+              <input type="tel" class="form-input" placeholder="(11) 99999-9999">
             </div>
           </div>
 
@@ -1757,7 +1536,7 @@ function icon(name, size) {
           <div class="form-row full">
             <div class="form-group">
               <label class="form-label">CPF / CNPJ</label>
-              <input type="text" class="form-input" placeholder="000.000.000-00 ou 00.000.000/0000-00" id="field-cpfcnpj" inputmode="numeric" maxlength="18">
+              <input type="text" class="form-input" placeholder="000.000.000-00">
             </div>
           </div>
 
@@ -1828,14 +1607,7 @@ function icon(name, size) {
      FOOTER
      ============================================================ -->
 <footer>
-  <div style="display:flex; align-items:center; gap:20px;">
-    <img src="AF_Arton_RGB_HorizNegativo (1).png" alt="Arton Advisors" style="height:38px; display:block;">
-    <div style="width:1px; height:28px; background:rgba(255,255,255,0.20);"></div>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <span style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.06em; text-transform:uppercase;">Parceiro</span>
-      <img src="logo-clubefii-white.png" alt="Clube FII" style="height:14px; display:block;">
-    </div>
-  </div>
+  <div class="footer-logo">Arton Advisors × Clube FII</div>
   <div class="footer-legal">
     © 2025 Arton AAI · Av. Brigadeiro Faria Lima, 3477 · Torre A - 7º andar · São Paulo - SP<br>
     Arton Advisors Consultoria Financeira e Gestão Ltda. Regulado pela ANBIMA. Operações via BTG Pactual Digital.
@@ -1854,10 +1626,10 @@ function icon(name, size) {
   }
 
   // Cultura
-  setIcon('ico-anchor', 'users',  20);  // Skin in the game — parceria/investidores
-  setIcon('ico-users',  'home',   20);  // DNA imobiliário — real estate
-  setIcon('ico-target', 'target', 20);  // Visão 360° — visão integrada
-  setIcon('ico-zap',    'anchor', 20);  // Lastro de verdade — solidez/BTG
+  setIcon('ico-anchor', 'anchor', 20);
+  setIcon('ico-users',  'users',  20);
+  setIcon('ico-target', 'target', 20);
+  setIcon('ico-zap',    'zap',    20);
 
   // Pilares
   setIcon('ico-p0', 'bar-chart-2', 22);
@@ -1912,18 +1684,13 @@ function icon(name, size) {
   }
 
   /* ---- CARROSSEL ---- */
+  const TOTAL = 10;
   let cur = 0;
   const CARD_W = 276 + 20;
 
-  function getTotal() {
-    return document.querySelectorAll('#deals-track .deal-card').length;
-  }
-
   function buildDots() {
-    const total = getTotal();
     const el = document.getElementById('deals-dots');
-    el.innerHTML = '';
-    for (let i = 0; i < total; i++) {
+    for (let i = 0; i < TOTAL; i++) {
       const d = document.createElement('div');
       d.className = 'd-dot' + (i === 0 ? ' active' : '');
       d.onclick = () => goTo(i);
@@ -1932,75 +1699,17 @@ function icon(name, size) {
   }
 
   function goTo(n) {
-    const total = getTotal();
-    const track = document.getElementById('deals-track');
     const wrap = document.querySelector('.deals-track-wrap');
-    const wrapW = wrap.offsetWidth;
-    const totalW = total * CARD_W - 20; // largura total do track (sem gap no final)
-    const maxOffset = Math.max(0, totalW - wrapW);
-    const targetOffset = n * CARD_W;
-    cur = Math.max(0, Math.min(n, total - 1));
-    const offset = Math.min(targetOffset, maxOffset);
-    track.style.transform = `translateX(-${offset}px)`;
+    const visCount = Math.max(1, Math.floor(wrap.offsetWidth / CARD_W));
+    const maxSlide = Math.max(0, TOTAL - visCount);
+    cur = Math.max(0, Math.min(n, maxSlide));
+    document.getElementById('deals-track').style.transform = `translateX(-${cur * CARD_W}px)`;
     document.querySelectorAll('.d-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
   }
 
   function slideDeals(dir) { goTo(cur + dir); }
 
   buildDots();
-
-  /* ---- CARROSSEL FOTOS ESCRITÓRIO ---- */
-  (function() {
-    const PHOTOS = 5;
-    let cp = 0;
-    const track = document.getElementById('comp-photos-track');
-    const dotsEl = document.getElementById('comp-photos-dots');
-
-    // build dots
-    for (let i = 0; i < PHOTOS; i++) {
-      const d = document.createElement('button');
-      d.className = 'cp-dot' + (i === 0 ? ' active' : '');
-      d.onclick = () => goPhoto(i);
-      dotsEl.appendChild(d);
-    }
-
-    function goPhoto(n) {
-      cp = (n + PHOTOS) % PHOTOS;
-      track.style.transform = `translateX(-${cp * 100}%)`;
-      document.querySelectorAll('.cp-dot').forEach((d, i) => d.classList.toggle('active', i === cp));
-    }
-
-    // auto-play a cada 4s
-    setInterval(() => goPhoto(cp + 1), 4000);
-  })();
-
-  /* ---- MÁSCARAS FORMULÁRIO ---- */
-  function maskTel(e) {
-    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
-    if (v.length <= 10) {
-      v = v.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-    } else {
-      v = v.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-    }
-    e.target.value = v;
-  }
-
-  function maskCpfCnpj(e) {
-    let v = e.target.value.replace(/\D/g, '').slice(0, 14);
-    if (v.length <= 11) {
-      v = v.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2})/, (_, a, b, c, d) =>
-        d ? `${a}.${b}.${c}-${d}` : c ? `${a}.${b}.${c}` : b ? `${a}.${b}` : a);
-    } else {
-      v = v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/, (_, a, b, c, d, e) =>
-        e ? `${a}.${b}.${c}/${d}-${e}` : d ? `${a}.${b}.${c}/${d}` : c ? `${a}.${b}.${c}` : b ? `${a}.${b}` : a);
-    }
-    e.target.value = v;
-  }
-
-  const telField = document.getElementById('field-tel');
-  const cpfField = document.getElementById('field-cpfcnpj');
-  if (telField) telField.addEventListener('input', maskTel);
-  if (cpfField) cpfField.addEventListener('input', maskCpfCnpj);
 
   /* ---- SCROLL topbar shadow ---- */
   window.addEventListener('scroll', () => {
