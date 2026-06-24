@@ -758,14 +758,17 @@ body {
 .comp-content .section-title em { color: var(--orange); }
 .comp-divider { width: 36px; height: 2px; background: var(--orange); margin: 20px 0 28px; }
 
-/* Cards de perfil */
-.comp-profiles { display: flex; flex-direction: column; gap: 0; }
-.comp-profile-item {
-  display: flex; align-items: center; gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+/* Cards de perfil — slider */
+.comp-profiles-wrapper { overflow: hidden; }
+.comp-profiles {
+  display: flex; flex-direction: row;
+  transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1);
 }
-.comp-profile-item:last-child { border-bottom: none; }
+.comp-profile-item {
+  flex: 0 0 100%;
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 0;
+}
 .comp-profile-num {
   font-size: 11px; font-weight: 700;
   color: var(--orange); letter-spacing: 0.12em;
@@ -775,6 +778,28 @@ body {
   font-size: 14px; color: rgba(255,255,255,0.85);
   line-height: 1.5;
 }
+
+/* Navegação dos perfis */
+.comp-profiles-nav {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 28px;
+}
+.cpn-arrow {
+  background: none; border: 1px solid rgba(255,255,255,0.25);
+  color: var(--white); width: 36px; height: 36px;
+  border-radius: 50%; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--tr);
+}
+.cpn-arrow:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.5); }
+.cpn-arrow svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cpn-dots { display: flex; gap: 6px; align-items: center; }
+.cpn-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer; transition: var(--tr); border: none;
+}
+.cpn-dot.active { background: var(--orange); width: 18px; border-radius: 3px; }
 
 
 /* ============================================================
@@ -1627,26 +1652,37 @@ function icon(name, size) {
       <div class="eyebrow">Para Quem</div>
       <h2 class="section-title">A Arton faz<br><em>diferença para quem</em></h2>
       <div class="comp-divider"></div>
-      <div class="comp-profiles">
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">01</span>
-          <span class="comp-profile-text">Investidores com patrimônio relevante em FIIs</span>
+      <div class="comp-profiles-wrapper">
+        <div class="comp-profiles" id="comp-profiles-track">
+          <div class="comp-profile-item">
+            <span class="comp-profile-num">01</span>
+            <span class="comp-profile-text">Investidores com patrimônio relevante em FIIs</span>
+          </div>
+          <div class="comp-profile-item">
+            <span class="comp-profile-num">02</span>
+            <span class="comp-profile-text">Famílias com patrimônio imobiliário concentrado</span>
+          </div>
+          <div class="comp-profile-item">
+            <span class="comp-profile-num">03</span>
+            <span class="comp-profile-text">Empresários que desejam separar patrimônio pessoal e empresarial</span>
+          </div>
+          <div class="comp-profile-item">
+            <span class="comp-profile-num">04</span>
+            <span class="comp-profile-text">Investidores buscando estrutura sucessória</span>
+          </div>
+          <div class="comp-profile-item">
+            <span class="comp-profile-num">05</span>
+            <span class="comp-profile-text">Famílias com patrimônio local e internacional</span>
+          </div>
         </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">02</span>
-          <span class="comp-profile-text">Famílias com patrimônio imobiliário concentrado</span>
-        </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">03</span>
-          <span class="comp-profile-text">Empresários que desejam separar patrimônio pessoal e empresarial</span>
-        </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">04</span>
-          <span class="comp-profile-text">Investidores buscando estrutura sucessória</span>
-        </div>
-        <div class="comp-profile-item">
-          <span class="comp-profile-num">05</span>
-          <span class="comp-profile-text">Famílias com patrimônio local e internacional</span>
+        <div class="comp-profiles-nav">
+          <button class="cpn-arrow" id="cpn-prev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="cpn-dots" id="cpn-dots"></div>
+          <button class="cpn-arrow" id="cpn-next" aria-label="Próximo">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -1980,6 +2016,40 @@ function icon(name, size) {
 
     // auto-play a cada 4s
     setInterval(() => goPhoto(cp + 1), 4000);
+  })();
+
+  /* ---- SLIDER PARA QUEM ---- */
+  (function() {
+    const TOTAL = 5;
+    let cur = 0;
+    const track = document.getElementById('comp-profiles-track');
+    const dotsEl = document.getElementById('cpn-dots');
+    const prev = document.getElementById('cpn-prev');
+    const next = document.getElementById('cpn-next');
+
+    for (let i = 0; i < TOTAL; i++) {
+      const d = document.createElement('button');
+      d.className = 'cpn-dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => go(i);
+      dotsEl.appendChild(d);
+    }
+
+    function go(n) {
+      cur = (n + TOTAL) % TOTAL;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      document.querySelectorAll('.cpn-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+    }
+
+    prev.onclick = () => go(cur - 1);
+    next.onclick = () => go(cur + 1);
+
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) go(diff > 0 ? cur + 1 : cur - 1);
+    }, { passive: true });
   })();
 
   /* ---- MÁSCARAS FORMULÁRIO ---- */
