@@ -58,6 +58,19 @@ body {
 /* ===== UTILITY ===== */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
 
+/* Large screen container scaling */
+@media (min-width: 1400px) {
+  .container { max-width: 1280px; }
+}
+@media (min-width: 1600px) {
+  .container { max-width: 1460px; }
+}
+@media (min-width: 1920px) {
+  .container { max-width: 1760px; padding: 0 64px; }
+  .topbar { padding-left: 64px; }
+  footer { padding-left: 64px; padding-right: 64px; }
+}
+
 .eyebrow {
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.28em; text-transform: uppercase;
@@ -898,6 +911,30 @@ body {
   line-height: 1.55; cursor: pointer;
 }
 .optin-label a { color: var(--cfii); text-decoration: underline; }
+
+/* Cookie bar */
+#cookie-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
+}
+#cookie-bar p {
+  font-size: 13px; color: var(--gray-3); line-height: 1.5; margin: 0; flex: 1; min-width: 200px;
+}
+#cookie-bar a { color: var(--orange); text-decoration: underline; }
+#cookie-bar button {
+  font-family: 'Klavika', sans-serif;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 4px;
+  padding: 10px 24px; font-size: 13px; font-weight: 600;
+  cursor: pointer; white-space: nowrap; transition: var(--tr);
+  flex-shrink: 0;
+}
+#cookie-bar button:hover { background: var(--orange-dk); }
 
 .form-notice {
   background: var(--cfii-light);
@@ -1741,14 +1778,6 @@ function icon(name, size) {
             </div>
           </div>
 
-          <!-- CPF/CNPJ -->
-          <div class="form-row full">
-            <div class="form-group">
-              <label class="form-label">CPF / CNPJ</label>
-              <input type="text" class="form-input" placeholder="000.000.000-00 ou 00.000.000/0000-00" id="field-cpfcnpj" inputmode="numeric" maxlength="18">
-            </div>
-          </div>
-
           <!-- Nível de investimento -->
           <div class="form-row full">
             <div class="form-group">
@@ -1793,7 +1822,7 @@ function icon(name, size) {
           <div class="optin-wrap">
             <input type="checkbox" class="optin-check" id="optin">
             <label class="optin-label" for="optin">
-              Concordo com a <a href="#">Política de Privacidade</a> e autorizo a Arton Advisors a entrar em contato comigo para fins de relacionamento comercial.
+              Ao enviar este formulário, o Usuário concorda com o compartilhamento de seus dados pessoais entre Clube FII e Arton Advisors para fins de análise de perfil, prospecção comercial e oferta de produtos e serviços financeiros, nos termos da nossa <a href="https://www.clubefii.com.br/#modalPolitica" target="_blank" rel="noopener">Política de Privacidade</a>.
             </label>
           </div>
 
@@ -2035,22 +2064,8 @@ function icon(name, size) {
     e.target.value = v;
   }
 
-  function maskCpfCnpj(e) {
-    let v = e.target.value.replace(/\D/g, '').slice(0, 14);
-    if (v.length <= 11) {
-      v = v.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2})/, (_, a, b, c, d) =>
-        d ? `${a}.${b}.${c}-${d}` : c ? `${a}.${b}.${c}` : b ? `${a}.${b}` : a);
-    } else {
-      v = v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/, (_, a, b, c, d, e) =>
-        e ? `${a}.${b}.${c}/${d}-${e}` : d ? `${a}.${b}.${c}/${d}` : c ? `${a}.${b}.${c}` : b ? `${a}.${b}` : a);
-    }
-    e.target.value = v;
-  }
-
   const telField = document.getElementById('field-tel');
-  const cpfField = document.getElementById('field-cpfcnpj');
   if (telField) telField.addEventListener('input', maskTel);
-  if (cpfField) cpfField.addEventListener('input', maskCpfCnpj);
 
   /* ---- SCROLL topbar shadow ---- */
   window.addEventListener('scroll', () => {
@@ -2068,7 +2083,6 @@ function icon(name, size) {
     const nome     = document.getElementById('field-nome').value.trim();
     const email    = document.getElementById('field-email').value.trim();
     const tel      = document.getElementById('field-tel').value.trim();
-    const cpfcnpj  = document.getElementById('field-cpfcnpj').value.trim();
     const nivel    = document.getElementById('field-nivel').value;
     const periodo  = document.getElementById('field-periodo').value;
     const mensagem = document.getElementById('field-mensagem').value.trim();
@@ -2092,7 +2106,7 @@ function icon(name, size) {
     document.getElementById('form-success').style.display = 'none';
     document.getElementById('form-error').style.display = 'none';
 
-    const payload = { nome, email, tel, cpfcnpj, nivel, periodo, mensagem, optin };
+    const payload = { nome, email, tel, nivel, periodo, mensagem, optin };
 
     try {
       await fetch(APPS_SCRIPT_URL, {
@@ -2104,7 +2118,7 @@ function icon(name, size) {
       // no-cors não retorna resposta legível — assumimos sucesso
       document.getElementById('form-success').style.display = 'block';
       // Limpa o formulário
-      ['field-nome','field-email','field-tel','field-cpfcnpj','field-mensagem'].forEach(id => {
+      ['field-nome','field-email','field-tel','field-mensagem'].forEach(id => {
         document.getElementById(id).value = '';
       });
       document.getElementById('field-nivel').selectedIndex = 0;
@@ -2117,6 +2131,22 @@ function icon(name, size) {
       btnText.textContent = 'Solicitar Contato';
     }
   });
+
+  /* Cookie bar */
+  window.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('cookie_accepted')) return;
+    var bar = document.getElementById('cookie-bar');
+    bar.style.display = 'flex';
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('cookie_accepted', '1');
+      bar.style.display = 'none';
+    });
+  });
 </script>
+
+<div id="cookie-bar" style="display:none">
+  <p>Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="https://www.clubefii.com.br/#modalPolitica" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+  <button id="cookie-accept">Aceitar</button>
+</div>
 </body>
 </html>
