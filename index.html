@@ -96,20 +96,10 @@
     }
     /* ===== UTILITY ===== */
     .container {
-      max-width: 1100px;
+      max-width: 1760px;
+      width: 100%;
       margin: 0 auto;
-      padding: 0 48px;
-    }
-    @media (min-width: 1400px) {
-      .container { max-width: 1280px; }
-    }
-    @media (min-width: 1600px) {
-      .container { max-width: 1460px; }
-    }
-    @media (min-width: 1920px) {
-      .container { max-width: 1760px; padding: 0 64px; }
-      .topbar { padding-left: 64px; }
-      footer { padding-left: 64px; padding-right: 64px; }
+      padding: 0 clamp(20px, 5vw, 80px);
     }
     .eyebrow {
       font-size: 11px;
@@ -123,7 +113,7 @@
       margin-bottom: 14px;
     }
     .section-title {
-      font-size: clamp(26px, 3vw, 40px);
+      font-size: clamp(26px, 2.8vw, 54px);
       font-weight: 300;
       line-height: 1.15;
       color: var(--black);
@@ -136,11 +126,11 @@
       color: var(--green);
     }
     .section-sub {
-      font-size: 17px; /* +2px from 15px */
+      font-size: clamp(16px, 1.1vw, 20px);
       font-weight: 400;
       line-height: 1.75;
       color: var(--gray-1);
-      max-width: 560px;
+      max-width: 720px;
     }
     /* ===== SPLIT BUTTON ===== */
     .btn-primary {
@@ -223,7 +213,7 @@
       width: 100%;
       background: var(--white);
       border-bottom: 1px solid var(--gray-3);
-      padding: 0 0 0 48px;
+      padding: 0 0 0 clamp(20px, 5vw, 80px);
       display: flex;
       align-items: center;
       box-shadow: var(--shadow-sm);
@@ -315,7 +305,7 @@
    ============================================================ */
     #hero {
       position: relative;
-      padding: 90px 0 80px;
+      padding: clamp(60px, 6vw, 110px) 0 clamp(52px, 5.5vw, 96px);
       border-bottom: 1px solid var(--gray-4);
       background-image: url('Fotos Arton/RSF (7).jpg');
       background-size: cover;
@@ -336,7 +326,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      gap: clamp(40px, 5vw, 96px);
       align-items: center;
     }
     .hero-badge {
@@ -356,7 +346,7 @@
     }
     .bdot { width: 4px; height: 4px; background: var(--cfii); border-radius: 50%; }
     .hero-h1 {
-      font-size: clamp(30px, 3.4vw, 44px);
+      font-size: clamp(30px, 3.4vw, 58px);
       font-weight: 300;
       line-height: 1.10;
       color: var(--white);
@@ -366,12 +356,12 @@
     }
     .hero-h1 em { font-style: normal; color: var(--orange); }
     .hero-p {
-      font-size: 18px; /* +2px from 16px */
+      font-size: clamp(16px, 1.1vw, 21px);
       font-weight: 400;
       line-height: 1.75;
       color: rgba(255, 255, 255, 0.80);
       margin-bottom: 36px;
-      max-width: 440px;
+      max-width: 600px;
     }
     .hero-ctas { display: flex; align-items: center; gap: 20px; }
     .hero-visual {
@@ -454,14 +444,14 @@
    ============================================================ */
     #cultura {
       background: var(--green);
-      padding: 56px 0;
+      padding: clamp(36px, 3.5vw, 72px) 0;
     }
     .cultura-inner {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
     }
     .cultura-item {
-      padding: 32px;
+      padding: clamp(20px, 2.5vw, 40px);
       border-right: 1px solid rgba(255, 255, 255, 0.07);
       position: relative;
     }
@@ -501,7 +491,7 @@
    ============================================================ */
     #club-deals {
       background: var(--white);
-      padding: 80px 0;
+      padding: clamp(52px, 5.5vw, 96px) 0;
       overflow: hidden;
       border-top: 1px solid var(--gray-4);
     }
@@ -662,7 +652,7 @@
    ============================================================ */
     #pilares {
       background: var(--gray-4);
-      padding: 80px 0;
+      padding: clamp(52px, 5.5vw, 96px) 0;
       border-top: 1px solid var(--gray-3);
     }
     .pilares-header { margin-bottom: 44px; }
@@ -704,12 +694,12 @@
       background: var(--white);
       border: 1px solid var(--gray-3);
       border-right: none;
-      padding: 48px;
+      padding: clamp(28px, 3vw, 64px);
     }
     .pillar-aside {
       background: var(--white);
       border: 1px solid var(--gray-3);
-      padding: 48px;
+      padding: clamp(28px, 3vw, 64px);
     }
     .pillar-icon-circle {
       width: 52px; height: 52px;
@@ -722,7 +712,7 @@
     }
     .pillar-icon-circle svg { color: var(--cfii); }
     .pillar-main-title {
-      font-size: 22px; /* +2px from 20px */
+      font-size: clamp(18px, 1.5vw, 26px);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -732,7 +722,7 @@
     }
     .pillar-main-title em { font-style: normal; color: var(--green); }
     .pillar-main-body {
-      font-size: 16px; /* +2px from 14px */
+      font-size: clamp(15px, 1vw, 18px);
       line-height: 1.75;
       color: var(--gray-1);
     }
@@ -772,7 +762,7 @@
    ============================================================ */
     #a-ponte {
       background: var(--green);
-      padding: 88px 0;
+      padding: clamp(56px, 6vw, 108px) 0;
     }
     .ponte-eyebrow {
       font-size: 11px;
@@ -786,7 +776,7 @@
       margin-bottom: 14px;
     }
     .ponte-title {
-      font-size: clamp(24px, 3vw, 38px);
+      font-size: clamp(24px, 2.8vw, 52px);
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -796,10 +786,10 @@
     }
     .ponte-title em { font-style: normal; color: var(--green); }
     .ponte-sub {
-      font-size: 17px; /* +2px from 15px */
+      font-size: clamp(16px, 1.1vw, 20px);
       color: rgba(255, 255, 255, 0.50);
       line-height: 1.75;
-      max-width: 540px;
+      max-width: 940px;
       margin-bottom: 52px;
     }
     .ponte-grid {
@@ -893,13 +883,13 @@
    ============================================================ */
     #migracao {
       background: var(--white);
-      padding: 88px 0;
+      padding: clamp(56px, 6vw, 108px) 0;
       border-top: 1px solid var(--gray-4);
     }
     .mig-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: clamp(36px, 4.5vw, 80px);
       align-items: center;
     }
     .mig-visual {
@@ -1008,7 +998,7 @@
     .cp-dot.active { background: var(--white); width: 18px; border-radius: 3px; }
     .comp-content {
       background: var(--green);
-      padding: 56px 52px;
+      padding: clamp(36px, 4vw, 72px) clamp(28px, 3.5vw, 64px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1064,13 +1054,13 @@
    ============================================================ */
     #cta-form {
       background: var(--white);
-      padding: 88px 0;
+      padding: clamp(56px, 6vw, 108px) 0;
       border-top: 1px solid var(--gray-3);
     }
     .form-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: clamp(36px, 4.5vw, 80px);
       align-items: start;
     }
     .form-benefits {
@@ -1107,7 +1097,7 @@
       background: var(--white);
       border: 1px solid var(--gray-3);
       border-radius: 0;
-      padding: 40px;
+      padding: clamp(24px, 2.5vw, 52px);
       box-shadow: var(--shadow-sm);
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1317,7 +1307,7 @@
    ============================================================ */
     footer {
       background: var(--green);
-      padding: 26px 48px;
+      padding: clamp(18px, 2vw, 32px) clamp(20px, 5vw, 80px);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1342,43 +1332,99 @@
     /* ============================================================
    RESPONSIVE
    ============================================================ */
-    @media (max-width: 880px) {
-      .container { padding: 0 16px; }
-      body { padding-top: 52px; }
-      .topbar { padding: 0 0 0 14px; gap: 8px; height: 52px; }
-      .topbar-logos { gap: 8px; flex-shrink: 1; min-width: 0; overflow: hidden; align-items: center; }
-      .topbar-logos img[alt="Arton Advisors"] { height: 32px !important; flex-shrink: 0; }
+
+    /* ---- TABLET (≤ 1200px) ---- */
+    @media (max-width: 1200px) {
+      /* Hero: empilha colunas, visual aparece abaixo */
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-visual { display: block; max-width: 600px; }
+      .hero-h1 { font-size: clamp(28px, 3.8vw, 44px); }
+      /* Cultura: 2 colunas */
+      .cultura-inner { grid-template-columns: 1fr 1fr; }
+      .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      /* Migração: empilha */
+      .mig-grid { grid-template-columns: 1fr; gap: 32px; }
+      /* Formulário: empilha */
+      .form-wrap { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ---- MOBILE (≤ 767px) ---- */
+    @media (max-width: 767px) {
+      body { padding-top: 52px; font-size: 16px; }
+      .container { padding: 0 clamp(14px, 4vw, 24px); }
+
+      /* Topbar */
+      .topbar { padding: 0 0 0 14px; height: 52px; }
+      .topbar-logos { gap: 8px; flex-shrink: 1; min-width: 0; overflow: hidden; }
+      .topbar-logos img[alt="Arton Advisors"] { height: 30px !important; flex-shrink: 0; }
       .topbar-logos img[alt="Clube FII"] { height: 12px !important; flex-shrink: 1; }
       .topbar-logos span { font-size: 9px !important; }
       .logo-sep { height: 18px; flex-shrink: 0; }
-      .topbar-cta { flex-shrink: 0; align-self: stretch; margin: 0; border-radius: 0; font-size: 11px; white-space: nowrap; }
-      .topbar-cta span { padding: 0 12px; }
-      .topbar-cta::after { width: 32px; }
+      .topbar-cta { flex-shrink: 0; align-self: stretch; font-size: 12px; white-space: nowrap; }
+      .topbar-cta span { padding: 0 14px; }
+      .topbar-cta::after { width: 34px; }
       .topbar-pill { display: none; }
-      .hero-grid { grid-template-columns: 1fr; gap: 0; }
-      .hero-visual { display: none; }
-      #hero { padding: 56px 0 48px; }
-      .hero-h1 { font-size: clamp(26px, 7vw, 38px); }
+
+      /* Hero */
+      #hero { padding: clamp(40px, 7vw, 64px) 0 clamp(36px, 6vw, 56px); }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-h1 { font-size: clamp(26px, 7vw, 36px); }
       .hero-p { font-size: 16px; max-width: 100%; }
+      /* Stats box: visível no mobile, abaixo do texto */
+      .hero-visual { display: block; max-width: 100%; }
+      .h-stat-n { font-size: 20px; }
+
+      /* Cultura */
       .cultura-inner { grid-template-columns: 1fr 1fr; }
-      .cultura-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.07); padding: 24px 16px; }
-      .deals-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .cultura-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 14px; }
+      .cultura-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07); }
+      .cultura-item:last-child { border-bottom: none; }
+
+      /* Deals */
+      .deals-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+      /* Pilares */
       .pillar-grid { grid-template-columns: 1fr; }
-      .pillar-main { border-right: 1px solid var(--gray-3); border-bottom: none; padding: 32px 20px; }
-      .pillar-aside { padding: 32px 20px; }
+      .pillar-main { border-right: 1px solid var(--gray-3); border-bottom: none; padding: 28px 18px; }
+      .pillar-aside { padding: 28px 18px; }
       .pilares-tabs { flex-wrap: wrap; }
+      .ptab { padding: 10px 16px; font-size: 10px; }
+
+      /* Ponte */
       .ponte-grid { grid-template-columns: 1fr; }
       .ponte-arrow-col { display: none; }
-      .mig-grid { grid-template-columns: 1fr; }
+
+      /* Migração */
+      .mig-grid { grid-template-columns: 1fr; gap: 28px; }
+
+      /* Para quem */
       .comp-grid { grid-template-columns: 1fr; }
-      .comp-photos { min-height: 260px; }
-      .comp-photo-slide { min-height: 260px; }
-      .comp-content { padding: 40px 20px; }
-      .form-wrap { grid-template-columns: 1fr; }
+      .comp-photos { min-height: 240px; }
+      .comp-photo-slide { min-height: 240px; }
+      .comp-content { padding: 36px 18px; }
+
+      /* Formulário */
+      .form-wrap { grid-template-columns: 1fr; gap: 28px; }
       .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+      .form-card { padding: 24px 18px; }
+
+      /* Footer */
+      footer { flex-direction: column; align-items: center; gap: 16px; text-align: center;
+               padding: 24px 20px; }
       .footer-legal { text-align: center; max-width: 100%; }
     }
+
+    /* ---- VERY SMALL (≤ 400px) ---- */
+    @media (max-width: 400px) {
+      .cultura-inner { grid-template-columns: 1fr; }
+      .cultura-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Quebra manual só no desktop */
+    .br-desk { display: block; }
+    @media (max-width: 1200px) { .br-desk { display: none; } }
+
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: var(--gray-4); }
     ::-webkit-scrollbar-thumb { background: var(--gray-3); }
@@ -1511,8 +1557,8 @@
       <div class="deals-header">
         <div>
           <div class="eyebrow">Acesso Exclusivo</div>
-          <h2 class="section-title">Club Deals com curadoria e <em>co-investidos pela Arton</em></h2>
-          <p class="section-sub" style="margin-top:10px;">Operações estruturadas exclusivas que o home broker não oferece. Cada deal passa pela curadoria rigorosa da Arton e pelo capital dos próprios sócios.</p>
+          <h2 class="section-title">Club Deals com curadoria e<br class="br-desk"> <em>co-investidos pela Arton</em></h2>
+          <p class="section-sub" style="margin-top:10px;">Operações estruturadas exclusivas que o home broker não oferece.<br class="br-desk"> Cada deal passa pela curadoria rigorosa da Arton e pelo capital dos próprios sócios.</p>
         </div>
         <div class="deals-nav">
           <button class="deals-btn" onclick="slideDeals(-1)" id="btn-prev"></button>
@@ -1760,8 +1806,8 @@
   <section id="a-ponte">
     <div class="container">
       <div class="ponte-eyebrow">A Ponte</div>
-      <h2 class="ponte-title">Por que grandes investidores de FIIs consolidam o patrimônio na Arton?</h2>
-      <p class="ponte-sub">O Clube FII entrega o melhor research e as melhores ferramentas para quem investe em fundos imobiliários. A Arton converte esse conhecimento em eficiência patrimonial real.</p>
+      <h2 class="ponte-title">Por que grandes investidores de FIIs consolidam<br class="br-desk"> o patrimônio na Arton?</h2>
+      <p class="ponte-sub">O Clube FII entrega o melhor research e as melhores ferramentas para quem investe em fundos imobiliários.<br class="br-desk"> A Arton converte esse conhecimento em eficiência patrimonial real.</p>
       <div class="ponte-grid">
         <div class="ponte-card">
           <div class="ponte-card-head">
