@@ -99,7 +99,7 @@
       max-width: 1760px;
       width: 100%;
       margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 80px);
+      padding: 0 clamp(20px, 4vw, 80px);
     }
     .eyebrow {
       font-size: 11px;
@@ -325,9 +325,10 @@
     #hero .container { position: relative; z-index: 1; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 5vw, 96px);
-      align-items: center;
+      /* Coluna direita tem largura máxima fluída — nunca estica além de 520px */
+      grid-template-columns: 1fr clamp(360px, 36vw, 520px);
+      gap: clamp(40px, 5vw, 80px);
+      align-items: stretch;
     }
     .hero-badge {
       display: inline-flex;
@@ -370,9 +371,12 @@
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 0;
-      padding: 32px;
+      padding: clamp(24px, 2.5vw, 40px);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
     }
     .hero-visual::after {
       content: '';
@@ -393,23 +397,28 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
+      flex: 1; /* ocupa toda a altura disponível no flex-column do visual */
     }
     .h-stat {
       background: rgba(255, 255, 255, 0.10);
-      padding: 20px;
+      padding: clamp(18px, 2vw, 32px);
       border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: clamp(90px, 7vw, 130px); /* altura mínima para ficar mais quadrado */
     }
     .h-stat-n {
       display: block;
-      font-size: 24px;
+      font-size: clamp(20px, 2vw, 32px);
       font-weight: 700;
       color: var(--white);
       line-height: 1;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       text-transform: uppercase;
     }
     .h-stat-l {
-      font-size: 10px;
+      font-size: clamp(9px, 0.6vw, 12px);
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -1337,7 +1346,8 @@
     @media (max-width: 1200px) {
       /* Hero: empilha colunas, visual aparece abaixo */
       .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-      .hero-visual { display: block; max-width: 600px; }
+      .hero-visual { display: block; max-width: 100%; }
+      .hero-stat-grid { grid-template-columns: repeat(4, 1fr); }
       .hero-h1 { font-size: clamp(28px, 3.8vw, 44px); }
       /* Cultura: 2 colunas */
       .cultura-inner { grid-template-columns: 1fr 1fr; }
@@ -1372,6 +1382,7 @@
       .hero-p { font-size: 16px; max-width: 100%; }
       /* Stats box: visível no mobile, abaixo do texto */
       .hero-visual { display: block; max-width: 100%; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
       .h-stat-n { font-size: 20px; }
 
       /* Cultura */
