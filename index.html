@@ -325,10 +325,16 @@
     #hero .container { position: relative; z-index: 1; }
     .hero-grid {
       display: grid;
-      /* Coluna direita tem largura máxima fluída — nunca estica além de 520px */
-      grid-template-columns: 1fr clamp(360px, 36vw, 520px);
+      /* Coluna direita mais larga para equilibrar o visual com o texto */
+      grid-template-columns: 1fr clamp(440px, 40vw, 680px);
       gap: clamp(40px, 5vw, 80px);
       align-items: stretch;
+    }
+    /* Coluna esquerda: centraliza conteúdo verticalmente dentro da altura esticada */
+    .hero-grid > div:first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .hero-badge {
       display: inline-flex;
@@ -362,7 +368,7 @@
       line-height: 1.75;
       color: rgba(255, 255, 255, 0.80);
       margin-bottom: 36px;
-      max-width: 600px;
+      max-width: 680px;
     }
     .hero-ctas { display: flex; align-items: center; gap: 20px; }
     .hero-visual {
@@ -1346,6 +1352,7 @@
     @media (max-width: 1200px) {
       /* Hero: empilha colunas, visual aparece abaixo */
       .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-grid > div:first-child { display: block; }
       .hero-visual { display: block; max-width: 100%; }
       .hero-stat-grid { grid-template-columns: repeat(4, 1fr); }
       .hero-h1 { font-size: clamp(28px, 3.8vw, 44px); }
